@@ -1,85 +1,127 @@
-# Walkthrough: loading indicator stays active and modal does not close
+# Troubleshooting walkthrough: order approval dialog
 
-This teaching example uses the identifiers supplied for the request format. No application source, action flow, or runtime evidence has been inspected. It demonstrates how to ask for help, not a verified diagnosis.
+This fictional OutSystems 11 / Reactive Web example shows how to prepare a
+useful request, supply evidence, and assess a recommendation. It is not a
+diagnosis of an inspected application.
 
-## 1. Load the Troubleshooting skill
+## 1. Load the skill
 
-Copy [outsystems-troubleshooting/SKILL.md](../skills/outsystems-troubleshooting/SKILL.md) into your conversation, attach it, or use your agent's installed invocation.
+Use [outsystems-troubleshooting](../skills/outsystems-troubleshooting/SKILL.md)
+through your agent's supported setup, or paste the skill instructions into
+your conversation. Then send the scenario below.
 
-## 2. Send the request
+## 2. Describe the problem
 
-```text
-Use outsystems-troubleshooting.
+### Example: order approval dialog does not close
 
-Platform: Unknown.
-Application type: Unknown.
-Module: 123456_WB_ACESSWEB
-Related elements: WB_CheckProcess and BlockTESTDETAILS
-Identified issue: The loading indicator remains active and the modal does not close.
-Current behavior: Changing the block parameters does not trigger the expected completion behavior.
-Expected behavior: When processing completes, the loading indicator should stop and the modal should close according to the functional rule.
-Constraints: Preserve existing components, contracts, and business rules.
-Evidence available: Behavior description only.
-Requested help: Investigate the completion flow and propose the smallest
-justified correction. Explain the reasoning and validation steps.
-Do not edit or publish anything yet.
-```
+*Fictional scenario for OutSystems 11 / Reactive Web.*
 
-Replace unknown fields when you know them. Do not infer an element's type or behavior from its name.
+**Context**
 
-## 3. Provide the evidence needed next
+- **Module:** `PurchaseOrders_UI`
+- **Screen:** `OrderDetails`
+- **Block:** `OrderApprovalDialog`
+- **Client action:** `SubmitApproval`
+- **Completion event:** `ApprovalCompleted`
 
-A useful assistant should first request the smallest set of evidence that can distinguish possible causes:
+**Observed behavior**
 
-- The actual platform and application type.
-- The role of each named element and its parent/consumer relationship.
-- The action that starts processing and sets the loading state.
-- The condition that means processing is complete.
-- The logic that clears loading and controls modal visibility.
-- Relevant block inputs, events, and parent handlers.
-- Reproduction steps and whether the issue affects success, errors, or both.
+The order is approved successfully, but the dialog remains open and the
+loading indicator stays visible. Refreshing the screen shows the updated
+order status.
 
-Send labeled screenshots or logic excerpts for these paths. If an item is unavailable, say so. Do not include live credentials or customer data.
+**Expected behavior**
 
-## 4. Expect a grounded analysis
+After successful approval, stop the loading indicator, close the dialog,
+and refresh the order summary. If approval fails, stop the loading indicator,
+keep the dialog open, and display an actionable error.
 
-A useful initial response might say:
+**Constraints**
 
-> The reported symptom is that the completion behavior does not occur after block parameters change. The evidence does not yet establish whether processing completed, whether a completion event was raised and handled, or whether loading and modal visibility have different owners. Please provide the processing completion path and the related state/event handling before choosing a fix.
+Preserve existing business rules, public inputs, events, and service
+contracts. Limit the correction to the affected interface flow.
 
-Possible investigation questions include:
+**Request to the assistant**
 
-| Question | Evidence to inspect | Why it matters |
-| --- | --- | --- |
-| Does processing actually reach completion? | Completion condition and observed result | The interface may still be waiting for work |
-| Does execution reach the completion handler? | Event wiring and parent action flow | A missing or unhandled signal could interrupt the path |
-| Where are loading and modal visibility controlled? | State assignments and owning elements | Two states may be updated by different logic |
-| What happens on failure or cancellation? | Error and cancellation paths | A path may leave loading active |
-| What happens on a second execution? | Reproduction with repeated use | Stale state may affect later attempts |
+Use `outsystems-troubleshooting` to trace the submission action, completion
+event, parent handler, and interface state updates. Separate evidence from
+hypotheses. Ask for the relevant action flows before selecting a cause.
+Provide a focused correction plan and regression checks; do not edit or
+deploy the application.
 
-These are questions, not confirmed causes. A parameter change alone does not prove that the correct completion path ran. Do not add lifecycle hooks or alter contracts without verifying the platform and implementation.
+## 3. Make the issue reproducible
 
-## 5. Review the proposed correction
+1. Open an order with status **Pending approval** on `OrderDetails`.
+2. Open `OrderApprovalDialog`.
+3. Select **Approve** and wait for the approval request to return.
+4. Observe that the loading indicator and dialog remain visible.
+5. Refresh the screen and confirm that the order status is **Approved**.
 
-Ask the assistant to identify:
+In a real request, record whether this happens on every attempt, when it
+started, and whether failure or cancellation behaves differently.
 
-- The specific element and path to change.
-- The evidence supporting that change.
-- How existing components, contracts, and rules remain preserved.
-- Any remaining uncertainty.
-- How to validate the change and revert it if necessary.
+## 4. Supply focused evidence
 
-If the evidence shows that a required correction conflicts with your constraints, the assistant should explain the conflict before proceeding.
+Provide labeled screenshots or logic excerpts for:
 
-## 6. Validate in development
+- `SubmitApproval`, including success and exception paths.
+- Where `ApprovalCompleted` is raised and its existing event contract.
+- The parent handler assigned to `ApprovalCompleted`.
+- The state or expressions controlling loading and dialog visibility.
+- The action that refreshes the order summary.
+- Relevant logs and reproduction observations, with sensitive data removed.
 
-Check the actual functional rule:
+Start with the submission flow and parent handler. Provide additional
+artifacts when the assistant explains which uncertainty they will resolve.
+A fictional name in this guide is not a requirement to add or rename an
+element in your application.
 
-1. Start processing and confirm the loading state.
-2. Complete processing successfully and verify that loading stops.
-3. Verify that the modal closes only under the intended completion condition.
-4. Exercise failure and cancellation paths according to their existing rules.
-5. Repeat the flow and check that state resets correctly.
-6. Confirm that unrelated consumers and existing contracts still work.
+## 5. Evaluate the analysis
 
-No fix is claimed by this example. A correction requires the missing implementation evidence and successful validation.
+A useful response should acknowledge that approval appears to persist while
+interface completion remains unresolved. It should identify the evidence
+needed to establish whether the success path, event, parent handler, and
+state assignments execute as expected.
+
+| Investigation question | Evidence to inspect |
+| --- | --- |
+| Does execution reach the success path? | Action flow and observed response |
+| Is the completion event raised and handled? | Event wiring and parent handler |
+| Which element owns each interface state? | State declarations and assignments |
+| Do error paths clear the loading state? | Exception handling |
+| Does a second approval attempt behave correctly? | Repeated-use reproduction |
+
+These are investigation questions, not established causes. Successful data
+persistence alone does not prove that a particular interface handler ran.
+
+Ask for clarification if the assistant assumes a missing event, invents
+existing actions, or proposes changing a public contract without evidence.
+
+## 6. Review the correction plan
+
+Before implementation, expect:
+
+- The specific existing element and path to change.
+- Evidence supporting the proposed correction.
+- How the plan preserves the stated contracts and business rules.
+- Any remaining uncertainty or conflict with a constraint.
+- Validation steps and a practical rollback approach.
+
+Keep the change scoped to the demonstrated issue. A broader redesign needs
+a separate justification.
+
+## 7. Validate the outcome in development
+
+| Scenario | Acceptance criteria |
+| --- | --- |
+| Successful approval | Loading stops, dialog closes, and summary shows Approved |
+| Approval rejected by a business rule | Loading stops, dialog stays open, and an actionable message appears |
+| Request failure | Loading stops; no false success or unintended closure |
+| Repeated use | Opening and submitting another pending order uses fresh state |
+| Existing consumers | Public inputs, events, and service contracts remain compatible |
+
+Check cancellation and duplicate submission according to existing functional
+rules. Do not infer that closing a dialog cancels an in-flight request.
+
+Record observed results before declaring the issue resolved. This guide
+provides a request and validation structure; it does not claim a verified fix.

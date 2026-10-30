@@ -37,29 +37,52 @@ Skills guide an assistant; they do not automatically connect to Service Studio, 
 | Investigate an error or unexpected behavior | [Troubleshooting](skills/outsystems-troubleshooting/SKILL.md) |
 | Review authentication, authorization, or sensitive data handling | [Security](skills/outsystems-security/SKILL.md) |
 
-If a loading indicator remains active and a modal does not close, start with **Troubleshooting**. Use **End User** if the investigation needs a broader review of interface states.
+For a dialog that remains open after a completed operation, start with **Troubleshooting**. Use **End User** for a broader review of the user journey and interface states.
 
 ## Example request
 
-After loading the Troubleshooting skill, send:
+Load the Troubleshooting skill, then describe a concrete scenario like this:
 
-```text
-Use outsystems-troubleshooting.
+### Example: order approval dialog does not close
 
-Platform and application type: Not yet confirmed.
-Module: 123456_WB_ACESSWEB
-Related elements: WB_CheckProcess and BlockTESTDETAILS
-Identified issue: The loading indicator remains active and the modal does not close.
-Current behavior: Changing the block parameters does not trigger the expected completion behavior.
-Expected behavior: When processing completes, the loading indicator should stop and the modal should close according to the functional rule.
-Constraints: Preserve existing components, contracts, and business rules.
+*Fictional scenario for OutSystems 11 / Reactive Web.*
 
-First identify the missing evidence needed to trace the completion flow.
-Separate confirmed facts from hypotheses. Propose the smallest justified
-change and explain how to validate it. Do not edit or publish anything yet.
-```
+**Context**
 
-These names are illustrative identifiers, not files inspected by this project. See the [complete walkthrough](examples/loading-and-modal.md) for what to provide next and what a useful response should contain.
+- **Module:** `PurchaseOrders_UI`
+- **Screen:** `OrderDetails`
+- **Block:** `OrderApprovalDialog`
+- **Client action:** `SubmitApproval`
+- **Completion event:** `ApprovalCompleted`
+
+**Observed behavior**
+
+The order is approved successfully, but the dialog remains open and the
+loading indicator stays visible. Refreshing the screen shows the updated
+order status.
+
+**Expected behavior**
+
+After successful approval, stop the loading indicator, close the dialog,
+and refresh the order summary. If approval fails, stop the loading indicator,
+keep the dialog open, and display an actionable error.
+
+**Constraints**
+
+Preserve existing business rules, public inputs, events, and service
+contracts. Limit the correction to the affected interface flow.
+
+**Request to the assistant**
+
+Use `outsystems-troubleshooting` to trace the submission action, completion
+event, parent handler, and interface state updates. Separate evidence from
+hypotheses. Ask for the relevant action flows before selecting a cause.
+Provide a focused correction plan and regression checks; do not edit or
+deploy the application.
+
+See the [complete walkthrough](examples/loading-and-modal.md) for reproduction
+steps, evidence to provide, and acceptance criteria. The scenario is
+fictional; it does not describe an inspected application.
 
 ## Platform scope
 
@@ -70,7 +93,7 @@ The Foundation/Core/End User organization uses the OutSystems 11 Architecture Ca
 - [First-time usage guide](docs/usage.md)
 - [Request template and field explanations](docs/request-template.md)
 - [Claude, Codex, Gemini, DeepSeek, Kimi, and other agents](docs/agents.md)
-- [Loading indicator and modal walkthrough](examples/loading-and-modal.md)
+- [Order approval troubleshooting walkthrough](examples/loading-and-modal.md)
 - [Architecture review example](examples/architecture-review.md)
 - [Skill structure and quality criteria](docs/skill-design.md)
 - [Official sources](docs/sources.md)

@@ -31,4 +31,15 @@ Propose actions within the request's scope. This skill does not grant access or 
 
 ## Example request
 
-> Module: 123456_WB_ACESSWEB. Related elements: WB_CheckProcess and BlockTESTDETAILS. Loading remains active and the modal does not close after block parameters change. Preserve components, contracts, and rules. Ask for the missing completion-flow evidence before selecting a cause.
+Fictional scenario: OutSystems 11 / Reactive Web.
+
+- Module: `PurchaseOrders_UI`
+- Block: `OrderApprovalDialog`
+- Action: `SubmitApproval`
+- Completion event: `ApprovalCompleted`
+
+The order is approved, but loading stays active and the dialog remains open.
+Trace the success path, event handling, and state ownership using the
+provided evidence. Preserve existing business rules and public contracts.
+Propose a focused correction plan and checks for success, failure, and
+repeated use. Request missing action flows before selecting a cause.

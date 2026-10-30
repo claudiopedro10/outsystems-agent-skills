@@ -30,4 +30,11 @@ Propose actions within the request's scope. This skill does not grant access or 
 
 ## Example request
 
-> Review a processing modal where changing block parameters does not stop loading or close the modal. Confirm the platform and trace completion and parent handlers before proposing changes.
+Review a fictional OutSystems 11 / Reactive Web order approval journey.
+
+After successful approval, `OrderApprovalDialog` should stop loading, close,
+and refresh the order summary. On failure, it should stop loading, stay
+open, and display an actionable error. Review state ownership, the
+`ApprovalCompleted` event, and its parent handler using the supplied flows.
+Preserve public contracts and business rules; define acceptance criteria
+before recommending changes.

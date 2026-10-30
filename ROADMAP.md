@@ -6,7 +6,7 @@
 - English documentation and skill instructions.
 - A first-time usage guide and a reusable request template.
 - Agent setup and manual chat usage.
-- Loading/modal and architecture teaching examples.
+- Order approval troubleshooting and architecture teaching examples.
 - Maintenance and maturity criteria.
 
 ## Proposed next steps

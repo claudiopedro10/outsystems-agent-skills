@@ -123,7 +123,7 @@ Example:
 
 ```text
 Use the attached Troubleshooting skill.
-I will describe a loading indicator and modal issue.
+I will describe an order approval dialog that stays open after success.
 Base your analysis on the evidence I provide.
 Ask for missing evidence before selecting a cause.
 [Paste the completed request template.]

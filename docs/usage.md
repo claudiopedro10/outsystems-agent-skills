@@ -34,7 +34,7 @@ Include:
 - The steps that reproduce the issue.
 - Constraints and relevant evidence.
 
-A request such as “Fix my modal” does not identify the logic or expected completion rule. The [loading and modal example](../examples/loading-and-modal.md) shows how to make that request actionable.
+A request such as “Fix my modal” does not identify the logic or expected completion rule. The [order approval walkthrough](../examples/loading-and-modal.md) shows how to make that request actionable.
 
 ## Step 4: Supply evidence in small, relevant pieces
 
@@ -61,7 +61,7 @@ If the answer invents an action or assumes your platform, ask it to correct the 
 
 If you requested analysis only, review the recommendation before asking for implementation. Apply an accepted change in development and check the expected behavior, error paths, cancellation, and repeated execution as relevant.
 
-Do not treat a confident explanation as proof. For the loading/modal case, verify that processing really completes, the loading indicator stops, and the modal closes under the correct functional condition.
+Do not treat a confident explanation as proof. For the order approval example, verify that approval completes, loading stops, the dialog closes, and the summary refreshes. On failure, confirm that the dialog remains open with an actionable error.
 
 ## Useful follow-up requests
 
