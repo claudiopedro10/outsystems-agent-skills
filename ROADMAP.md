@@ -7,7 +7,7 @@
 - A first-time usage guide and a reusable request template.
 - Agent setup and manual chat usage.
 - Loading/modal and architecture teaching examples.
-- Contribution and maturity criteria.
+- Maintenance and maturity criteria.
 
 ## Proposed next steps
 

@@ -2,7 +2,7 @@
 
 **Reusable AI skills for OutSystems architecture, development, and troubleshooting.**
 
-An open community library for developers, technical leads, and architects. Each skill is a Markdown file that gives an AI assistant a focused workflow and review criteria.
+A publicly available skill library maintained by the repository owner for developers, technical leads, and architects. Each skill is a Markdown file that gives an AI assistant a focused workflow and review criteria.
 
 ## New to AI? Start here
 
@@ -75,13 +75,19 @@ The Foundation/Core/End User organization uses the OutSystems 11 Architecture Ca
 - [Skill structure and quality criteria](docs/skill-design.md)
 - [Official sources](docs/sources.md)
 - [Roadmap](ROADMAP.md)
-- [Contributing](CONTRIBUTING.md)
+- [Repository maintenance policy](CONTRIBUTING.md)
 - [Security and data handling](SECURITY.md)
 
 ## Project status
 
-Initial community edition with six starter skills. File structure and internal links are checked; execution has not been validated across every agent or OutSystems scenario. No productivity benchmark or compatibility certification is claimed.
+Initial edition with six starter skills. File structure and internal links are checked; execution has not been validated across every agent or OutSystems scenario. No productivity benchmark or compatibility certification is claimed.
 
 Repository documentation and skill instructions are maintained in English. Users may write requests and ask for responses in their preferred language.
+
+## Repository access
+
+You may read, download, and use the skills. External contributions are not accepted: issues, pull requests, discussions, wiki editing, and repository projects are disabled. Updates to this original repository are reserved for the owner and explicitly authorized maintainers. See the [maintenance policy](CONTRIBUTING.md).
+
+Public files and their commit history are visible to everyone. GitHub allows independent forks and downloads of public repositories; these do not grant write access to this repository.
 
 Licensed under [MIT](LICENSE). This is an independent community project, with no affiliation with or endorsement by OutSystems or the AI vendors. Product names belong to their respective owners.

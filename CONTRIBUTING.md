@@ -1,17 +1,17 @@
-# Contributing
+# Repository maintenance policy
 
-Open an issue describing a need or submit a pull request with a focused improvement.
+This repository is published for people to read, download, and use the skills.
 
-1. Describe the task and applicable platform.
-2. Use a `skills/outsystems-name/` folder containing `SKILL.md`.
-3. Write a description that distinguishes the skill from existing ones.
-4. Include a synthetic example and the expected result.
-5. Cite official sources for platform-specific or agent-specific instructions.
-6. Record what was verified and what remains untested.
-7. Update the catalog and affected links.
+External contributions are not accepted. Issues, pull requests, discussions, wiki editing, and repository projects are disabled. Only the owner and explicitly authorized maintainers may update the original repository or publish official changes.
 
-Write all repository documentation, skill instructions, templates, and examples in English. Keep explanations clear for developers new to AI: explain necessary terms, show a concrete request, and describe how to evaluate the response. Add only professional content relevant to choosing, using, or improving the skills.
+Public visibility does not grant write access to this repository. GitHub may allow visitors to create independent forks or local copies; those do not grant permission to modify the original repository.
 
-Do not submit client exports, screenshots, logs, or data without authorization. Never include credentials. Preserve the MIT license and independent-project notice.
+## Maintainer guidance
 
-Review criteria: clear scope, platform accuracy, explicit assumptions, working links, and verifiable instructions.
+Maintain all documentation, skill instructions, templates, and examples in English. Explain necessary terms, provide realistic requests, and show how to evaluate an AI response. Keep changes focused on selecting, using, evaluating, or improving the skills.
+
+Preserve platform accuracy, explicit assumptions, working links, and verifiable instructions. Do not include credentials, personal data, or unauthorized client artifacts.
+
+## License and access
+
+The MIT license governs reuse of the published material. It does not grant access to write to this GitHub repository. Independent copies are separate from the official project.
