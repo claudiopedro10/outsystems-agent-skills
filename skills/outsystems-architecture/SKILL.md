@@ -1,31 +1,33 @@
 ---
 name: outsystems-architecture
-description: "Revise responsabilidades e dependências de aplicações OutSystems, usando o Architecture Canvas em O11 e evitando equivalências automáticas com ODC."
+description: "Review OutSystems responsibilities, dependencies, and cycles using the O11 Architecture Canvas; avoid automatic equivalence with ODC."
 ---
 
-# Arquitetura
+# Architecture
 
-## Escopo e contexto
+## Scope and context
 
-Confirme OutSystems 11 ou ODC, versão conhecida, tipo de aplicação, objetivo e restrições. A organização Foundation/Core/End User tem como referência O11. Em ODC, adapte somente com evidência e documentação aplicável; não transfira automaticamente recursos e nomes de ferramentas.
+Confirm OutSystems 11 or ODC, the known version, application type, objective, and constraints. Foundation/Core/End User uses O11 as its reference. Adapt for ODC only with applicable evidence and documentation; do not transfer tool names or capabilities automatically.
 
-Trabalhe com inventário, contratos, trechos, capturas ou logs sanitizados fornecidos ou acessíveis por ferramentas autorizadas. Não presuma acesso à plataforma nem capacidade de interpretar OML/OAP. Peça apenas as informações que mudam a análise.
+Use supplied inventories, contracts, snippets, screenshots, or sanitized logs, or inspect them through authorized tools. Do not assume platform access or an OML/OAP reader. Ask only for information that changes the analysis.
 
-## Procedimento
+## Procedure
 
-1. Inventarie módulos/aplicações, responsabilidades, elementos públicos e dependências realmente observadas.
-2. Em O11, use Foundation para capacidades técnicas, Core para conceitos e serviços de negócio e End User para jornadas e interface. Classifique pelo conteúdo, não apenas pelo nome ou sufixo.
-3. Trace consumidores e provedores. Procure ciclos e dependências de camadas inferiores para End User. Examine dependências entre pares e justifique decisões por responsabilidade e acoplamento.
-4. Não imponha uma cadeia única para todo consumo: avalie o contrato e o contexto antes de determinar se um acesso é inadequado.
-5. Proponha a menor mudança coerente; avalie consumidores, contratos e dados. Prefira migração incremental quando preservar compatibilidade for necessário.
-6. Para ODC, descreva a organização real em aplicações/bibliotecas e confirme limites e mecanismos na documentação correspondente.
+1. Inventory actual modules/applications, responsibilities, public elements, and observed dependencies.
+2. In O11, use Foundation for technical capabilities, Core for business concepts/services, and End User for journeys and interfaces. Classify by content, not names or suffixes.
+3. Trace consumers and providers. Look for cycles and dependencies from lower layers to End User. Assess peer dependencies by responsibility and coupling.
+4. Do not impose one consumption chain for every scenario. Evaluate the contract and context before labeling a dependency inappropriate.
+5. Propose the smallest coherent change and assess consumers, contracts, and data. Use incremental migration when compatibility needs to be preserved.
+6. For ODC, describe the actual application/library organization and verify boundaries and mechanisms in the corresponding documentation.
 
-## Entrega
+## Deliverable
 
-Inventário classificado, grafo textual de dependências, achados com evidências, proposta incremental e verificação de compatibilidade.
+Classified inventory, textual dependency graph, evidence-backed findings, incremental proposal, and compatibility checks.
 
-Vincule achados às evidências consultadas; separe fatos, inferências e lacunas. Cite documentação oficial para recursos específicos quando disponível; nunca invente links ou números de linha. Responda no idioma do usuário. Proponha ações compatíveis com o pedido; esta skill não concede acesso nem autorização para editar ou publicar aplicações.
+Link findings to inspected evidence. Separate facts, inferences, and missing information. Cite official documentation for specific capabilities when available; never invent links or line numbers. Explain unfamiliar terms when needed. Respond in the user's requested language.
 
-## Exemplo de pedido
+Propose actions within the request's scope. This skill does not grant access or authorize unrelated edits or deployments.
 
-> Analise Orders_UI -> Orders_CS -> ERP_IS -> Orders_UI em O11 e proponha como investigar e remover o ciclo.
+## Example request
+
+> Analyze Orders_UI -> Orders_CS -> ERP_IS -> Orders_UI in O11. Explain how to investigate and remove the cycle.

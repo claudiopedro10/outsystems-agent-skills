@@ -1,52 +1,80 @@
-# Como utilizar
+# Using skills for the first time
 
-## Skill, modelo e agente
+## What is a skill?
 
-Uma skill é um conjunto de instruções; um modelo gera respostas; um agente ou aplicativo decide como carregar instruções e usar ferramentas. Usar um modelo DeepSeek em um cliente com suporte a skills é diferente de colar texto no chat DeepSeek.
+A **prompt** is the request you send to an AI assistant. A **skill** is a reusable set of instructions that guides how the assistant handles a category of requests. An **agent** is an application that may also read files or use tools.
 
-Escolha uma skill por objetivo. Combine outras apenas se ajudarem a tarefa; carregar todas aumenta o contexto e pode misturar responsabilidades.
+A skill supplies a workflow, not knowledge of your application. The assistant still needs your module names, relevant logic, expected behavior, and evidence.
 
-## Contexto mínimo
+## Step 1: Choose one skill
 
-Informe:
+Use Troubleshooting for a bug, Architecture for dependencies, Core for business rules, Foundation for integrations, End User for screens, or Security for access and data handling.
 
-- OutSystems 11 ou ODC e versão conhecida; se não souber, declare.
-- Reactive Web, Traditional Web, Mobile ou outro tipo aplicável.
-- Objetivo e comportamento esperado.
-- Evidências: inventário de módulos/aplicações, dependências, ações, entidades, contratos ou logs.
-- Restrições: compatibilidade, prazo, volume, integrações e o que pode ser alterado.
+Start with one skill. Add another only when its scope helps the task.
 
-Não envie senhas, tokens, cookies, dados pessoais, URLs internas confidenciais ou materiais de clientes sem autorização. Substitua-os por exemplos sintéticos.
+## Step 2: Load the instructions
 
-## Fluxo recomendado
+The simplest method works in a chat:
 
-1. Carregue a skill conforme o [guia de agentes](agents.md).
-2. Envie o contexto e defina o resultado desejado.
-3. Solicite que o agente declare arquivos/evidências consultados e lacunas.
-4. Revise a proposta antes de implementar.
-5. Valide em desenvolvimento com cenários positivos e negativos.
-6. Registre o que funcionou para melhorar a skill.
+1. Open the selected `SKILL.md` from the repository.
+2. Copy its full text into a new conversation, or attach the file if supported.
+3. Say: “Use these instructions for the task I will describe next.”
 
-## Pedido reutilizável
+If you use a coding agent, follow [Agent setup](agents.md) instead. A GitHub link alone may not be readable by your assistant. If it cannot open the file, provide the contents directly.
+
+## Step 3: Describe your task
+
+Copy the [request template](request-template.md), replace its example values, and remove fields that do not apply. Write “Unknown” when information is unavailable.
+
+Include:
+
+- The platform and application type, if known.
+- The affected module and elements.
+- What happens now and what should happen instead.
+- The steps that reproduce the issue.
+- Constraints and relevant evidence.
+
+A request such as “Fix my modal” does not identify the logic or expected completion rule. The [loading and modal example](../examples/loading-and-modal.md) shows how to make that request actionable.
+
+## Step 4: Supply evidence in small, relevant pieces
+
+For a screen issue, useful evidence may include block inputs, events and handlers, the action that starts processing, the completion path, and the values controlling loading and modal visibility.
+
+For an integration issue, provide a sanitized contract, response status, timing, and relevant logs. For architecture, provide responsibilities and dependency directions.
+
+Label each screenshot or snippet with its element name. Do not upload an entire client project when a small sanitized excerpt is enough. This library does not provide an OML/OAP reader; confirm the assistant's capabilities before attaching exports.
+
+## Step 5: Review the response
+
+A useful answer should:
+
+- Summarize the expected and observed behavior accurately.
+- Identify which evidence was actually inspected.
+- Separate confirmed facts, hypotheses, and missing information.
+- Explain a targeted next check or a justified change.
+- Describe effects on existing components and contracts.
+- Provide validation steps.
+
+If the answer invents an action or assumes your platform, ask it to correct the assumption before proceeding.
+
+## Step 6: Apply and validate deliberately
+
+If you requested analysis only, review the recommendation before asking for implementation. Apply an accepted change in development and check the expected behavior, error paths, cancellation, and repeated execution as relevant.
+
+Do not treat a confident explanation as proof. For the loading/modal case, verify that processing really completes, the loading indicator stops, and the modal closes under the correct functional condition.
+
+## Useful follow-up requests
 
 ```text
-Use a skill outsystems-core.
-Plataforma e tipo: OutSystems 11 / Reactive Web.
-Objetivo: modelar aprovação de pedidos.
-Regras: somente pedidos pendentes podem ser aprovados;
-cada aprovação deve registrar autor e data.
-Evidências: entidade Order(Id, Status, Total); ação ApproveOrder(OrderId).
-Restrições: preservar o contrato atual.
-Entregue proposta, lacunas, impacto e cenários de validação.
-Não execute alterações ou publicações.
+Which statements are confirmed by the evidence I provided?
+What is the smallest additional screenshot or action flow you need?
+Explain the proposed change in Service Studio terms for a beginner.
+How can I verify this without changing an existing contract?
+List the regression checks before I apply the change.
 ```
 
-## Como avaliar
+## Data and language
 
-Uma boa resposta identifica a plataforma, cita evidências disponíveis, explica responsabilidades e oferece verificação prática. Se faltar informação, deve explicitar o limite em vez de inventar ações ou configurações.
+Remove passwords, tokens, session cookies, personal data, and confidential client details. Use synthetic identifiers where appropriate.
 
-Pedir uma skill pelo nome não comprova que o aplicativo a carregou. Confira o indicador de ativação do agente ou peça a identificação do arquivo e seu escopo. Um agente que não pode ler seus arquivos deve receber o conteúdo manualmente.
-
-## Limites
-
-As skills não substituem a documentação oficial, revisão humana ou testes. A biblioteca não inclui integração MCP, acesso à plataforma ou interpretação nativa de OML/OAP. Screenshots e trechos enviados precisam ser suficientes para a análise; ferramentas externas exigem configuração própria.
+The repository is written in English. You may describe your task in another language and ask the assistant to respond in that language.

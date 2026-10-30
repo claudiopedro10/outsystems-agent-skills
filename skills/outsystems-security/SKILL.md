@@ -1,31 +1,33 @@
 ---
 name: outsystems-security
-description: "Revise autenticação, autorização e proteção de dados em um fluxo OutSystems com evidências; não equivale a auditoria completa nem certificação."
+description: "Review authentication, authorization, and data handling in an OutSystems flow using evidence; this is not a complete audit or certification."
 ---
 
-# Segurança
+# Security
 
-## Escopo e contexto
+## Scope and context
 
-Confirme OutSystems 11 ou ODC, versão conhecida, tipo de aplicação, objetivo e restrições. A organização Foundation/Core/End User tem como referência O11. Em ODC, adapte somente com evidência e documentação aplicável; não transfira automaticamente recursos e nomes de ferramentas.
+Confirm OutSystems 11 or ODC, the known version, application type, objective, and constraints. Foundation/Core/End User uses O11 as its reference. Adapt for ODC only with applicable evidence and documentation; do not transfer tool names or capabilities automatically.
 
-Trabalhe com inventário, contratos, trechos, capturas ou logs sanitizados fornecidos ou acessíveis por ferramentas autorizadas. Não presuma acesso à plataforma nem capacidade de interpretar OML/OAP. Peça apenas as informações que mudam a análise.
+Use supplied inventories, contracts, snippets, screenshots, or sanitized logs, or inspect them through authorized tools. Do not assume platform access or an OML/OAP reader. Ask only for information that changes the analysis.
 
-## Procedimento
+## Procedure
 
-1. Delimite atores, dados, fronteiras de confiança e operações privilegiadas.
-2. Trace login, sessão e chamadas protegidas a partir dos mecanismos realmente usados. Confirme validação no servidor e autorização por operação e por recurso.
-3. Mapeie credenciais e tokens: origem, armazenamento, acesso, transporte, validade, renovação, revogação e logout. Se um aspecto não estiver visível, registre como lacuna.
-4. Verifique exposição em logs, URLs, estado do cliente e respostas. Analise consultas parametrizadas e validação de entrada conforme os artefatos disponíveis.
-5. Para integrações, examine permissões mínimas, rotação e falhas de autenticação. Não presuma que O11 e ODC compartilham mecanismos de identidade ou configuração.
-6. Priorize achados por impacto e possibilidade de exploração, sem atribuir vulnerabilidade sem evidência. Proponha validações em ambiente autorizado; não execute testes invasivos por iniciativa própria.
+1. Identify actors, data, trust boundaries, and privileged operations.
+2. Trace login, session handling, and protected requests using the actual mechanisms. Check server-side authorization for each operation and resource.
+3. Map credential and token origin, storage, access, transport, expiry, renewal, revocation, and logout. Record unseen aspects as missing information.
+4. Check exposure through logs, URLs, client state, and responses. Assess parameterized queries and input validation using the available artifacts.
+5. For integrations, assess least privilege, rotation, and authentication failures. Do not assume O11 and ODC share identity mechanisms or settings.
+6. Prioritize findings by impact and exploitability without declaring a vulnerability unsupported by evidence. Suggest authorized validation; do not initiate invasive testing.
 
-## Entrega
+## Deliverable
 
-Fluxo de confiança, mapa de credenciais/tokens, achados sustentados, lacunas e testes de autorização positivos e negativos.
+Trust flow, credential/token map, supported findings, missing information, and positive and negative authorization checks.
 
-Vincule achados às evidências consultadas; separe fatos, inferências e lacunas. Cite documentação oficial para recursos específicos quando disponível; nunca invente links ou números de linha. Responda no idioma do usuário. Proponha ações compatíveis com o pedido; esta skill não concede acesso nem autorização para editar ou publicar aplicações.
+Link findings to inspected evidence. Separate facts, inferences, and missing information. Cite official documentation for specific capabilities when available; never invent links or line numbers. Explain unfamiliar terms when needed. Respond in the user's requested language.
 
-## Exemplo de pedido
+Propose actions within the request's scope. This skill does not grant access or authorize unrelated edits or deployments.
 
-> Revise a autorização de consulta de pedidos: o usuário pode alterar o OrderId na requisição. Avalie as verificações de servidor fornecidas.
+## Example request
+
+> Review order access when a user can change OrderId in a request. Evaluate the supplied server-side checks.

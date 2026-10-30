@@ -1,30 +1,33 @@
 ---
 name: outsystems-enduser
-description: "Revise telas, jornadas e consumo de serviços na camada End User do OutSystems 11, considerando o tipo de aplicação; adapte explicitamente para ODC."
+description: "Review OutSystems screens, user journeys, and interface states in the End User layer; account for application type and adapt explicitly for ODC."
 ---
 
 # End User
 
-## Escopo e contexto
+## Scope and context
 
-Confirme OutSystems 11 ou ODC, versão conhecida, tipo de aplicação, objetivo e restrições. A organização Foundation/Core/End User tem como referência O11. Em ODC, adapte somente com evidência e documentação aplicável; não transfira automaticamente recursos e nomes de ferramentas.
+Confirm OutSystems 11 or ODC, the known version, application type, objective, and constraints. Foundation/Core/End User uses O11 as its reference. Adapt for ODC only with applicable evidence and documentation; do not transfer tool names or capabilities automatically.
 
-Trabalhe com inventário, contratos, trechos, capturas ou logs sanitizados fornecidos ou acessíveis por ferramentas autorizadas. Não presuma acesso à plataforma nem capacidade de interpretar OML/OAP. Peça apenas as informações que mudam a análise.
+Use supplied inventories, contracts, snippets, screenshots, or sanitized logs, or inspect them through authorized tools. Do not assume platform access or an OML/OAP reader. Ask only for information that changes the analysis.
 
-## Procedimento
+## Procedure
 
-1. Mapeie jornada, perfis e estados: carregando, vazio, sucesso, erro e indisponibilidade.
-2. Mantenha apresentação e orquestração da jornada na interface. Identifique regras que precisam ser garantidas no servidor e contratos de negócio que devem ser consumidos.
-3. Examine validação de entrada, mensagens acionáveis, navegação por teclado, rótulos e foco. Evite afirmar conformidade de acessibilidade sem avaliação.
-4. Analise quando dados são buscados, paginação, solicitações redundantes e submissões repetidas. Não recomende recursos de Reactive, Traditional ou Mobile como se fossem intercambiáveis.
-5. Revise exposição de dados, identificadores e estado local; autorização precisa ser verificada no servidor. Para Mobile/offline, confirme sincronização e conflitos antes de sugerir solução.
+1. Map the journey, user roles, and loading, empty, success, error, and unavailable states.
+2. Keep presentation and journey orchestration in the interface. Identify rules that must be enforced on the server and domain contracts the interface should consume.
+3. For block or modal issues, identify input parameters, events, parent handlers, state ownership, and the completion condition. Do not assume changing a parameter automatically closes a modal or finishes processing.
+4. Examine input validation, actionable messages, keyboard navigation, labels, and focus. Do not claim accessibility compliance without evaluation.
+5. Review data fetching, pagination, redundant requests, and repeated submissions. Do not treat Reactive, Traditional, and Mobile mechanisms as interchangeable.
+6. Review client-side data and state exposure; authorization must be checked on the server. For offline Mobile, confirm synchronization and conflict handling before recommending a solution.
 
-## Entrega
+## Deliverable
 
-Jornada revisada, estados da tela, fronteira entre cliente e servidor, contratos necessários e critérios de aceitação.
+Reviewed journey, state transitions and ownership, client/server boundary, required contracts, and acceptance criteria.
 
-Vincule achados às evidências consultadas; separe fatos, inferências e lacunas. Cite documentação oficial para recursos específicos quando disponível; nunca invente links ou números de linha. Responda no idioma do usuário. Proponha ações compatíveis com o pedido; esta skill não concede acesso nem autorização para editar ou publicar aplicações.
+Link findings to inspected evidence. Separate facts, inferences, and missing information. Cite official documentation for specific capabilities when available; never invent links or line numbers. Explain unfamiliar terms when needed. Respond in the user's requested language.
 
-## Exemplo de pedido
+Propose actions within the request's scope. This skill does not grant access or authorize unrelated edits or deployments.
 
-> Revise uma tela de aprovação de pedidos em Reactive Web: carregamento, lista vazia, falha do servidor e clique duplo no botão Aprovar.
+## Example request
+
+> Review a processing modal where changing block parameters does not stop loading or close the modal. Confirm the platform and trace completion and parent handlers before proposing changes.

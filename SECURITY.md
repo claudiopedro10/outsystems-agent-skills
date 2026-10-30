@@ -1,9 +1,9 @@
-# Segurança e dados
+# Security and data handling
 
-As skills são instruções em texto. A versão inicial não contém scripts executáveis, integrações ou coleta de dados.
+The starter skills are text instructions. This edition includes no executable scripts, integrations, or data collection.
 
-Antes de usá-las, revise o conteúdo e as políticas do agente escolhido. Compartilhe somente evidências sanitizadas. Nunca publique senhas, tokens, cookies de sessão, dados pessoais ou informações confidenciais em issues e exemplos.
+Review skill content and your AI provider's data policies before use. Share only sanitized evidence. Do not publish passwords, tokens, session cookies, personal data, or confidential information in issues or examples.
 
-Se encontrar uma instrução que possa induzir exposição de dados ou uma alteração indevida, não publique detalhes sensíveis em uma issue. Use o canal privado de reporte do GitHub se estiver habilitado; caso não esteja, abra apenas uma solicitação genérica de contato com o mantenedor, sem o conteúdo sensível.
+If an instruction could lead to data exposure or an unintended change, do not post sensitive details in a public issue. Use GitHub private vulnerability reporting if enabled. Otherwise, open a generic request to contact the maintainer without disclosing the sensitive content.
 
-Se um segredo já tiver sido exposto, revogue-o no serviço responsável. Remover texto do Git não invalida uma credencial.
+If a secret has been exposed, revoke it in the originating service. Removing text from Git does not invalidate a credential.

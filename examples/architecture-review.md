@@ -1,29 +1,29 @@
-# Exemplo: ciclo entre integração e interface
+# Example: a dependency cycle between integration and interface
 
-**Cenário sintético; análise ilustrativa, não resultado de teste em uma aplicação real.**
+Synthetic scenario; illustrative analysis, not an execution test against a real application.
 
-## Entrada
+## Input
 
 OutSystems 11 / Reactive Web.
 
-- Orders_UI: telas.
-- Orders_CS: regras e entidades de pedidos.
-- ERP_IS: integração REST com ERP.
-- Shared_UI: componentes visuais.
-- Dependências informadas: Orders_UI -> Orders_CS -> ERP_IS -> Orders_UI.
+- Orders_UI: screens.
+- Orders_CS: order rules and entities.
+- ERP_IS: REST integration with an ERP.
+- Shared_UI: visual components.
+- Reported dependencies: Orders_UI -> Orders_CS -> ERP_IS -> Orders_UI.
 
 Skill: `outsystems-architecture`.
 
-## Resultado esperado
+## Expected analysis
 
-**Evidência:** as dependências fornecidas formam um ciclo. ERP_IS depende de um consumidor de interface.
+**Evidence:** the supplied dependency directions form a cycle. ERP_IS depends on an interface consumer.
 
-**Interpretação:** Orders_UI pertence a End User; Orders_CS representa Core; ERP_IS representa Foundation. Shared_UI exige examinar se os componentes são técnicos ou contêm comportamento de negócio. Os sufixos não provam a responsabilidade.
+**Interpretation:** Orders_UI belongs to End User; Orders_CS represents Core; ERP_IS represents Foundation. Shared_UI requires inspection to establish whether its components are technical or contain business behavior. Suffixes do not prove responsibility.
 
-**Proposta:** descobrir qual elemento de Orders_UI é usado por ERP_IS. Se for um contrato de dados, avaliar movê-lo para o responsável apropriado e atualizar consumidores. Se for uma notificação visual, devolver um resultado técnico e deixar a interface decidir sua apresentação. Não mover todo o fluxo sem examinar a semântica.
+**Proposal:** identify the element ERP_IS consumes from Orders_UI. For a data contract, evaluate moving it to its appropriate owner and updating consumers. For a visual notification, return a technical result and let the interface decide presentation. Inspect semantics before moving a whole flow.
 
-**Sequência:** inventariar o elemento compartilhado; definir contrato compatível; atualizar ERP_IS e consumidores; remover a dependência inversa; validar fluxo e regressões.
+**Sequence:** inventory the shared element; define a compatible contract; update ERP_IS and its consumers; remove the reverse dependency; validate the user flow and regressions.
 
-**Validação:** o grafo atualizado não contém o ciclo; pedidos válidos e falhas do ERP continuam tratados; as telas não recebem detalhes internos do ERP.
+**Validation:** the updated graph no longer contains the cycle; valid orders and ERP failures remain handled; screens do not receive ERP implementation details.
 
-**Lacunas:** não há ações, contratos, referências reais ou métricas. A classificação é preliminar. Não há base para afirmar impacto de performance ou compatibilidade final.
+**Missing information:** no actual actions, contracts, references, or metrics were supplied. Classification is preliminary. Performance impact and final compatibility cannot be established.

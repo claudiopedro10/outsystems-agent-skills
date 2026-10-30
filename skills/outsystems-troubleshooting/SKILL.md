@@ -1,30 +1,34 @@
 ---
 name: outsystems-troubleshooting
-description: "Investigue falhas em OutSystems a partir de sintomas, logs e reprodução; use quando for necessário estabelecer a causa antes de propor correções."
+description: "Investigate OutSystems errors and unexpected behavior using symptoms, logs, and reproduction evidence before selecting a cause or correction."
 ---
 
 # Troubleshooting
 
-## Escopo e contexto
+## Scope and context
 
-Confirme OutSystems 11 ou ODC, versão conhecida, tipo de aplicação, objetivo e restrições. A organização Foundation/Core/End User tem como referência O11. Em ODC, adapte somente com evidência e documentação aplicável; não transfira automaticamente recursos e nomes de ferramentas.
+Confirm OutSystems 11 or ODC, the known version, application type, objective, and constraints. Foundation/Core/End User uses O11 as its reference. Adapt for ODC only with applicable evidence and documentation; do not transfer tool names or capabilities automatically.
 
-Trabalhe com inventário, contratos, trechos, capturas ou logs sanitizados fornecidos ou acessíveis por ferramentas autorizadas. Não presuma acesso à plataforma nem capacidade de interpretar OML/OAP. Peça apenas as informações que mudam a análise.
+Use supplied inventories, contracts, snippets, screenshots, or sanitized logs, or inspect them through authorized tools. Do not assume platform access or an OML/OAP reader. Ask only for information that changes the analysis.
 
-## Procedimento
+## Procedure
 
-1. Registre esperado, observado, início da falha, frequência, alcance e mudanças recentes.
-2. Correlacione evidências por horário, operação e identificadores sanitizados. Em O11, use evidências do Service Center quando fornecidas; em ODC, confirme a ferramenta de observabilidade existente.
-3. Monte hipóteses priorizadas com evidência a favor, contra e o próximo teste discriminante. Não apresente correlação como causa.
-4. Prefira verificações de leitura e reproduções isoladas. Não recomende repetir uma operação com efeitos financeiros ou persistência sem entender idempotência.
-5. Depois de estabelecer uma causa provável, proponha correção proporcional, riscos, reversão e validação de regressão. Se faltar evidência, entregue uma coleta direcionada em vez de inventar diagnóstico.
+1. Capture the module/application, related elements, observed behavior, expected behavior, reproduction steps, onset, frequency, and recent changes. Accept unknown fields; ask only for missing details that affect diagnosis.
+2. For loading and modal issues, trace processing start, the completion condition, block inputs, emitted events, parent handlers, and assignments controlling loading and visibility. Establish element types and state ownership from evidence rather than identifiers.
+3. Correlate evidence by time, operation, and sanitized identifiers. Use supplied Service Center evidence for O11; confirm the available observability tools for ODC.
+4. Prioritize hypotheses with supporting evidence, contradictory evidence, and the next check that would distinguish them. A parameter change or timing correlation alone does not establish a cause.
+5. Prefer read-only inspection and isolated reproduction. Do not repeat operations with financial or persistent effects without understanding idempotency.
+6. Once evidence supports a likely cause, propose a focused correction, impact, rollback, and regression checks. Preserve stated components, contracts, and business rules. If a necessary change conflicts with a constraint, explain that conflict before proceeding.
+7. When evidence is insufficient, request targeted action flows, event wiring, or state observations instead of inventing a fix. Explain the next check in terms a developer new to AI can follow.
 
-## Entrega
+## Deliverable
 
-Linha do tempo, evidências, hipóteses priorizadas, testes discriminantes e correção apenas quando sustentada.
+Expected/observed summary, inspected evidence, prioritized hypotheses, targeted next checks, and a correction only when justified. Include validation of success, error, cancellation, and repeated execution when relevant.
 
-Vincule achados às evidências consultadas; separe fatos, inferências e lacunas. Cite documentação oficial para recursos específicos quando disponível; nunca invente links ou números de linha. Responda no idioma do usuário. Proponha ações compatíveis com o pedido; esta skill não concede acesso nem autorização para editar ou publicar aplicações.
+Link findings to inspected evidence. Separate facts, inferences, and missing information. Cite official documentation for specific capabilities when available; never invent links or line numbers. Explain unfamiliar terms when needed. Respond in the user's requested language.
 
-## Exemplo de pedido
+Propose actions within the request's scope. This skill does not grant access or authorize unrelated edits or deployments.
 
-> Uma integração passou a falhar intermitentemente após uma publicação. Tenho horários, mensagens sanitizadas e histórico de mudanças. Investigue a causa.
+## Example request
+
+> Module: 123456_WB_ACESSWEB. Related elements: WB_CheckProcess and BlockTESTDETAILS. Loading remains active and the modal does not close after block parameters change. Preserve components, contracts, and rules. Ask for the missing completion-flow evidence before selecting a cause.

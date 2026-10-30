@@ -1,30 +1,32 @@
 ---
 name: outsystems-foundation
-description: "Projete ou revise integrações e capacidades técnicas reutilizáveis na camada Foundation do OutSystems 11; adapte a análise explicitamente para ODC."
+description: "Design or review external integrations and reusable technical capabilities in OutSystems Foundation; explicitly adapt O11 guidance for ODC."
 ---
 
 # Foundation
 
-## Escopo e contexto
+## Scope and context
 
-Confirme OutSystems 11 ou ODC, versão conhecida, tipo de aplicação, objetivo e restrições. A organização Foundation/Core/End User tem como referência O11. Em ODC, adapte somente com evidência e documentação aplicável; não transfira automaticamente recursos e nomes de ferramentas.
+Confirm OutSystems 11 or ODC, the known version, application type, objective, and constraints. Foundation/Core/End User uses O11 as its reference. Adapt for ODC only with applicable evidence and documentation; do not transfer tool names or capabilities automatically.
 
-Trabalhe com inventário, contratos, trechos, capturas ou logs sanitizados fornecidos ou acessíveis por ferramentas autorizadas. Não presuma acesso à plataforma nem capacidade de interpretar OML/OAP. Peça apenas as informações que mudam a análise.
+Use supplied inventories, contracts, snippets, screenshots, or sanitized logs, or inspect them through authorized tools. Do not assume platform access or an OML/OAP reader. Ask only for information that changes the analysis.
 
-## Procedimento
+## Procedure
 
-1. Mapeie sistema externo, operação, contrato, autenticação, limites, timeout, retentativas e responsabilidade por erros.
-2. Separe adaptação técnica de decisões de negócio. Não coloque aprovações, preços ou políticas de domínio no adaptador apenas por conveniência.
-3. Examine idempotência, duplicação, paginação, indisponibilidade e mudanças de contrato. Só proponha retentativa automática para falhas transitórias e operações cuja repetição seja segura.
-4. Considere onde as credenciais são resolvidas e quem pode consultá-las. Não inclua segredos em URLs, respostas ou logs.
-5. Defina contrato público mínimo, mapeamento de erros e impacto nos consumidores. Confirme a existência de configurações específicas na documentação da plataforma antes de citá-las.
+1. Map the external system, operation, contract, authentication, limits, timeouts, retries, and error ownership.
+2. Separate technical adaptation from business decisions. Do not move approval, pricing, or domain policy into an adapter for convenience.
+3. Examine idempotency, duplicate requests, pagination, outages, and contract changes. Recommend automatic retries only for transient failures and operations safe to repeat.
+4. Identify where credentials are resolved and who can access them. Keep secrets out of URLs, responses, and logs.
+5. Define a minimal public contract, error mapping, and consumer impact. Verify platform-specific settings in official documentation before naming them.
 
-## Entrega
+## Deliverable
 
-Contrato proposto, responsabilidades, tabela de falhas e tratamento, impacto nos consumidores e cenários de validação.
+Proposed contract, responsibilities, failure handling, consumer impact, and validation scenarios.
 
-Vincule achados às evidências consultadas; separe fatos, inferências e lacunas. Cite documentação oficial para recursos específicos quando disponível; nunca invente links ou números de linha. Responda no idioma do usuário. Proponha ações compatíveis com o pedido; esta skill não concede acesso nem autorização para editar ou publicar aplicações.
+Link findings to inspected evidence. Separate facts, inferences, and missing information. Cite official documentation for specific capabilities when available; never invent links or line numbers. Explain unfamiliar terms when needed. Respond in the user's requested language.
 
-## Exemplo de pedido
+Propose actions within the request's scope. This skill does not grant access or authorize unrelated edits or deployments.
 
-> Revise uma integração de criação de pedidos com ERP. Há timeout após envio; não sabemos se o ERP criou o pedido. Proponha como evitar duplicação.
+## Example request
+
+> Review an ERP order-creation integration that times out after sending. We do not know whether the ERP created the order. Investigate how to prevent duplicates.

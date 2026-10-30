@@ -1,23 +1,23 @@
-# Fontes e atualização
+# Sources and maintenance
 
-Consulta documental: **30/10/2026**. As instruções são uma síntese original. Os links abaixo apoiam os conceitos e os caminhos de instalação; não representam endosso ou execução dos exemplos em cada produto.
+Documentation review date: **October 30, 2026**. These links support platform concepts and setup locations. They do not imply vendor endorsement or execution of every example.
 
 ## OutSystems
 
-- [Architecture Canvas — OutSystems 11](https://success.outsystems.com/documentation/11/app_architecture/designing_the_architecture_of_your_outsystems_applications/the_architecture_canvas/): referência das camadas Foundation, Core e End User.
-- [Documentação oficial](https://success.outsystems.com/documentation/): ponto de partida para confirmar recursos por plataforma e versão.
+- [Architecture Canvas — OutSystems 11](https://success.outsystems.com/documentation/11/app_architecture/designing_the_architecture_of_your_outsystems_applications/the_architecture_canvas/): reference for Foundation, Core, and End User.
+- [Official documentation](https://success.outsystems.com/documentation/): confirm capabilities for the applicable platform and version.
 
-A referência do Architecture Canvas é de O11. A biblioteca não afirma equivalência entre esse modelo e a organização de ODC. Para recomendações específicas de ODC, consulte a documentação correspondente e registre a página utilizada.
+The Architecture Canvas reference is for O11. This library does not assume the same organization or mechanisms in ODC. Cite the corresponding ODC documentation when making platform-specific recommendations.
 
-## Agentes
+## Agents
 
-- [Codex: Build skills](https://learn.chatgpt.com/docs/build-skills): estrutura, descoberta e diretórios.
-- [Claude Code: Extend Claude with skills](https://code.claude.com/docs/en/skills): pasta de projeto e invocação.
-- [Claude: custom skills](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills): upload e uso na interface.
-- [Gemini CLI: Agent Skills](https://geminicli.com/docs/cli/skills/): descoberta, ativação e comandos.
-- [Kimi Code: Agent Skills](https://www.kimi.com/code/docs/en/kimi-code-cli/customization/skills.html): diretórios e invocação.
-- [DeepSeek: Chat Completions API](https://api-docs.deepseek.com/api/create-chat-completion/): referência de mensagens para quem usa API; não é uma especificação de instalação de skills.
+- [Codex: Build skills](https://learn.chatgpt.com/docs/build-skills): structure, discovery, and directories.
+- [Claude Code: Extend Claude with skills](https://code.claude.com/docs/en/skills): project folders and invocation.
+- [Claude: Custom skills](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills): upload and interface usage.
+- [Gemini CLI: Agent Skills](https://geminicli.com/docs/cli/skills/): discovery, activation, and commands.
+- [Kimi Code: Agent Skills](https://www.kimi.com/code/docs/en/kimi-code-cli/customization/skills.html): locations and invocation.
+- [DeepSeek: Chat Completions API](https://api-docs.deepseek.com/api/create-chat-completion/): message reference for API users, not a skill installation specification.
 
-## Manutenção
+## Maintenance
 
-Ao alterar um procedimento de instalação, confirme na fonte oficial e registre a data. Se uma interface não estiver verificada, ofereça o método manual e explique o limite. Não apresente uma revisão documental como teste de execução.
+Check the official source and record the date when changing setup instructions. If an interface has not been verified, offer the manual method and explain the limit. A documentation review is not an execution test.

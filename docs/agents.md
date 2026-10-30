@@ -1,127 +1,140 @@
-# Uso por agente
+# Agent setup
 
-Instruções verificadas na documentação em **30/10/2026**. Interfaces e caminhos podem mudar. Consulte as [fontes oficiais](sources.md). Os procedimentos foram revisados documentalmente; não foram executados em todos os produtos.
+You can use the skills manually without installing anything. Native skill discovery depends on the application, not just the model name.
 
-## Preparação
+Documentation checked on **October 30, 2026**. Procedures are based on [official sources](sources.md); they have not been executed in every product.
 
-Clone ou baixe este repositório:
+## Choose your setup
+
+| Application | Method described here | Check |
+| --- | --- | --- |
+| Codex | Skill folder in .agents/skills | Available in a new session |
+| Claude Code | Skill folder in .claude/skills | /outsystems-architecture |
+| Gemini CLI | Skill folder in .gemini/skills | Skill list and activation |
+| Kimi Code | Skill folder in .agents/skills | /skill:outsystems-architecture |
+| DeepSeek chat | Paste skill instructions | Confirm received context |
+| Other chats | Paste or attach instructions | Confirm received file or text |
+
+The Architecture skill is used below as an example. Replace its folder and name with Troubleshooting or another skill when appropriate.
+
+## Download the library
+
+Download the repository using GitHub's **Code > Download ZIP**, then extract it. Developers who use Git can run:
 
 ```sh
 git clone https://github.com/claudiopedro10/outsystems-agent-skills.git
 ```
 
-Os exemplos abaixo copiam **uma pasta de skill completa** para o projeto em que você quer trabalhar. Execute na raiz desse projeto e ajuste o caminho da cópia baixada. Não substitua uma skill existente sem revisá-la.
+The downloaded library is the source. Your working project is where you want the agent to use a skill. Copy a complete skill folder from the source into the destination described below. Do not overwrite an existing skill without reviewing it.
 
 ## Codex
 
-Copie a pasta `outsystems-architecture` para `.agents/skills/` no projeto. Resultado:
+Copy `skills/outsystems-architecture/` into `.agents/skills/` in your working project:
 
 ```text
-.agents/skills/outsystems-architecture/SKILL.md
+your-project/
+  .agents/
+    skills/
+      outsystems-architecture/
+        SKILL.md
 ```
 
-Abra uma nova sessão no projeto e peça:
+Open a new Codex session in that project and send:
 
 ```text
-Use $outsystems-architecture para revisar as dependências abaixo.
-Plataforma: OutSystems 11. [adicione o contexto]
+Use $outsystems-architecture to review the dependencies below.
+Platform: OutSystems 11.
+[Add your context and evidence.]
 ```
 
-Para uso pessoal em vários projetos, a documentação também descreve `~/.agents/skills/`. Em ambientes remotos, a pasta precisa existir no ambiente utilizado pelo agente, não somente no seu computador.
+The documented personal location is `~/.agents/skills/`. Here, `~` means your user home directory. In a remote environment, the folder must exist where Codex runs.
 
 ## Claude Code
 
-Copie a pasta para `.claude/skills/` no projeto:
+Copy the skill folder into `.claude/skills/` in your working project:
 
 ```text
 .claude/skills/outsystems-architecture/SKILL.md
 ```
 
-Inicie uma sessão no projeto e invoque:
+Start a session in that project and send:
 
 ```text
 /outsystems-architecture
-Revise as dependências abaixo. Plataforma: OutSystems 11.
+Review the dependencies below. Platform: OutSystems 11.
+[Add your context and evidence.]
 ```
 
-A instalação pessoal utiliza `~/.claude/skills/`. Claude Code local e Claude no navegador são superfícies distintas; a instalação local não implica disponibilidade em uma sessão na nuvem.
+Personal installations use `~/.claude/skills/`. A local Claude Code installation does not automatically make the skill available in a browser or cloud session.
 
-### Claude no navegador
+### Claude in the browser
 
-Use o procedimento manual abaixo. Quando sua conta oferecer custom skills, siga o guia oficial de upload e empacotamento da Anthropic; os requisitos da conta e da interface podem variar.
+Use the manual method below. If custom skills are available for your account, follow Anthropic's official upload and packaging instructions linked in [Sources](sources.md).
 
 ## Gemini CLI
 
-Copie a pasta para `.gemini/skills/` no projeto:
+Copy the skill folder into `.gemini/skills/` in your project:
 
 ```text
 .gemini/skills/outsystems-architecture/SKILL.md
 ```
 
-Abra uma sessão no projeto. Peça explicitamente a skill pelo nome e confirme sua ativação quando o CLI solicitar:
+Start a session and ask:
 
 ```text
-Use a skill outsystems-architecture para analisar este inventário.
-Plataforma: OutSystems 11. [adicione o contexto]
+Use the outsystems-architecture skill to review this inventory.
+Platform: OutSystems 11.
+[Add your context and evidence.]
 ```
 
-O comando `gemini skills list --all` ajuda a verificar a descoberta. No Gemini web, use o procedimento manual; copiar uma pasta local não a instala no navegador.
+Use `gemini skills list --all` to check discovery. Review the activation request when prompted. Gemini in the browser does not load a local folder automatically; use the manual method there.
 
 ## Kimi Code
 
-Copie a pasta para `.agents/skills/` no projeto, um dos diretórios de descoberta documentados pelo Kimi Code:
+Copy the skill folder into `.agents/skills/` in your project, one of Kimi Code's documented discovery locations:
 
 ```text
 .agents/skills/outsystems-architecture/SKILL.md
 ```
 
-Inicie uma nova sessão e use:
+Start a new session and send:
 
 ```text
-/skill:outsystems-architecture Revise as dependências descritas abaixo.
+/skill:outsystems-architecture Review the dependencies described below.
 ```
 
-Confira a documentação oficial de descoberta se a sua versão usar configuração diferente. No chat Kimi, o procedimento manual também pode ser usado.
+Add your platform, context, and evidence. Consult the official discovery documentation if your version differs. For Kimi chat, use the manual method.
 
 ## DeepSeek
 
-**Método documentado por este projeto: uso manual.** Abra uma conversa, cole o conteúdo do `SKILL.md` escolhido e envie seu contexto na sequência.
+This project's documented method for DeepSeek chat is **manual use**. Paste the chosen `SKILL.md` into the conversation and then send your request.
 
-Não é necessário criar uma chave de API para esse método. Se usar modelos DeepSeek por API ou outro cliente, o carregamento de arquivos e skills depende do cliente. A API de chat recebe mensagens; este projeto não oferece instalador ou integração própria para ela.
+No API key is needed for this method. If you use a DeepSeek model through another client or the API, file access and skill loading depend on that client. This library does not provide a DeepSeek API integration or installer.
 
-## ChatGPT, Gemini web, Kimi chat e outros assistentes
+## Manual method: ChatGPT, Gemini web, Kimi chat, and other assistants
 
-Método portátil:
+1. Open the chosen `SKILL.md`.
+2. Copy its full text into a conversation, or attach it if supported.
+3. Ask: “Use these instructions for the following task.”
+4. Send a completed [request template](request-template.md).
+5. Provide any additional evidence the assistant needs.
 
-1. Abra o `SKILL.md` escolhido e copie seu conteúdo.
-2. Cole na conversa ou anexe o arquivo se a interface aceitar.
-3. Solicite: “Use estas instruções para a tarefa abaixo”.
-4. Acrescente o contexto mínimo e o resultado esperado.
-5. Inclua referências de apoio quando existirem e forem necessárias.
-
-Exemplo:
+Example:
 
 ```text
-Use o conteúdo da skill anexada para revisar meu fluxo de pedidos.
-Considere apenas as evidências fornecidas.
-Plataforma: OutSystems 11 / Reactive Web.
-[insira contexto sanitizado]
-Mostre achados, justificativas, lacunas e como validar.
+Use the attached Troubleshooting skill.
+I will describe a loading indicator and modal issue.
+Base your analysis on the evidence I provide.
+Ask for missing evidence before selecting a cause.
+[Paste the completed request template.]
 ```
 
-Isso fornece instruções ao contexto da conversa; não comprova instalação nativa nem garante comportamento igual entre modelos.
+This adds instructions to the conversation. It does not establish native installation or guarantee identical results across models.
 
-## Comparação rápida
+## If the assistant does not find the skill
 
-| Ambiente | Método descrito | Verificação |
-| --- | --- | --- |
-| Codex | Pasta em .agents/skills | Skill disponível na nova sessão |
-| Claude Code | Pasta em .claude/skills | Comando /outsystems-architecture |
-| Gemini CLI | Pasta em .gemini/skills | Lista de skills e ativação |
-| Kimi Code | Pasta em .agents/skills | Comando /skill:outsystems-architecture |
-| DeepSeek chat | Conteúdo no contexto | Confirmar instruções recebidas |
-| Outros chats | Colar ou anexar | Confirmar arquivo/contexto recebido |
+Check that the folder contains `SKILL.md`, that it is in the correct project, and that you opened a new session. Ask which skill file was loaded. If the application cannot read local files, paste the instructions manually.
 
-## Atualizar e remover
+## Update or remove
 
-Atualize sua cópia do repositório e copie novamente somente as skills desejadas, revisando diferenças. Para remover, apague apenas a pasta instalada da skill e abra uma nova sessão. Esse procedimento não altera aplicações OutSystems.
+Update your downloaded library, review differences, and copy only the skills you use. To remove a skill, remove its installed folder and start a new session. This does not modify your OutSystems applications.

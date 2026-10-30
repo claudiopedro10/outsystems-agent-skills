@@ -1,19 +1,20 @@
-# Próximas etapas
+# Roadmap
 
-## Disponível nesta versão
+## Available
 
-- Seis skills iniciais em português.
-- Guia de instalação por agente e uso manual.
-- Exemplo sintético de arquitetura.
-- Critérios de contribuição e maturidade.
+- Six starter skills.
+- English documentation and skill instructions.
+- A first-time usage guide and a reusable request template.
+- Agent setup and manual chat usage.
+- Loading/modal and architecture teaching examples.
+- Contribution and maturity criteria.
 
-## Próximas contribuições propostas
+## Proposed next steps
 
-- Cenários avaliados separadamente em OutSystems 11 e ODC.
-- Skills de performance, testes, documentação e entrega.
-- Exemplos de integrações, autorização e jornadas de usuário.
-- Tradução para inglês.
-- Registro de compatibilidade por agente e versão.
-- Automação de validação estrutural e links, quando houver necessidade recorrente.
+- Scenarios evaluated separately in OutSystems 11 and ODC.
+- Performance, testing, documentation, and delivery skills.
+- More examples covering integrations, authorization, and user journeys.
+- Compatibility records by agent and version.
+- Structural and link validation automation when recurring needs justify it.
 
-Os itens propostos não representam funcionalidades entregues ou datas assumidas.
+Proposed items are not delivered features or delivery commitments.

@@ -1,28 +1,36 @@
-# Estrutura de uma skill
+# Skill structure and quality
 
-Cada skill é uma pasta independente com `SKILL.md`, nome em minúsculas e hífens e descrição específica no frontmatter YAML.
+Each skill is an independent folder with a `SKILL.md` file. Its YAML frontmatter contains a lowercase, hyphenated name and a focused description.
 
-## Conteúdo
+## Contents
 
-- Objetivo e quando usar.
-- Plataforma aplicável e limites.
-- Contexto e evidências necessárias.
-- Procedimento específico da área.
-- Entrega esperada.
-- Um pedido ilustrativo.
+- Purpose and appropriate use.
+- Platform scope and limitations.
+- Required context and evidence.
+- A task-specific procedure.
+- Expected deliverables.
+- An illustrative request.
 
-As instruções devem funcionar sem exigir a leitura de outros arquivos deste repositório. Se uma referência extensa for necessária, inclua-a dentro da própria pasta em `references/` e vincule no `SKILL.md`.
+Skills must work without requiring other repository documents. Put substantial supporting material inside the skill's own `references/` folder and link it from `SKILL.md` when needed.
 
-## Critérios de revisão
+## Writing for developers new to AI
 
-- O11 e ODC não são tratados como plataformas intercambiáveis.
-- Não inventa APIs, propriedades, ações ou ferramentas.
-- Evidência e hipótese são identificáveis.
-- O resultado contém uma forma de validação.
-- Não depende de credenciais ou de acesso não fornecido.
-- Não autoriza modificações ou publicações por conta própria.
-- A descrição permite escolher a skill sem carregar todas.
+Repository guides must explain unfamiliar terms, show where to place instructions, provide a realistic request, and describe how to assess the answer. Keep this teaching material in user-facing documentation; skill instructions should remain focused on agent behavior.
 
-## Maturidade
+Use the [request template](request-template.md) for examples. Distinguish an observable symptom from a suspected cause. Preserve exact identifiers supplied by a user, and label synthetic examples clearly.
 
-As seis skills iniciais são uma base editorial, ainda sem avaliação comparativa entre agentes. Antes de marcar uma skill como validada, registre plataforma, agente/versão, cenário, evidência sanitizada, resultado e limitação observada. Revisão estrutural não comprova correção de todas as recomendações.
+Maintain repository documentation and skill instructions in English. Users may request answers in other languages. Add content only when it helps someone choose, use, evaluate, or improve a skill.
+
+## Review criteria
+
+- Does not treat O11 and ODC as interchangeable.
+- Does not invent actions, APIs, settings, or tools.
+- Separates facts, hypotheses, and missing information.
+- Provides a practical verification method.
+- Does not assume access or credentials.
+- Does not grant authorization for unrelated changes or deployments.
+- Has a description that distinguishes it from other skills.
+
+## Maturity
+
+The six starter skills have no comparative agent evaluation yet. Before claiming behavioral validation, record platform, agent/version, scenario, sanitized evidence, observed result, and limitations. Structural checks do not establish correctness of every recommendation.

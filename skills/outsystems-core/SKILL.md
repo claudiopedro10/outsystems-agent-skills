@@ -1,30 +1,32 @@
 ---
 name: outsystems-core
-description: "Modele ou revise entidades, invariantes e serviços de negócio na camada Core do OutSystems 11; adapte os conceitos para ODC."
+description: "Model or review entities, invariants, and domain services in OutSystems Core; explicitly adapt O11 concepts for ODC."
 ---
 
 # Core
 
-## Escopo e contexto
+## Scope and context
 
-Confirme OutSystems 11 ou ODC, versão conhecida, tipo de aplicação, objetivo e restrições. A organização Foundation/Core/End User tem como referência O11. Em ODC, adapte somente com evidência e documentação aplicável; não transfira automaticamente recursos e nomes de ferramentas.
+Confirm OutSystems 11 or ODC, the known version, application type, objective, and constraints. Foundation/Core/End User uses O11 as its reference. Adapt for ODC only with applicable evidence and documentation; do not transfer tool names or capabilities automatically.
 
-Trabalhe com inventário, contratos, trechos, capturas ou logs sanitizados fornecidos ou acessíveis por ferramentas autorizadas. Não presuma acesso à plataforma nem capacidade de interpretar OML/OAP. Peça apenas as informações que mudam a análise.
+Use supplied inventories, contracts, snippets, screenshots, or sanitized logs, or inspect them through authorized tools. Do not assume platform access or an OML/OAP reader. Ask only for information that changes the analysis.
 
-## Procedimento
+## Procedure
 
-1. Identifique o domínio, o dono dos dados, as invariantes e os consumidores. Separe regras persistentes de decisões de apresentação.
-2. Defina entradas, saídas e pré/pós-condições dos serviços. Evite expor entidades e operações de escrita amplas quando o contrato de negócio puder ser mais restrito.
-3. Examine autorização no servidor, transações, concorrência e execução repetida. Não trate esconder um botão como validação de negócio.
-4. Analise impacto em dados existentes, nulabilidade, índices e consumidores antes de propor mudança de entidade. Explicite estratégia de migração e reversão quando aplicável.
-5. Não afirme atomicidade entre banco e sistema externo sem evidência do mecanismo. Defina como inconsistências serão identificadas e reconciliadas.
+1. Identify the domain, data owner, invariants, and consumers. Separate lasting business rules from presentation decisions.
+2. Define service inputs, outputs, and preconditions/postconditions. Prefer a focused business contract over broad write access when appropriate.
+3. Examine server-side authorization, transactions, concurrency, and repeated execution. Hiding a button does not enforce a business rule.
+4. Assess existing data, nullability, indexes, and consumers before proposing entity changes. Explain migration and rollback where applicable.
+5. Do not claim atomicity across a database and an external service without evidence. Explain how inconsistencies would be detected and reconciled.
 
-## Entrega
+## Deliverable
 
-Modelo de domínio, invariantes, contratos, riscos de migração e cenários de teste positivos, negativos e concorrentes.
+Domain model, invariants, contracts, migration risks, and positive, negative, and concurrent validation scenarios.
 
-Vincule achados às evidências consultadas; separe fatos, inferências e lacunas. Cite documentação oficial para recursos específicos quando disponível; nunca invente links ou números de linha. Responda no idioma do usuário. Proponha ações compatíveis com o pedido; esta skill não concede acesso nem autorização para editar ou publicar aplicações.
+Link findings to inspected evidence. Separate facts, inferences, and missing information. Cite official documentation for specific capabilities when available; never invent links or line numbers. Explain unfamiliar terms when needed. Respond in the user's requested language.
 
-## Exemplo de pedido
+Propose actions within the request's scope. This skill does not grant access or authorize unrelated edits or deployments.
 
-> Revise ApproveOrder(OrderId): apenas pedidos pendentes podem ser aprovados e o autor deve ser registrado. Considere duas aprovações simultâneas.
+## Example request
+
+> Review ApproveOrder(OrderId): only pending orders may be approved and the actor must be recorded. Consider simultaneous approvals.
