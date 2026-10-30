@@ -6,10 +6,10 @@ Synthetic scenario; illustrative analysis, not an execution test against a real 
 
 OutSystems 11 / Reactive Web.
 
-- Orders_UI: screens.
-- Orders_CS: order rules and entities.
-- ERP_IS: REST integration with an ERP.
-- Shared_UI: visual components.
+- Orders_UI: screens. Architecture layer: End User.
+- Orders_CS: order rules and entities. Architecture layer: Core.
+- ERP_IS: REST integration with an ERP. Architecture layer: Foundation.
+- Shared_UI: visual components. Architecture layer: Not sure; assess responsibilities.
 - Reported dependencies: Orders_UI -> Orders_CS -> ERP_IS -> Orders_UI.
 
 Skill: `outsystems-architecture`.

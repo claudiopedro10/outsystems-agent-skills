@@ -49,6 +49,7 @@ Load the Troubleshooting skill, then describe a concrete scenario like this:
 
 **Context**
 
+- **Architecture layer:** End User
 - **Module:** `PurchaseOrders_UI`
 - **Screen:** `OrderDetails`
 - **Block:** `OrderApprovalDialog`

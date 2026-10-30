@@ -18,6 +18,7 @@ your conversation. Then send the scenario below.
 
 **Context**
 
+- **Architecture layer:** End User
 - **Module:** `PurchaseOrders_UI`
 - **Screen:** `OrderDetails`
 - **Block:** `OrderApprovalDialog`

@@ -15,6 +15,7 @@ Skill: [selected skill]
 Context
 - Platform: [OutSystems 11 or ODC]
 - Application type: [Reactive Web, Traditional Web, or Mobile]
+- Architecture layer: [Foundation, Core, End User, or Not sure]
 - Module or application: [name]
 - Related elements: [name and role of each relevant element]
 
@@ -47,11 +48,31 @@ If a field is unknown, state that rather than guessing. In ODC, describe the
 actual application or library. For a new feature, explain the existing flow
 or state that no implementation exists yet.
 
+## Select the architecture layer
+
+Use **Architecture layer** to identify the responsibility of the affected
+module in OutSystems 11:
+
+| Option | Typical responsibility |
+| --- | --- |
+| Foundation | Integrations, adapters, and reusable technical capabilities |
+| Core | Business entities, rules, and domain services |
+| End User | Screens, blocks, and user journey orchestration |
+| Not sure | Ask the assistant to assess the supplied responsibilities |
+
+For a task involving several modules, state the layer for each module.
+Do not infer the layer from a name or suffix alone. The assistant should
+check the declared layer against the supplied responsibilities and explain
+any mismatch.
+
+For ODC, use **Not applicable** when this O11 classification does not fit.
+Describe the actual application/library responsibilities instead.
+
 ## What each section contributes
 
 | Section | What to include | Purpose |
 | --- | --- | --- |
-| Context | Platform, application type, names, and element roles | Identifies the technical scope |
+| Context | Platform, application type, architecture layer, and element roles | Identifies the technical scope |
 | Issue or objective | A concise symptom or goal | States the task |
 | Observed behavior | Reproducible facts and user impact | Keeps diagnosis grounded |
 | Expected behavior | Success and failure outcomes | Defines correctness |
@@ -71,6 +92,7 @@ element is a screen, block, action, or event when known.
 
 **Context**
 
+- **Architecture layer:** End User
 - **Module:** `PurchaseOrders_UI`
 - **Screen:** `OrderDetails`
 - **Block:** `OrderApprovalDialog`

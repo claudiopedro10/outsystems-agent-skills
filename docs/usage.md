@@ -29,12 +29,18 @@ Copy the [request template](request-template.md), replace its example values, an
 Include:
 
 - The platform and application type, if known.
+- The architecture layer: Foundation, Core, End User, or Not sure.
 - The affected module and elements.
 - What happens now and what should happen instead.
 - The steps that reproduce the issue.
 - Constraints and relevant evidence.
 
 A request such as “Fix my modal” does not identify the logic or expected completion rule. The [order approval walkthrough](../examples/loading-and-modal.md) shows how to make that request actionable.
+
+Use the layer descriptions in the [request template](request-template.md).
+For several modules, identify each module's layer. Ask the assistant to
+check responsibilities rather than assuming that the declared layer is
+correct. In ODC, use Not applicable when the O11 classification does not fit.
 
 ## Step 4: Supply evidence in small, relevant pieces
 
