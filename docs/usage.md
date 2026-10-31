@@ -6,6 +6,18 @@ A **prompt** is the request you send to an AI assistant. A **skill** is a reusab
 
 A skill supplies a workflow, not knowledge of your application. The assistant still needs your module names, relevant logic, expected behavior, and evidence.
 
+## Before using Service Studio MCP (OutSystems 11)
+
+To inspect an open O11 module through MCP, first follow the [official
+OutSystems setup](https://success.outsystems.com/documentation/11/outsystems_mcp/get_started_with_outsystems_mcp/),
+install the [official O11 MCP skill](https://github.com/OutSystems/outsystems11-mcp)
+for your agent, and configure and verify the connection. Then use a skill
+from this repository for the task. The [step-by-step MCP guide](service-studio-mcp.md)
+explains the sequence.
+
+Manual use with supplied evidence does not require an MCP connection. ODC
+uses its own applicable documentation and tools.
+
 ## Step 1: Choose one skill
 
 Use Troubleshooting for a bug, Architecture for dependencies, Core for business rules, Foundation for integrations, End User for screens, or Security for access and data handling.

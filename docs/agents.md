@@ -4,6 +4,15 @@ You can use the skills manually without installing anything. Native skill discov
 
 Documentation checked on **October 30, 2026**. Procedures are based on [official sources](sources.md); they have not been executed in every product.
 
+> [!IMPORTANT]
+> For OutSystems 11 module access through Service Studio MCP, first follow the
+> [official OutSystems setup](https://success.outsystems.com/documentation/11/outsystems_mcp/get_started_with_outsystems_mcp/)
+> and install the [official O11 MCP skill](https://github.com/OutSystems/outsystems11-mcp)
+> for the selected agent. Start the server, register its displayed address,
+> and verify the open module before using this repository's complementary skills.
+> See the [MCP setup guide](service-studio-mcp.md). Manual analysis with
+> supplied evidence remains available without MCP; ODC uses separate guidance.
+
 ## Choose your setup
 
 | Application | Method described here | Check |

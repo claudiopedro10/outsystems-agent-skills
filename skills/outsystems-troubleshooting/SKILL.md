@@ -11,6 +11,13 @@ Confirm OutSystems 11 or ODC, the known version, application type, objective, an
 
 Use supplied inventories, contracts, snippets, screenshots, or sanitized logs, or inspect them through authorized tools. Do not assume platform access or an OML/OAP reader. Ask only for information that changes the analysis.
 
+For O11 module access through Service Studio MCP, follow the
+[official OutSystems setup](https://success.outsystems.com/documentation/11/outsystems_mcp/get_started_with_outsystems_mcp/)
+and use the [official O11 MCP skill](https://github.com/OutSystems/outsystems11-mcp)
+for the agent's tool and Model API instructions. This skill complements
+that setup; it does not install or configure it. Manual analysis using
+supplied evidence remains possible without MCP.
+
 ## Service Studio MCP workflow (OutSystems 11)
 
 For a task involving an O11 module, discover the configured Service Studio

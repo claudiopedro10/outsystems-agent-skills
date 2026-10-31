@@ -4,6 +4,24 @@
 
 A publicly available skill library maintained by the repository owner for developers, technical leads, and architects. Each skill is a Markdown file that gives an AI assistant a focused workflow and review criteria.
 
+> [!IMPORTANT]
+> **Before using these skills with an OutSystems 11 module**
+>
+> Follow the official OutSystems MCP recommendations first:
+>
+> 1. Install the [official OutSystems O11 MCP skill](https://github.com/OutSystems/outsystems11-mcp) for your agent.
+> 2. Open your module and start the MCP Server in Service Studio.
+> 3. Register the address shown in Service Studio in your agent.
+> 4. Confirm that the agent can read the open module.
+> 5. Choose a complementary skill from this repository.
+>
+> [Official OutSystems setup](https://success.outsystems.com/documentation/11/outsystems_mcp/get_started_with_outsystems_mcp/)
+> · [Step-by-step MCP guide](docs/service-studio-mcp.md)
+>
+> These prerequisites apply to O11 module access through Service Studio MCP.
+> You can also use the skills manually with supplied evidence. For ODC, use
+> the applicable ODC documentation and tools.
+
 ## New to AI? Start here
 
 You do not need to write a complex prompt or configure an API.

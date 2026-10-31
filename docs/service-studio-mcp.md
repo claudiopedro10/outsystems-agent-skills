@@ -18,6 +18,18 @@ The version requirement and setup are documented in
 [Get started with OutSystems MCP](https://success.outsystems.com/documentation/11/outsystems_mcp/get_started_with_outsystems_mcp/).
 The official skill supplies the Model API contract and tool instructions.
 
+### Recommended order
+
+1. Follow the [official OutSystems O11 MCP setup](https://success.outsystems.com/documentation/11/outsystems_mcp/get_started_with_outsystems_mcp/) and install its official skill for your agent.
+2. Start the Service Studio MCP Server and open the target module.
+3. Register the address shown in Service Studio in your agent.
+4. Approve the connection when prompted and verify a read of the open module.
+5. Load one of this repository's complementary skills for your task.
+
+These repository skills do not replace the official skill or configure the
+connection. Manual analysis with supplied evidence remains available without
+MCP. For ODC, follow the applicable ODC documentation and tools.
+
 ## 1. Start the server
 
 1. Open the target module in Service Studio.
