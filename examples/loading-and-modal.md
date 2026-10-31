@@ -10,6 +10,11 @@ Use [outsystems-troubleshooting](../skills/outsystems-troubleshooting/SKILL.md)
 through your agent's supported setup, or paste the skill instructions into
 your conversation. Then send the scenario below.
 
+Before using the example against a real module, configure the
+[Service Studio MCP server](../docs/service-studio-mcp.md), install the
+official OutSystems O11 MCP skill, and verify the open module. This example
+is fictional and is not a claim that a module was inspected.
+
 ## 2. Describe the problem
 
 ### Example: order approval dialog does not close
@@ -44,6 +49,11 @@ contracts. Limit the correction to the affected interface flow.
 
 **Request to the assistant**
 
+Verify the configured Service Studio MCP and that the intended module is
+open. Use available read tools with the official O11 MCP skill. If the
+connection is unavailable, ask for sanitized action flows and explain the
+inspection limit.
+
 Use `outsystems-troubleshooting` to trace the submission action, completion
 event, parent handler, and interface state updates. Separate evidence from
 hypotheses. Ask for the relevant action flows before selecting a cause.
@@ -63,7 +73,7 @@ started, and whether failure or cancellation behaves differently.
 
 ## 4. Supply focused evidence
 
-Provide labeled screenshots or logic excerpts for:
+Use available MCP read tools to inspect the open module when connected. Otherwise provide labeled screenshots or logic excerpts for:
 
 - `SubmitApproval`, including success and exception paths.
 - Where `ApprovalCompleted` is raised and its existing event contract.

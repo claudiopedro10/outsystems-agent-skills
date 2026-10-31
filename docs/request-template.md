@@ -16,6 +16,8 @@ Context
 - Platform: [OutSystems 11 or ODC]
 - Application type: [Reactive Web, Traditional Web, or Mobile]
 - Architecture layer: [Foundation, Core, End User, or Not sure]
+- Service Studio MCP: [configured / unavailable / not sure, for O11]
+- Open module: [name, when using Service Studio MCP]
 - Module or application: [name]
 - Related elements: [name and role of each relevant element]
 
@@ -34,7 +36,7 @@ Reproduction steps
 3. [Observed result]
 
 Available evidence
-[List labeled screenshots, action flows, logs, or contracts.]
+[List available MCP access, screenshots, action flows, logs, or contracts.]
 
 Constraints
 [State which components, interfaces, and rules must be preserved.]
@@ -42,11 +44,21 @@ Constraints
 Requested deliverable
 [Ask for analysis, a correction plan, or explicitly authorized edits.]
 [Include how you want the result to be validated.]
+For O11, verify the Service Studio MCP and open module before inspection.
+Use read tools for analysis; report missing access or evidence.
 ```
 
 If a field is unknown, state that rather than guessing. In ODC, describe the
 actual application or library. For a new feature, explain the existing flow
 or state that no implementation exists yet.
+
+## Working with Service Studio MCP
+
+For OutSystems 11, specify whether your agent is connected to the local
+Service Studio MCP server and which module is open. The configured endpoint
+comes from your Service Studio window; no port is fixed by this template.
+See [setup and connection test](service-studio-mcp.md). For ODC, identify the
+actual supported tools separately.
 
 ## Select the architecture layer
 
@@ -117,6 +129,10 @@ Preserve existing business rules, public inputs, events, and service
 contracts. Limit the correction to the affected interface flow.
 
 **Request to the assistant**
+
+For O11, verify the configured Service Studio MCP and open module; use
+available read tools. If access is unavailable, request sanitized evidence
+and state that no module was inspected.
 
 Use `outsystems-troubleshooting` to trace the submission action, completion
 event, parent handler, and interface state updates. Separate evidence from

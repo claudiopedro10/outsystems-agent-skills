@@ -22,6 +22,18 @@ The simplest method works in a chat:
 
 If you use a coding agent, follow [Agent setup](agents.md) instead. A GitHub link alone may not be readable by your assistant. If it cannot open the file, provide the contents directly.
 
+## Connect to Service Studio (OutSystems 11)
+
+To analyze the actual open module, follow the
+[Service Studio MCP setup guide](service-studio-mcp.md). It covers the
+official OutSystems O11 MCP skill, starting the local server, registering
+the URL displayed by your Service Studio, session approval, and a read-only
+connection test. Each developer's port can differ.
+
+A copied instruction file does not establish an MCP connection. If the
+agent cannot access the configured tools, supply sanitized screenshots or
+excerpts and treat the result as an analysis of those materials only.
+
 ## Step 3: Describe your task
 
 Copy the [request template](request-template.md), replace its example values, and remove fields that do not apply. Write “Unknown” when information is unavailable.
@@ -42,7 +54,9 @@ For several modules, identify each module's layer. Ask the assistant to
 check responsibilities rather than assuming that the declared layer is
 correct. In ODC, use Not applicable when the O11 classification does not fit.
 
-## Step 4: Supply evidence in small, relevant pieces
+## Step 4: Inspect the module or supply evidence
+
+For O11, ask the connected agent to verify the open target module and use the available Service Studio MCP read tools. If those tools are unavailable, provide relevant evidence manually.
 
 For a screen issue, useful evidence may include block inputs, events and handlers, the action that starts processing, the completion path, and the values controlling loading and modal visibility.
 

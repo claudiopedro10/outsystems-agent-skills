@@ -15,6 +15,8 @@ Documentation checked on **October 30, 2026**. Procedures are based on [official
 | DeepSeek chat | Paste skill instructions | Confirm received context |
 | Other chats | Paste or attach instructions | Confirm received file or text |
 
+For OutSystems 11 module access, complete the separate [Service Studio MCP setup](service-studio-mcp.md) and install the official OutSystems O11 MCP skill in a compatible host. The host uses the URL and port shown in your Service Studio; this library does not connect it automatically. Manual chat usage remains available without MCP.
+
 The Architecture skill is used below as an example. Replace its folder and name with Troubleshooting or another skill when appropriate.
 
 ## Download the library
@@ -44,6 +46,8 @@ Open a new Codex session in that project and send:
 ```text
 Use $outsystems-architecture to review the dependencies below.
 Platform: OutSystems 11.
+Verify the configured Service Studio MCP connection and open module.
+Use available read tools; report any missing access. Do not edit or publish.
 [Add your context and evidence.]
 ```
 
@@ -62,6 +66,8 @@ Start a session in that project and send:
 ```text
 /outsystems-architecture
 Review the dependencies below. Platform: OutSystems 11.
+Verify the configured Service Studio MCP connection and open module.
+Use read tools only; report missing access.
 [Add your context and evidence.]
 ```
 
@@ -84,6 +90,7 @@ Start a session and ask:
 ```text
 Use the outsystems-architecture skill to review this inventory.
 Platform: OutSystems 11.
+Verify the Service Studio MCP connection and open module if available.
 [Add your context and evidence.]
 ```
 
@@ -101,6 +108,7 @@ Start a new session and send:
 
 ```text
 /skill:outsystems-architecture Review the dependencies described below.
+Verify the Service Studio MCP connection and open module if available.
 ```
 
 Add your platform, context, and evidence. Consult the official discovery documentation if your version differs. For Kimi chat, use the manual method.
@@ -124,6 +132,8 @@ Example:
 ```text
 Use the attached Troubleshooting skill.
 I will describe an order approval dialog that stays open after success.
+If my client has the O11 Service Studio MCP configured, verify the open
+module and use read tools. Otherwise, ask for sanitized evidence.
 Base your analysis on the evidence I provide.
 Ask for missing evidence before selecting a cause.
 [Paste the completed request template.]

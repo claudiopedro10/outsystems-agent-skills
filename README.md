@@ -11,6 +11,7 @@ You do not need to write a complex prompt or configure an API.
 1. Choose a skill from the table below.
 2. Open its `SKILL.md` file and copy the contents.
 3. Paste them into your AI conversation, or attach the file if your application supports it.
+   To inspect an open OutSystems 11 module, also configure the [Service Studio MCP connection](docs/service-studio-mcp.md).
 4. Send a request using the [guided request template](docs/request-template.md).
 5. Review the proposed analysis and verify changes in a development environment.
 
@@ -24,7 +25,7 @@ For a complete walkthrough, read [Using skills for the first time](docs/usage.md
 - **Reviewable recommendations:** understand the proposed change, its impact, and how to validate it.
 - **Reusable instructions:** use the same workflow across supported agents or manually in a chat.
 
-Skills guide an assistant; they do not automatically connect to Service Studio, read OML/OAP files, or deploy applications. Access depends on the tools and permissions available to the assistant.
+For OutSystems 11, a supported agent can inspect the open module using the separately configured Service Studio MCP server and official OutSystems O11 MCP skill. This repository's skills guide the task; they do not install or connect those components. The endpoint and port are taken from each developer's Service Studio settings.
 
 ## Choose a skill
 
@@ -75,6 +76,10 @@ contracts. Limit the correction to the affected interface flow.
 
 **Request to the assistant**
 
+First verify the configured Service Studio MCP connection and the open target
+module. Use available read tools with the official O11 MCP skill. If not
+connected, request sanitized action flows; do not claim inspection succeeded.
+
 Use `outsystems-troubleshooting` to trace the submission action, completion
 event, parent handler, and interface state updates. Separate evidence from
 hypotheses. Ask for the relevant action flows before selecting a cause.
@@ -92,6 +97,7 @@ The Foundation/Core/End User organization uses the OutSystems 11 Architecture Ca
 ## Documentation
 
 - [First-time usage guide](docs/usage.md)
+- [Service Studio MCP setup and connection test](docs/service-studio-mcp.md)
 - [Request template and field explanations](docs/request-template.md)
 - [Claude, Codex, Gemini, DeepSeek, Kimi, and other agents](docs/agents.md)
 - [Order approval troubleshooting walkthrough](examples/loading-and-modal.md)

@@ -14,6 +14,8 @@ OutSystems 11 / Reactive Web.
 
 Skill: `outsystems-architecture`.
 
+For a real O11 review, verify the [Service Studio MCP setup](../docs/service-studio-mcp.md) and inspect the available open module using read tools. Confirm other modules separately when available; do not infer their contents from one open module. This example supplies a synthetic inventory and is not an MCP result.
+
 ## Expected analysis
 
 **Evidence:** the supplied dependency directions form a cycle. ERP_IS depends on an interface consumer.

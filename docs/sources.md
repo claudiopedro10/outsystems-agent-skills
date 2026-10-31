@@ -7,6 +7,10 @@ Documentation review date: **October 30, 2026**. These links support platform co
 - [Architecture Canvas — OutSystems 11](https://success.outsystems.com/documentation/11/app_architecture/designing_the_architecture_of_your_outsystems_applications/the_architecture_canvas/): reference for Foundation, Core, and End User.
 - [Official documentation](https://success.outsystems.com/documentation/): confirm capabilities for the applicable platform and version.
 
+- [Get started with OutSystems MCP (O11)](https://success.outsystems.com/documentation/11/outsystems_mcp/get_started_with_outsystems_mcp/): prerequisites, local server, agent setup, and verification.
+- [Official OutSystems O11 MCP skill and host setup](https://github.com/OutSystems/outsystems11-mcp): agent instructions and host-specific setup.
+- [ODC: Use MCP servers](https://success.outsystems.com/documentation/outsystems_developer_cloud/building_apps/build_ai_powered_apps/agentic_apps_in_odc/tools_and_connectors/use_mcp_servers/): ODC context; not an O11 Service Studio setup.
+
 The Architecture Canvas reference is for O11. This library does not assume the same organization or mechanisms in ODC. Cite the corresponding ODC documentation when making platform-specific recommendations.
 
 ## Agents

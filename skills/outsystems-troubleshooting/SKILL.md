@@ -11,6 +11,26 @@ Confirm OutSystems 11 or ODC, the known version, application type, objective, an
 
 Use supplied inventories, contracts, snippets, screenshots, or sanitized logs, or inspect them through authorized tools. Do not assume platform access or an OML/OAP reader. Ask only for information that changes the analysis.
 
+## Service Studio MCP workflow (OutSystems 11)
+
+For a task involving an O11 module, discover the configured Service Studio
+MCP tools and use their available read capabilities to inspect the target
+module when connected and authorized. Confirm the open module matches the
+request; check the actual available tools and avoid inventing tool names,
+properties, or results. The [official OutSystems O11 MCP skill](https://github.com/OutSystems/outsystems11-mcp)
+supplies the tool and Model API instructions and is used alongside this skill.
+
+The MCP endpoint is configured in the agent host using the URL shown in
+Service Studio; ports vary. Never assume a fixed address or scan local ports.
+Do not claim a connection or inspection succeeded without tool evidence.
+If tools or the target module are unavailable, explain the gap, provide
+setup guidance, and request the relevant sanitized evidence. An analysis-only
+request must not invoke write, merge, or publish operations. For authorized
+edits, respect the user's scope and Service Studio's write-review settings.
+
+This local Service Studio MCP workflow is specific to O11. For ODC, establish
+the applicable tools and documentation separately; do not assume equivalence.
+
 ## Procedure
 
 1. Capture the module/application, related elements, observed behavior, expected behavior, reproduction steps, onset, frequency, and recent changes. Accept unknown fields; ask only for missing details that affect diagnosis.
@@ -30,6 +50,8 @@ Link findings to inspected evidence. Separate facts, inferences, and missing inf
 Propose actions within the request's scope. This skill does not grant access or authorize unrelated edits or deployments.
 
 ## Example request
+
+For O11, first verify the configured Service Studio MCP connection and the open target module. Inspect available evidence with read tools; do not edit or publish for this example.
 
 Fictional scenario: OutSystems 11 / Reactive Web.
 
