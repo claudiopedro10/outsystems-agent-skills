@@ -2,7 +2,7 @@
 
 You can use the skills manually without installing anything. Native skill discovery depends on the application, not just the model name.
 
-Documentation checked on **October 30, 2026**. Procedures are based on [official sources](sources.md); they have not been executed in every product.
+Documentation checked on **November 6, 2026**. Procedures are based on [official sources](sources.md); they have not been executed in every product.
 
 > [!IMPORTANT]
 > For OutSystems 11 module access through Service Studio MCP, first follow the
@@ -18,6 +18,7 @@ Documentation checked on **October 30, 2026**. Procedures are based on [official
 | Application | Method described here | Check |
 | --- | --- | --- |
 | Codex | Skill folder in .agents/skills | Available in a new session |
+| GitHub Copilot in VS Code | Skill folder in .github/skills | Ask it to use the skill in agent mode |
 | Claude Code | Skill folder in .claude/skills | /outsystems-architecture |
 | Gemini CLI | Skill folder in .gemini/skills | Skill list and activation |
 | Kimi Code | Skill folder in .agents/skills | /skill:outsystems-architecture |
@@ -25,6 +26,11 @@ Documentation checked on **October 30, 2026**. Procedures are based on [official
 | Other chats | Paste or attach instructions | Confirm received file or text |
 
 For OutSystems 11 module access, complete the separate [Service Studio MCP setup](service-studio-mcp.md) and install the official OutSystems O11 MCP skill in a compatible host. The host uses the URL and port shown in your Service Studio; this library does not connect it automatically. Manual chat usage remains available without MCP.
+
+In each prompt, use **Target module** for the intended scope and **Open modules**
+only for MCP-verified access. Application and Related modules are optional
+context, not access claims. Copy the [request template](request-template.md)
+after the short invocation shown below.
 
 The Architecture skill is used below as an example. Replace its folder and name with Troubleshooting or another skill when appropriate.
 
@@ -61,6 +67,19 @@ Use available read tools; report any missing access. Do not edit or publish.
 ```
 
 The documented personal location is `~/.agents/skills/`. Here, `~` means your user home directory. In a remote environment, the folder must exist where Codex runs.
+
+## GitHub Copilot in VS Code
+
+Copy the complete skill folder to `.github/skills/outsystems-architecture/`
+in your working repository. In agent mode, ask Copilot to use
+`outsystems-architecture` and include the completed request template.
+See [GitHub's skill guide](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills)
+for discovery and supported clients.
+
+Configure the official OutSystems skill and MCP connection separately using
+the [OutSystems Copilot setup](https://github.com/OutSystems/outsystems11-mcp/blob/main/setup-docs/copilot-vscode.md).
+A skill available to Copilot on GitHub does not make your computer's local
+Service Studio endpoint reachable from a cloud agent.
 
 ## Claude Code
 
@@ -144,7 +163,7 @@ I will describe an order approval dialog that stays open after success.
 If my client has the O11 Service Studio MCP configured, verify the open
 module and use read tools. Otherwise, ask for sanitized evidence.
 Base your analysis on the evidence I provide.
-Ask for missing evidence before selecting a cause.
+Use available reads first; ask only for evidence still missing before selecting a cause.
 [Paste the completed request template.]
 ```
 

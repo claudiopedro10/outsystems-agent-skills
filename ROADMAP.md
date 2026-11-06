@@ -8,6 +8,9 @@
 - Agent setup, Service Studio MCP guidance, and manual chat usage.
 - Order approval troubleshooting and architecture teaching examples.
 - Maintenance and maturity criteria.
+- Separate target, application, related-module, and verified-access context.
+- Automated metadata, local-link, and independent-packaging checks.
+- Behavioral evaluation cases with explicit execution status.
 
 ## Proposed next steps
 
@@ -15,6 +18,5 @@
 - Performance, testing, documentation, and delivery skills.
 - More examples covering integrations, authorization, and user journeys.
 - End-to-end MCP and skill compatibility records by agent and version.
-- Structural and link validation automation when recurring needs justify it.
 
 Proposed items are not delivered features or delivery commitments.

@@ -24,7 +24,10 @@ is fictional and is not a claim that a module was inspected.
 **Context**
 
 - **Architecture layer:** End User
-- **Module:** `PurchaseOrders_UI`
+- **Target module:** `PurchaseOrders_UI`
+- **Application:** `Procurement` (fictional)
+- **Open modules:** Unknown; verify through MCP if available.
+- **Related modules:** Unknown; establish relevant providers and consumers.
 - **Screen:** `OrderDetails`
 - **Block:** `OrderApprovalDialog`
 - **Client action:** `SubmitApproval`
@@ -56,7 +59,8 @@ inspection limit.
 
 Use `outsystems-troubleshooting` to trace the submission action, completion
 event, parent handler, and interface state updates. Separate evidence from
-hypotheses. Ask for the relevant action flows before selecting a cause.
+hypotheses. Inspect available action flows first; ask only for evidence that
+remains missing before selecting a cause.
 Provide a focused correction plan and regression checks; do not edit or
 deploy the application.
 

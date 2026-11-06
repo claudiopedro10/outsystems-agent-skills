@@ -69,7 +69,10 @@ Load the Troubleshooting skill, then describe a concrete scenario like this:
 **Context**
 
 - **Architecture layer:** End User
-- **Module:** `PurchaseOrders_UI`
+- **Target module:** `PurchaseOrders_UI`
+- **Application:** `Procurement` (fictional)
+- **Open modules:** Unknown; verify through MCP if available.
+- **Related modules:** Unknown; establish relevant providers and consumers.
 - **Screen:** `OrderDetails`
 - **Block:** `OrderApprovalDialog`
 - **Client action:** `SubmitApproval`
@@ -100,7 +103,8 @@ connected, request sanitized action flows; do not claim inspection succeeded.
 
 Use `outsystems-troubleshooting` to trace the submission action, completion
 event, parent handler, and interface state updates. Separate evidence from
-hypotheses. Ask for the relevant action flows before selecting a cause.
+hypotheses. Inspect available action flows first; ask only for evidence that
+remains missing before selecting a cause.
 Provide a focused correction plan and regression checks; do not edit or
 deploy the application.
 
@@ -121,6 +125,8 @@ The Foundation/Core/End User organization uses the OutSystems 11 Architecture Ca
 - [Order approval troubleshooting walkthrough](examples/loading-and-modal.md)
 - [Architecture review example](examples/architecture-review.md)
 - [Skill structure and quality criteria](docs/skill-design.md)
+- [Structural checks and behavioral evaluation cases](docs/evaluation.md)
+- [Repository audit and decisions](docs/audits/2026-11-06.md)
 - [Official sources](docs/sources.md)
 - [Roadmap](ROADMAP.md)
 - [Repository maintenance policy](CONTRIBUTING.md)
@@ -128,7 +134,12 @@ The Foundation/Core/End User organization uses the OutSystems 11 Architecture Ca
 
 ## Project status
 
-Initial edition with six starter skills. File structure and internal links are checked; execution has not been validated across every agent or OutSystems scenario. No productivity benchmark or compatibility certification is claimed.
+Six independently installable skills with automated structural checks and
+[documented behavioral evaluation cases](docs/evaluation.md). Structural checks
+cover metadata, local links, and packaging; they do not validate model decisions
+or OutSystems runtime behavior. Independent agent evaluations and live O11/ODC
+tests have not been executed for this revision. No productivity benchmark or
+compatibility certification is claimed.
 
 Repository documentation and skill instructions are maintained in English. Users may write requests and ask for responses in their preferred language.
 

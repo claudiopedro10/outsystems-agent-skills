@@ -54,7 +54,9 @@ Include:
 
 - The platform and application type, if known.
 - The architecture layer: Foundation, Core, End User, or Not sure.
-- The affected module and elements.
+- The target module and affected elements.
+- The application and related modules, when relevant; keep reported context
+  separate from modules verified open and accessible through MCP.
 - What happens now and what should happen instead.
 - The steps that reproduce the issue.
 - Constraints and relevant evidence.
@@ -82,16 +84,26 @@ A useful answer should:
 
 - Summarize the expected and observed behavior accurately.
 - Identify which evidence was actually inspected.
-- Separate confirmed facts, hypotheses, and missing information.
+- Separate VERIFIED facts, INFERRED explanations, and UNKNOWN information,
+  stating whether evidence came from your report, an inspected artifact, or tools.
 - Explain a targeted next check or a justified change.
 - Describe effects on existing components and contracts.
 - Provide validation steps.
+
+The assistant should inspect available evidence before asking you for more.
+Expect a focused question when an unresolved business rule or target identity
+would change the correction. A clear, authorized task should not require
+confirmation at every step. Unknown optional fields do not stop independent work.
 
 If the answer invents an action or assumes your platform, ask it to correct the assumption before proceeding.
 
 ## Step 6: Apply and validate deliberately
 
 If you requested analysis only, review the recommendation before asking for implementation. Apply an accepted change in development and check the expected behavior, error paths, cancellation, and repeated execution as relevant.
+
+After tool-based edits, expect read-back evidence and a clear distinction
+between staged changes, changes merged into Service Studio, and runtime tests.
+See [Evaluation](evaluation.md) for review cases and limits.
 
 Do not treat a confident explanation as proof. For the order approval example, verify that approval completes, loading stops, the dialog closes, and the summary refreshes. On failure, confirm that the dialog remains open with an actionable error.
 

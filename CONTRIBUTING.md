@@ -15,3 +15,10 @@ Preserve platform accuracy, explicit assumptions, working links, and verifiable 
 ## License and access
 
 The MIT license governs reuse of the published material. It does not grant access to write to this GitHub repository. Independent copies are separate from the official project.
+
+## Validation before an update
+
+Run the [structural checks](docs/evaluation.md) and review affected templates,
+examples, and official setup sources together. Record behavioral evaluations
+separately; do not report an unexecuted case as passing. Use a maintainer
+branch for review without changing the repository's contribution settings.

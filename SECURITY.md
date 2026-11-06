@@ -1,6 +1,10 @@
 # Security and data handling
 
-The starter skills are text instructions. This edition includes no executable scripts, integrations, or data collection.
+The skills are text instructions. Maintainer-only Python tests validate local
+repository files and disposable fixtures; they make no network or MCP calls.
+There is no MCP implementation, telemetry, or conversation storage in this
+library. External AI hosts and MCP tools have their own permissions and data
+policies.
 
 Review skill content and your AI provider's data policies before use. Share only sanitized evidence. Do not publish passwords, tokens, session cookies, personal data, or confidential information in issues or examples.
 

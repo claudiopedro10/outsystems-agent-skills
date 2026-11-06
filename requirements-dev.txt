@@ -1,0 +1,2 @@
+# Maintainer checks only; skill users do not install Python packages.
+PyYAML==6.0.3

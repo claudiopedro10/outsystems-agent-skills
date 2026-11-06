@@ -6,6 +6,11 @@ Synthetic scenario; illustrative analysis, not an execution test against a real 
 
 OutSystems 11 / Reactive Web.
 
+- Target module: Orders_UI (starting point for the cross-module review).
+- Application: Unknown.
+- Open modules: Unknown; no MCP read has been performed.
+- Related modules: Orders_CS, ERP_IS, Shared_UI (reported inventory).
+
 - Orders_UI: screens. Architecture layer: End User.
 - Orders_CS: order rules and entities. Architecture layer: Core.
 - ERP_IS: REST integration with an ERP. Architecture layer: Foundation.

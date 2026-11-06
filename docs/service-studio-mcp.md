@@ -75,8 +75,9 @@ the host; this guide does not prescribe exposing the local server.
 3. Ask the agent:
 
 ```text
-Use the configured Service Studio MCP tools to summarize the module
-currently open. Report the module name and the evidence you inspected.
+Use the configured Service Studio MCP read tools to identify accessible
+open modules. Target module: [name]. Verify the target and summarize it.
+Report the module name, inspected evidence, and any access or identity gap.
 Do not change, merge, or publish anything.
 ```
 
@@ -87,12 +88,34 @@ Do not change, merge, or publish anything.
    Troubleshooting, or Security skill and submit a task using the
    [request template](request-template.md).
 
+## Module identity and access
+
+Keep the [request template's](request-template.md) Target module separate
+from verified Open modules, the Application, and Related modules. An inventory
+can include loaded references; that does not establish that every provider
+is open or independently readable. Confirm each module needed for the task.
+
+The [official skill's known gaps](https://github.com/OutSystems/outsystems11-mcp/blob/main/servicestudio-mcp-oml/SKILL.md#8-known-gaps)
+describe limits in distinguishing environments when tools address modules by
+name. If identity is ambiguous, resolve the target with the developer before
+a dependent operation. Do not infer an environment from a name or suffix.
+
 ## Permissions and troubleshooting
 
 For analysis, ask the agent to use read operations only. For intended edits,
 review Service Studio's **Write permissions** and the proposed changes;
-manual Compare and Merge lets the developer review changes. Publishing is
-a separate action and must follow the developer's instructions.
+manual Compare and Merge lets the developer review changes. Do not change
+those settings to bypass review. Read capabilities are GA and model writes
+are Beta in the [official MCP documentation](https://github.com/OutSystems/outsystems11-mcp).
+Check the installed version's capabilities before relying on them.
+
+An edit may initially exist only in a staged model. For authorized edits,
+follow the official skill's merge workflow unless the user limits it. Check
+the merge result, then read back the affected live elements and available
+validation messages. Report staged, merged, published, and runtime-tested
+states separately. Merge does not publish; model validation does not prove
+runtime behavior. Publish only when explicitly authorized. If runtime
+validation needs publication, explain that dependency and leave it pending.
 
 If the connection fails, check that the server is running, the registered
 URL matches the displayed port, the agent has MCP support, and any session
