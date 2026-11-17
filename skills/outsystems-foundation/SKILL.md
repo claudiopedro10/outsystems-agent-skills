@@ -72,6 +72,22 @@ authorization. Report failures and checks that could not be performed.
 4. Identify where credentials are resolved and who can access them. Keep secrets out of URLs, responses, and logs.
 5. Define a minimal public contract, error mapping, and consumer impact. Verify platform-specific settings in official documentation before naming them.
 
+## Behavior-driven development
+
+Describe integration outcomes, including timeouts with unknown results, retries and duplicate requests.
+
+For changes affecting behavior, discover concrete examples with the developer or domain owner before dependent implementation. Reuse supplied requirements and valid decisions. Resolve only material gaps and retain unknown business rules as questions. Write concise Given/When/Then scenarios in the user's domain language, with observable, measurable outcomes. Select success, failure and boundary cases according to risk.
+
+Inspect existing test infrastructure. Where supported and authorized, implement the scenario as a test before the correction, confirm the expected failure, implement the behavior and rerun relevant checks. Distinguish infrastructure failures from behavior failures. Verify fixtures, isolation and cleanup before tests with persistent effects.
+
+For O11 component tests, evaluate the available BDDFramework and its documented version-specific limits. Keep test code in a dedicated test application, verify public contract implications, and follow its production restrictions. Use applicable tooling for browser journeys or ODC. Gherkin text requires executable steps and assertions to become automation. Dependency installation, publication and execution follow the task's authorization and tool capabilities.
+
+Report each relevant scenario as documented, test implemented but not run, passed, failed, or blocked with a reason. Identify manual checks explicitly and retain target/revision and evidence. Model validation or merge does not prove runtime success. If automation is unavailable, deliver the scenarios and available verification with the remaining gap. Store project-specific artifacts only in the authorized project workspace.
+
+When used with DevMode, follow its project conventions for implementation and reuse its BDD context and evidence. Load this skill's specialty only as needed. Keep acceptance scenarios concise and proportional to the task.
+
+Sources: [Cucumber BDD](https://cucumber.io/docs/bdd/), [Gherkin](https://cucumber.io/docs/gherkin/reference/), [OutSystems component testing](https://success.outsystems.com/documentation/11/testing_apps/component_testing/), [BDDFramework O11](https://www.outsystems.com/forge/component-overview/1201/bddframework-o11).
+
 ## Deliverable
 
 Scale the response to the task. For implementation, report the actual changes,
