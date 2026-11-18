@@ -1,8 +1,19 @@
 # OutSystems Agent Skills
 
-**Reusable AI skills for OutSystems architecture, development, and troubleshooting.**
+**Troubleshoot, refactor, and implement changes in OutSystems.**
 
-A publicly available skill library maintained by the repository owner for developers, technical leads, and architects. Each skill is a Markdown file that gives an AI assistant a focused workflow and review criteria.
+Start with [OutSystems Developer](skills/outsystems-developer/SKILL.md) and
+describe the outcome in your own words. The skill selects a workflow from the
+request. Invoke it without a task to see the three options.
+
+| Workflow | Example developer request | What you get |
+| --- | --- | --- |
+| [Troubleshoot](skills/outsystems-developer/SKILL.md#troubleshoot) | “Approval succeeds, but the dialog stays open.” | A supported cause or a check that distinguishes the remaining hypotheses, plus a regression case. |
+| [Refactor](skills/outsystems-developer/SKILL.md#refactor) | “Extract the duplicated approval check and keep the public action signature.” | A focused structural change or plan, plus before/after checks for existing consumers. |
+| [Implement](skills/outsystems-developer/SKILL.md#implement) | “Allow the author to cancel a draft order.” | A design or implementation against observable acceptance criteria, including a denied or boundary case. |
+
+Ask for a review, a plan, or edits as appropriate. You can start without
+knowing which layer owns the problem.
 
 > [!IMPORTANT]
 > **Before using these skills with an OutSystems 11 module**
@@ -26,11 +37,11 @@ A publicly available skill library maintained by the repository owner for develo
 
 You do not need to write a complex prompt or configure an API.
 
-1. Choose a skill from the table below.
-2. Open its `SKILL.md` file and copy the contents.
+1. Open [OutSystems Developer](skills/outsystems-developer/SKILL.md).
+2. Copy its instructions.
 3. Paste them into your AI conversation, or attach the file if your application supports it.
    To inspect an open OutSystems 11 module, also configure the [Service Studio MCP connection](docs/service-studio-mcp.md).
-4. Send a request using the [guided request template](docs/request-template.md).
+4. Describe the task in one sentence. Use the [guided request template](docs/request-template.md) when you need to share more context.
 5. Review the proposed analysis and verify changes in a development environment.
 
 For a complete walkthrough, read [Using skills for the first time](docs/usage.md). For installation in a coding agent, read [Agent setup](docs/agents.md).
@@ -45,9 +56,11 @@ For a complete walkthrough, read [Using skills for the first time](docs/usage.md
 
 For OutSystems 11, a supported agent can inspect the open module using the separately configured Service Studio MCP server and official OutSystems O11 MCP skill. This repository's skills guide the task; they do not install or connect those components. The endpoint and port are taken from each developer's Service Studio settings.
 
-## Choose a skill
+## Optional specialist skills
 
-| Your task | Skill |
+The developer workflow covers common checks directly. Use a specialist independently when a particular question calls for a deeper review.
+
+| For a deeper review of | Specialist |
 | --- | --- |
 | Review an external integration or reusable technical capability | [Foundation](skills/outsystems-foundation/SKILL.md) |
 | Model entities, business rules, and domain services | [Core](skills/outsystems-core/SKILL.md) |
@@ -56,11 +69,11 @@ For OutSystems 11, a supported agent can inspect the open module using the separ
 | Investigate an error or unexpected behavior | [Troubleshooting](skills/outsystems-troubleshooting/SKILL.md) |
 | Review authentication, authorization, or sensitive data handling | [Security](skills/outsystems-security/SKILL.md) |
 
-For a dialog that remains open after a completed operation, start with **Troubleshooting**. Use **End User** for a broader review of the user journey and interface states.
+For a dialog that stays open, start in **Troubleshoot**. Bring in **End User** if the evidence points to state shared by a block and its parent.
 
 ## Example request
 
-Load the Troubleshooting skill, then describe a concrete scenario like this:
+Load OutSystems Developer and describe the symptom. This longer example shows what to share when those details are available.
 
 ### Example: order approval dialog does not close
 
@@ -101,7 +114,7 @@ First verify the configured Service Studio MCP connection and the open target
 module. Use available read tools with the official O11 MCP skill. If not
 connected, request sanitized action flows; do not claim inspection succeeded.
 
-Use `outsystems-troubleshooting` to trace the submission action, completion
+Use Troubleshoot to trace the submission action, completion
 event, parent handler, and interface state updates. Separate evidence from
 hypotheses. Inspect available action flows first; ask only for evidence that
 remains missing before selecting a cause.
@@ -134,11 +147,11 @@ The Foundation/Core/End User organization uses the OutSystems 11 Architecture Ca
 
 ## Project status
 
-Six independently installable skills with automated structural checks and
+One developer entry point and six independently installable specialties, with automated structural checks and
 [documented behavioral evaluation cases](docs/evaluation.md). Structural checks
 cover metadata, local links, and packaging; they do not validate model decisions
-or OutSystems runtime behavior. Independent agent evaluations and live O11/ODC
-tests have not been executed for this revision. No productivity benchmark or
+or OutSystems runtime behavior. See the evaluation guide for the scope of offline
+cases. Live O11/ODC tests are pending. No productivity benchmark or
 compatibility certification is claimed.
 
 Repository documentation and skill instructions are maintained in English. Users may write requests and ask for responses in their preferred language.

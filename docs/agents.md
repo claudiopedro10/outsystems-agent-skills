@@ -19,9 +19,9 @@ Documentation checked on **November 6, 2026**. Procedures are based on [official
 | --- | --- | --- |
 | Codex | Skill folder in .agents/skills | Available in a new session |
 | GitHub Copilot in VS Code | Skill folder in .github/skills | Ask it to use the skill in agent mode |
-| Claude Code | Skill folder in .claude/skills | /outsystems-architecture |
+| Claude Code | Skill folder in .claude/skills | /outsystems-developer |
 | Gemini CLI | Skill folder in .gemini/skills | Skill list and activation |
-| Kimi Code | Skill folder in .agents/skills | /skill:outsystems-architecture |
+| Kimi Code | Skill folder in .agents/skills | /skill:outsystems-developer |
 | DeepSeek chat | Paste skill instructions | Confirm received context |
 | Other chats | Paste or attach instructions | Confirm received file or text |
 
@@ -29,10 +29,9 @@ For OutSystems 11 module access, complete the separate [Service Studio MCP setup
 
 In each prompt, use **Target module** for the intended scope and **Open modules**
 only for MCP-verified access. Application and Related modules are optional
-context, not access claims. Copy the [request template](request-template.md)
-after the short invocation shown below.
+context, not access claims. Add the optional [request template](request-template.md) when a task needs more context.
 
-The Architecture skill is used below as an example. Replace its folder and name with Troubleshooting or another skill when appropriate.
+Install `outsystems-developer` for the three everyday workflows. Describe your task directly or invoke the skill alone to see the choices. Additional specialist folders are optional.
 
 ## Download the library
 
@@ -46,20 +45,20 @@ The downloaded library is the source. Your working project is where you want the
 
 ## Codex
 
-Copy `skills/outsystems-architecture/` into `.agents/skills/` in your working project:
+Copy `skills/outsystems-developer/` into `.agents/skills/` in your working project:
 
 ```text
 your-project/
   .agents/
     skills/
-      outsystems-architecture/
+      outsystems-developer/
         SKILL.md
 ```
 
 Open a new Codex session in that project and send:
 
 ```text
-Use $outsystems-architecture to review the dependencies below.
+Use $outsystems-developer. Refactor the duplicated check and preserve both public contracts. Give me the plan.
 Platform: OutSystems 11.
 Verify the configured Service Studio MCP connection and open module.
 Use available read tools; report any missing access. Do not edit or publish.
@@ -70,9 +69,9 @@ The documented personal location is `~/.agents/skills/`. Here, `~` means your us
 
 ## GitHub Copilot in VS Code
 
-Copy the complete skill folder to `.github/skills/outsystems-architecture/`
+Copy the complete skill folder to `.github/skills/outsystems-developer/`
 in your working repository. In agent mode, ask Copilot to use
-`outsystems-architecture` and include the completed request template.
+`outsystems-developer` and describe the task.
 See [GitHub's skill guide](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills)
 for discovery and supported clients.
 
@@ -86,14 +85,14 @@ Service Studio endpoint reachable from a cloud agent.
 Copy the skill folder into `.claude/skills/` in your working project:
 
 ```text
-.claude/skills/outsystems-architecture/SKILL.md
+.claude/skills/outsystems-developer/SKILL.md
 ```
 
 Start a session in that project and send:
 
 ```text
-/outsystems-architecture
-Review the dependencies below. Platform: OutSystems 11.
+/outsystems-developer
+The approval dialog stays open after success. Trace the cause. Platform: OutSystems 11.
 Verify the configured Service Studio MCP connection and open module.
 Use read tools only; report missing access.
 [Add your context and evidence.]
@@ -110,13 +109,13 @@ Use the manual method below. If custom skills are available for your account, fo
 Copy the skill folder into `.gemini/skills/` in your project:
 
 ```text
-.gemini/skills/outsystems-architecture/SKILL.md
+.gemini/skills/outsystems-developer/SKILL.md
 ```
 
 Start a session and ask:
 
 ```text
-Use the outsystems-architecture skill to review this inventory.
+Use the outsystems-developer skill to design a pending-order filter for this screen.
 Platform: OutSystems 11.
 Verify the Service Studio MCP connection and open module if available.
 [Add your context and evidence.]
@@ -129,13 +128,13 @@ Use `gemini skills list --all` to check discovery. Review the activation request
 Copy the skill folder into `.agents/skills/` in your project, one of Kimi Code's documented discovery locations:
 
 ```text
-.agents/skills/outsystems-architecture/SKILL.md
+.agents/skills/outsystems-developer/SKILL.md
 ```
 
 Start a new session and send:
 
 ```text
-/skill:outsystems-architecture Review the dependencies described below.
+/skill:outsystems-developer Propose a refactor of the duplicated rule below.
 Verify the Service Studio MCP connection and open module if available.
 ```
 
@@ -152,13 +151,13 @@ No API key is needed for this method. If you use a DeepSeek model through anothe
 1. Open the chosen `SKILL.md`.
 2. Copy its full text into a conversation, or attach it if supported.
 3. Ask: “Use these instructions for the following task.”
-4. Send a completed [request template](request-template.md).
+4. Describe the task or use the [request template](request-template.md).
 5. Provide any additional evidence the assistant needs.
 
 Example:
 
 ```text
-Use the attached Troubleshooting skill.
+Use the attached OutSystems Developer skill.
 I will describe an order approval dialog that stays open after success.
 If my client has the O11 Service Studio MCP configured, verify the open
 module and use read tools. Otherwise, ask for sanitized evidence.

@@ -1,6 +1,6 @@
 ---
 name: outsystems-foundation
-description: "Design or review external integrations and reusable technical capabilities in OutSystems Foundation; explicitly adapt O11 guidance for ODC."
+description: "Specialist design or review of OutSystems integration adapters and reusable technical capabilities. Use for external contracts, failures or retry behavior. Adapt O11 guidance explicitly for ODC."
 ---
 
 # Foundation

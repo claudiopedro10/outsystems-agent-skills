@@ -84,9 +84,7 @@ Do not change, merge, or publish anything.
 4. Confirm the reported module name and content against Service Studio. A
    generic response or a claim that tools exist is not proof of a successful
    module read.
-5. Load the appropriate Foundation, Core, End User, Architecture,
-   Troubleshooting, or Security skill and submit a task using the
-   [request template](request-template.md).
+5. Load [OutSystems Developer](../skills/outsystems-developer/SKILL.md) and describe your task. Use the optional [request template](request-template.md) for additional context.
 
 ## Module identity and access
 

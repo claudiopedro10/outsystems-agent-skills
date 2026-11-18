@@ -11,7 +11,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS = {
-    "outsystems-architecture", "outsystems-core", "outsystems-enduser",
+    "outsystems-architecture", "outsystems-core", "outsystems-developer", "outsystems-enduser",
     "outsystems-foundation", "outsystems-security", "outsystems-troubleshooting",
 }
 
@@ -149,7 +149,7 @@ class ValidatorTests(unittest.TestCase):
 
 
 class RepositoryTests(unittest.TestCase):
-    def test_six_named_skills_are_discoverable(self):
+    def test_named_skills_are_discoverable(self):
         directories = {p.name for p in (ROOT / 'skills').iterdir() if p.is_dir()}
         self.assertEqual(directories, SKILLS)
         for name in sorted(SKILLS):

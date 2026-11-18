@@ -42,7 +42,7 @@ remain short; platform API contracts belong to the official OutSystems skill.
 
 ## Maturity
 
-The six starter skills have no comparative agent evaluation yet. Before claiming behavioral validation, record platform, agent/version, scenario, sanitized evidence, observed result, and limitations. Structural checks do not establish correctness of every recommendation.
+The specialist skills have no comparative agent evaluation yet. Before claiming behavioral validation, record platform, agent/version, scenario, sanitized evidence, observed result, and limitations. Structural checks do not establish correctness of every recommendation.
 
 See [Evaluation](evaluation.md) for executable structural checks and behavioral
 cases, and the [audit record](audits/2026-11-06.md) for the evidence behind changes.

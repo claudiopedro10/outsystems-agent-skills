@@ -4,13 +4,23 @@ Give the assistant enough context to understand the task, locate the affected
 logic, and recognize a successful outcome. Describe observations without
 assuming a root cause.
 
+## Start with one sentence
+
+Load [OutSystems Developer](../skills/outsystems-developer/SKILL.md) and describe
+the task in your own language. You can name a mode or let the agent infer it.
+
+| Mode | Fictional request |
+| --- | --- |
+| Troubleshoot | “After Save, the record exists but the spinner stays on. Trace the flow and give me a correction plan.” |
+| Refactor | “Both actions check the same credit limit. Extract the rule and preserve both public contracts.” |
+| Implement | “Add a filter for pending orders. Clearing it should show all orders I am allowed to see.” |
+
 ## Copy and adapt
 
-Load the selected skill, then copy the template below and replace the
-bracketed text. Keep only fields relevant to your task.
+For a more involved request, keep the fields below that affect the next decision.
 
 ```text
-Skill: [selected skill]
+Mode (optional): [Troubleshoot / Refactor / Implement]
 
 Context
 - Platform: [OutSystems 11 or ODC]
@@ -23,16 +33,16 @@ Context
 - Related modules: [potentially relevant modules; Unknown or None identified]
 - Related elements: [name and role of each relevant element]
 
-Issue or objective
-[Summarize the problem or intended improvement.]
+Objective
+[Describe the failure, the structure to improve, or the behavior to add.]
 
-Observed behavior
-[Describe what happens, when it happens, and its impact.]
+Current behavior (for a bug or refactor)
+[Describe the symptom or the baseline behavior to preserve.]
 
-Expected behavior
-[Describe the outcome for success and relevant failure conditions.]
+Acceptance checks
+[Describe the intended outcome or before/after equivalence for a refactor.]
 
-Reproduction steps
+Reproduction steps (for a bug, if known)
 1. [Starting state]
 2. [User action]
 3. [Observed result]
@@ -116,9 +126,9 @@ Describe the actual application/library responsibilities instead.
 | Section | What to include | Purpose |
 | --- | --- | --- |
 | Context | Platform, application type, architecture layer, and element roles | Identifies the technical scope |
-| Issue or objective | A concise symptom or goal | States the task |
-| Observed behavior | Reproducible facts and user impact | Keeps diagnosis grounded |
-| Expected behavior | Success and failure outcomes | Defines correctness |
+| Objective | A concise symptom or goal | States the task |
+| Current behavior | A symptom or baseline | Grounds a diagnosis or refactor |
+| Acceptance checks | Success, failure, or equivalence examples | Defines correctness |
 | Reproduction steps | Starting conditions and actions | Makes the problem repeatable |
 | Available evidence | Labeled excerpts or screenshots | Supports a traceable analysis |
 | Constraints | Contracts, components, and rules to preserve | Controls the scope of change |
@@ -168,7 +178,7 @@ For O11, verify the configured Service Studio MCP and open module; use
 available read tools. If access is unavailable, request sanitized evidence
 and state that no module was inspected.
 
-Use `outsystems-troubleshooting` to trace the submission action, completion
+Use Troubleshoot to trace the submission action, completion
 event, parent handler, and interface state updates. Separate evidence from
 hypotheses. Inspect available action flows first; ask only for evidence that
 remains missing before selecting a cause.

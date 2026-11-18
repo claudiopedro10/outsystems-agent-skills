@@ -2,7 +2,7 @@
 
 ## Available
 
-- Six starter skills.
+- One developer entry point for Troubleshoot, Refactor, and Implement, plus six optional specialist skills.
 - English documentation and skill instructions.
 - A first-time usage guide and a reusable request template.
 - Agent setup, Service Studio MCP guidance, and manual chat usage.

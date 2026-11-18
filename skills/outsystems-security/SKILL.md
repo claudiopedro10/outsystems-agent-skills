@@ -1,6 +1,6 @@
 ---
 name: outsystems-security
-description: "Review authentication, authorization, and data handling in an OutSystems flow using evidence; this is not a complete audit or certification."
+description: "Specialist review of authentication, authorization and sensitive data handling in an OutSystems flow. Use for a focused access or data-handling question."
 ---
 
 # Security

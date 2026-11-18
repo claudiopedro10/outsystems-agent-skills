@@ -18,11 +18,14 @@ explains the sequence.
 Manual use with supplied evidence does not require an MCP connection. ODC
 uses its own applicable documentation and tools.
 
-## Step 1: Choose one skill
+## Step 1: Start with the developer skill
 
-Use Troubleshooting for a bug, Architecture for dependencies, Core for business rules, Foundation for integrations, End User for screens, or Security for access and data handling.
-
-Start with one skill. Add another only when its scope helps the task.
+Use [OutSystems Developer](../skills/outsystems-developer/SKILL.md) and describe
+your goal. A failure goes to **Troubleshoot**, a structural improvement with the
+same behavior to **Refactor**, and a new or changed rule to **Implement**. For
+example, “implement a fix for the spinner” starts with diagnosis. If all you
+send is the skill name, it offers the three choices. The architecture layer
+and optional specialties can be determined as the work progresses.
 
 ## Step 2: Load the instructions
 
@@ -48,17 +51,18 @@ excerpts and treat the result as an analysis of those materials only.
 
 ## Step 3: Describe your task
 
-Copy the [request template](request-template.md), replace its example values, and remove fields that do not apply. Write “Unknown” when information is unavailable.
+Start with the outcome you need and the affected element, if known. The [request template](request-template.md) has optional fields for larger tasks.
 
 Include:
 
 - The platform and application type, if known.
-- The architecture layer: Foundation, Core, End User, or Not sure.
+- The architecture layer if you already know it.
 - The target module and affected elements.
 - The application and related modules, when relevant; keep reported context
   separate from modules verified open and accessible through MCP.
-- What happens now and what should happen instead.
-- The steps that reproduce the issue.
+- For Troubleshoot, the observed and expected result, plus reproduction steps if known.
+- For Refactor, the duplication or coupling to remove and the behavior to preserve.
+- For Implement, the new rule or capability and an example of success or failure.
 - Constraints and relevant evidence.
 
 A request such as “Fix my modal” does not identify the logic or expected completion rule. The [order approval walkthrough](../examples/loading-and-modal.md) shows how to make that request actionable.

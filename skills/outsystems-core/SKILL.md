@@ -1,6 +1,6 @@
 ---
 name: outsystems-core
-description: "Model or review entities, invariants, and domain services in OutSystems Core; explicitly adapt O11 concepts for ODC."
+description: "Specialist review of OutSystems business entities, domain services and invariants. Use to examine ownership and consumers of a domain rule. Adapt O11 concepts explicitly for ODC."
 ---
 
 # Core

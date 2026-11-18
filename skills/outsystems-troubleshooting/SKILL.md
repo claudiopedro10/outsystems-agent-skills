@@ -1,6 +1,6 @@
 ---
 name: outsystems-troubleshooting
-description: "Investigate OutSystems errors and unexpected behavior using symptoms, logs, and reproduction evidence before selecting a cause or correction."
+description: "Specialist investigation of an OutSystems incident. Use for detailed reproduction, log correlation and competing hypotheses, or when the troubleshooting skill is requested directly."
 ---
 
 # Troubleshooting

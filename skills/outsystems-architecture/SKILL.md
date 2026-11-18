@@ -1,6 +1,6 @@
 ---
 name: outsystems-architecture
-description: "Review OutSystems responsibilities, dependencies, and cycles using the O11 Architecture Canvas; avoid automatic equivalence with ODC."
+description: "Specialist review of OutSystems module responsibilities, dependencies and cycles using the O11 Architecture Canvas. Use when the task needs a dependency or boundary analysis. Adapt explicitly for ODC."
 ---
 
 # Architecture

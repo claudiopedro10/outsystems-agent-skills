@@ -1,6 +1,6 @@
 ---
 name: outsystems-enduser
-description: "Review OutSystems screens, user journeys, and interface states in the End User layer; account for application type and adapt explicitly for ODC."
+description: "Specialist review of OutSystems screens, blocks, user journeys and state ownership. Use for a detailed interface-flow review. Account for application type and adapt explicitly for ODC."
 ---
 
 # End User
