@@ -50,15 +50,19 @@ https://github.com/OutSystems/outsystems11-mcp
 
 3. Registre o MCP do Service Studio neste projeto com o endereço da primeira
    linha. Crie ou atualize o arquivo de configuração MCP do projeto com a sua
-   ferramenta de edição de arquivos, sem testar a conexão:
-   - Claude Code: .mcp.json na raiz do projeto, com
+   ferramenta de edição de arquivos, sem testar a conexão. O formato depende
+   de qual agente VOCÊ é, não do editor em que está rodando:
+   - Se você é o Claude Code (inclusive a extensão dentro do VS Code): crie
+     .mcp.json na RAIZ do projeto, com
      {"mcpServers": {"outsystems": {"type": "http", "url": "<ENDEREÇO>"}}}
-   - GitHub Copilot no VS Code: .vscode/mcp.json, com
+     Não use .vscode/mcp.json: o Claude Code não lê esse arquivo.
+   - Se você é o GitHub Copilot no VS Code: crie .vscode/mcp.json, com
      {"servers": {"outsystems": {"type": "http", "url": "<ENDEREÇO>"}}}
    - Outro agente: o arquivo de configuração MCP que a documentação dele indica.
    Se o arquivo já existir, acrescente o servidor "outsystems" sem apagar os
-   outros. Depois leia o arquivo de novo e confira se é um JSON válido e
-   completo. Se você já tinha ferramentas MCP do Service Studio antes deste
+   outros. Salve o arquivo no disco (não deixe só aberto no editor), leia de
+   novo e confira se é um JSON válido e completo. Diga em uma linha qual agente
+   você é e qual arquivo criou. Se você já tinha ferramentas MCP do Service Studio antes deste
    passo, pule direto para o passo 4. Se não tinha, pare aqui e me peça para
    reiniciar a sessão (ou recarregar o VS Code), aprovar o servidor
    "outsystems" quando aparecer e depois responder "continue".
@@ -88,6 +92,12 @@ validar, e só publique quando eu pedir explicitamente.
 Na primeira vez, o agente para no passo 3 e pede para você reiniciar a sessão
 e aprovar o servidor `outsystems`. É normal: as ferramentas MCP só aparecem
 depois disso. Responda "continue" e ele termina a instalação.
+
+Confira o arquivo que ele criou: no **Claude Code** é `.mcp.json` na raiz do
+projeto (com `mcpServers`); no **Copilot** é `.vscode/mcp.json` (com `servers`).
+Se o Claude Code criou `.vscode/mcp.json`, copie
+[`config/claude-code.mcp.json`](config/claude-code.mcp.json) para a raiz com o
+nome `.mcp.json`.
 
 Depois disso, o desenvolvedor só precisa mandar as demandas, com o módulo, a
 ação ou tela e o que precisa ser feito. Por exemplo:
