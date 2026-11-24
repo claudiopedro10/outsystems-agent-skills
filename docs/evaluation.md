@@ -94,6 +94,7 @@ qual skill usar. O critério é a skill escolhida e a primeira ação do agente.
 | R09 | “Analisa estes logs do Service Center: o erro só aparece às vezes, à noite, e tenho três hipóteses.” | `outsystems-troubleshooting` |
 | R10 | “Revisa a jornada de checkout: estados de loading, vazio e erro.” | `outsystems-enduser` |
 | R11 | “Confere se o MCP está funcionando.” | `outsystems-developer`, usando só ferramentas MCP (ver E15) |
+| R12 | Prompt de instalação do README num projeto sem MCP registrado. | O agente cria o arquivo de configuração MCP do host com JSON válido e o endereço da primeira linha, sem testar a conexão pelo terminal, e para pedindo reinício e aprovação do servidor |
 
 Para a skill de entrada, inclua também estas regressões offline:
 

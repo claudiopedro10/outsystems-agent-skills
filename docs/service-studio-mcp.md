@@ -47,17 +47,33 @@ também a configuração do agente.
 
 ## 2. Registrar o endereço no agente
 
-O host MCP é o aplicativo que roda o agente e o conecta às ferramentas.
-Registre o endereço copiado do Service Studio nas configurações de MCP desse
-host. Cada host tem a sua configuração:
+O jeito mais simples é deixar o agente fazer isso: o prompt da seção
+[Como começar](../README.md#como-começar) traz o endereço na primeira linha e
+manda o agente criar o arquivo de configuração com o JSON certo. Na primeira
+vez, ele para e pede para você reiniciar a sessão e aprovar o servidor; depois
+responda "continue".
 
-- **Claude Code, Codex, GitHub Copilot e outros hosts com MCP:** use a tela ou
-  o arquivo de configuração de servidores MCP do host. Se precisar de um passo
-  a passo por host, o [repositório oficial da OutSystems](https://github.com/OutSystems/outsystems11-mcp)
-  tem guias de configuração. Esses guias são para você, não para o agente.
-- **DeepSeek, Gemini, Kimi, ChatGPT ou outra interface:** o suporte depende do
-  cliente, da versão e da conta, não só do nome do modelo. Confira se o cliente
-  consegue se conectar a um servidor MCP.
+Se preferir registrar à mão, **copie o arquivo pronto** em vez de digitar ou
+colar o JSON. Colar trechos do chat é a causa mais comum de arquivo quebrado
+(falta o começo `{"mcpServers": {...` e o agente não encontra o servidor).
+
+| Agente | Arquivo pronto neste repositório | Onde colocar no projeto |
+| --- | --- | --- |
+| Claude Code | [`config/claude-code.mcp.json`](../config/claude-code.mcp.json) | `.mcp.json` na raiz |
+| GitHub Copilot no VS Code | [`config/vscode-copilot.mcp.json`](../config/vscode-copilot.mcp.json) | `.vscode/mcp.json` |
+
+Se a porta no Service Studio não for `41820`, troque só o número no `url`.
+Depois recarregue o agente (no VS Code: **Developer: Reload Window**) e aprove o
+servidor `outsystems`. No Claude Code, `/mcp` deve mostrar `outsystems` como
+**Connected**.
+
+- **Outros hosts com MCP (Codex, Gemini CLI, Kimi etc.):** use a configuração de
+  servidores MCP do host. O [repositório oficial da OutSystems](https://github.com/OutSystems/outsystems11-mcp)
+  tem guias de configuração por host. Esses guias são para você, não para o
+  agente.
+- **DeepSeek, ChatGPT ou outra interface:** o suporte depende do cliente, da
+  versão e da conta, não só do nome do modelo. Confira se o cliente consegue se
+  conectar a um servidor MCP.
 - **Chat sem MCP:** cole as instruções da skill e envie evidências sanitizadas.
   O chat não consegue inspecionar o módulo aberto.
 
@@ -119,7 +135,8 @@ em execução. Publique só com autorização explícita.
 Se a conexão falhar, confira:
 
 1. se o servidor está **Running** no Service Studio;
-2. se o endereço registrado no agente usa a mesma porta exibida;
+2. se o arquivo de configuração MCP é um JSON completo (compare com os
+   [arquivos prontos](#2-registrar-o-endereço-no-agente)) e usa a mesma porta exibida;
 3. se o agente tem suporte a MCP;
 4. se a conexão foi aprovada no Service Studio;
 5. se o módulo certo está aberto.

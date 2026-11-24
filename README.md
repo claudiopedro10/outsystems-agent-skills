@@ -12,14 +12,19 @@ trabalho e pergunta quando faltar informação.
 **Antes de colar o prompt**, deixe o Service Studio pronto:
 
 1. Abra o módulo no Service Studio (versão 11.55.91 ou mais recente).
-2. Ligue o servidor em **Edit > MCP Server** e copie o endereço exibido
-   (`http://127.0.0.1:<PORTA>/mcp`).
-3. Registre esse endereço nas configurações de MCP do seu agente.
-   O [guia do MCP](docs/service-studio-mcp.md) mostra como fazer isso.
+2. Ligue o servidor em **Edit > MCP Server** e confira o endereço exibido.
+   Normalmente é `http://127.0.0.1:41820/mcp`. Se a porta for outra, troque o
+   endereço na primeira linha do prompt.
+
+Você não precisa registrar o MCP à mão: o próprio agente cria o arquivo de
+configuração com o JSON certo.
 
 **Para começar a usar estas skills, cole o prompt abaixo no seu agente.**
 
 ```text
+Endereço do MCP Server (Service Studio > Edit > MCP Server):
+http://127.0.0.1:41820/mcp
+
 Instale e configure as skills OutSystems do repositório
 https://github.com/claudiopedro10/outsystems-agent-skills
 e a skill oficial da OutSystems do repositório
@@ -43,19 +48,34 @@ https://github.com/OutSystems/outsystems11-mcp
    conflito, vale a regra de não usar terminal e o fluxo da
    outsystems-developer."
 
-3. Confirme o acesso ao Service Studio usando somente as ferramentas MCP que já
-   estão configuradas para você. Liste os módulos abertos e me diga qual módulo
-   você conseguiu ler. Nunca use PowerShell, terminal, curl, scripts nem
-   varredura de portas para testar ou se conectar ao MCP. O terminal só pode
-   ser usado no passo 1, para baixar e copiar as skills.
+3. Registre o MCP do Service Studio neste projeto com o endereço da primeira
+   linha. Crie ou atualize o arquivo de configuração MCP do projeto com a sua
+   ferramenta de edição de arquivos, sem testar a conexão:
+   - Claude Code: .mcp.json na raiz do projeto, com
+     {"mcpServers": {"outsystems": {"type": "http", "url": "<ENDEREÇO>"}}}
+   - GitHub Copilot no VS Code: .vscode/mcp.json, com
+     {"servers": {"outsystems": {"type": "http", "url": "<ENDEREÇO>"}}}
+   - Outro agente: o arquivo de configuração MCP que a documentação dele indica.
+   Se o arquivo já existir, acrescente o servidor "outsystems" sem apagar os
+   outros. Depois leia o arquivo de novo e confira se é um JSON válido e
+   completo. Se você já tinha ferramentas MCP do Service Studio antes deste
+   passo, pule direto para o passo 4. Se não tinha, pare aqui e me peça para
+   reiniciar a sessão (ou recarregar o VS Code), aprovar o servidor
+   "outsystems" quando aparecer e depois responder "continue".
 
-4. Se as ferramentas MCP não aparecerem ou a leitura falhar, pare e me peça
+4. Confirme o acesso ao Service Studio usando somente as ferramentas MCP.
+   Liste os módulos abertos e me diga qual módulo você conseguiu ler. Nunca use
+   PowerShell, terminal, curl, scripts nem varredura de portas para testar ou
+   se conectar ao MCP. O terminal só pode ser usado no passo 1, para baixar e
+   copiar as skills.
+
+5. Se as ferramentas MCP não aparecerem ou a leitura falhar, pare e me peça
    para conferir se o MCP Server está ligado (Running) no Service Studio, se o
-   endereço mostrado lá é o mesmo registrado em você, se aprovei a conexão e se
-   o módulo certo está aberto. Se for preciso reiniciar a sessão para carregar
-   as skills ou o MCP, me avise.
+   endereço mostrado lá é o mesmo da primeira linha deste prompt, se aprovei o
+   servidor "outsystems" no agente e a conexão no Service Studio e se o módulo
+   certo está aberto.
 
-5. Quando tudo estiver pronto, responda: "Pronto, pode mandar a demanda:
+6. Quando tudo estiver pronto, responda: "Pronto, pode mandar a demanda:
    módulo, ação ou tela e o que precisa ser feito."
 
 A partir daí, para cada demanda, use a skill outsystems-developer: diga em uma
@@ -64,6 +84,10 @@ consultar algum especialista, comece o trabalho e me pergunte só o que faltar.
 Em edições pelo MCP, siga a skill oficial para preparar, fazer o merge e
 validar, e só publique quando eu pedir explicitamente.
 ```
+
+Na primeira vez, o agente para no passo 3 e pede para você reiniciar a sessão
+e aprovar o servidor `outsystems`. É normal: as ferramentas MCP só aparecem
+depois disso. Responda "continue" e ele termina a instalação.
 
 Depois disso, o desenvolvedor só precisa mandar as demandas, com o módulo, a
 ação ou tela e o que precisa ser feito. Por exemplo:
