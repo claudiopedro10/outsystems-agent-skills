@@ -1,128 +1,122 @@
-# Using skills for the first time
+# Primeiro uso
 
-## What is a skill?
+## O que é uma skill?
 
-A **prompt** is the request you send to an AI assistant. A **skill** is a reusable set of instructions that guides how the assistant handles a category of requests. An **agent** is an application that may also read files or use tools.
+Um **prompt** é o pedido que você manda para um assistente de IA. Uma **skill**
+é um conjunto de instruções reutilizáveis que orienta como o assistente trata
+um tipo de pedido. Um **agente** é um aplicativo que, além de conversar, pode ler
+arquivos ou usar ferramentas, como o MCP do Service Studio.
 
-A skill supplies a workflow, not knowledge of your application. The assistant still needs your module names, relevant logic, expected behavior, and evidence.
+A skill traz o jeito de trabalhar, não o conhecimento da sua aplicação. O
+assistente ainda precisa saber o módulo, a lógica envolvida, o comportamento
+esperado e as evidências.
 
-## Before using Service Studio MCP (OutSystems 11)
+## Passo 1: instalar
 
-To inspect an open O11 module through MCP, first follow the [official
-OutSystems setup](https://success.outsystems.com/documentation/11/outsystems_mcp/get_started_with_outsystems_mcp/),
-install the [official O11 MCP skill](https://github.com/OutSystems/outsystems11-mcp)
-for your agent, and configure and verify the connection. Then use a skill
-from this repository for the task. The [step-by-step MCP guide](service-studio-mcp.md)
-explains the sequence.
+Siga a seção [Como começar](../README.md#como-começar) do README: prepare o
+Service Studio e cole o prompt de instalação no agente. Quando o agente
+responder “Pronto, pode mandar a demanda”, está tudo configurado.
 
-Manual use with supplied evidence does not require an MCP connection. ODC
-uses its own applicable documentation and tools.
+Se preferir instalar à mão, veja a [instalação por agente](agents.md). Para usar
+num chat sem MCP, cole o conteúdo de
+[outsystems-developer](../skills/outsystems-developer/SKILL.md) na conversa e
+diga: “Use estas instruções para a tarefa que vou descrever.”
 
-## Step 1: Start with the developer skill
+## Passo 2: mandar a demanda
 
-Use [OutSystems Developer](../skills/outsystems-developer/SKILL.md) and describe
-your goal. A failure goes to **Troubleshoot**, a structural improvement with the
-same behavior to **Refactor**, and a new or changed rule to **Implement**. For
-example, “implement a fix for the spinner” starts with diagnosis. If all you
-send is the skill name, it offers the three choices. The architecture layer
-and optional specialties can be determined as the work progresses.
-
-## Step 2: Load the instructions
-
-The simplest method works in a chat:
-
-1. Open the selected `SKILL.md` from the repository.
-2. Copy its full text into a new conversation, or attach the file if supported.
-3. Say: “Use these instructions for the task I will describe next.”
-
-If you use a coding agent, follow [Agent setup](agents.md) instead. A GitHub link alone may not be readable by your assistant. If it cannot open the file, provide the contents directly.
-
-## Connect to Service Studio (OutSystems 11)
-
-To analyze the actual open module, follow the
-[Service Studio MCP setup guide](service-studio-mcp.md). It covers the
-official OutSystems O11 MCP skill, starting the local server, registering
-the URL displayed by your Service Studio, session approval, and a read-only
-connection test. Each developer's port can differ.
-
-A copied instruction file does not establish an MCP connection. If the
-agent cannot access the configured tools, supply sanitized screenshots or
-excerpts and treat the result as an analysis of those materials only.
-
-## Step 3: Describe your task
-
-Start with the outcome you need and the affected element, if known. The [request template](request-template.md) has optional fields for larger tasks.
-
-Include:
-
-- The platform and application type, if known.
-- The architecture layer if you already know it.
-- The target module and affected elements.
-- The application and related modules, when relevant; keep reported context
-  separate from modules verified open and accessible through MCP.
-- For Troubleshoot, the observed and expected result, plus reproduction steps if known.
-- For Refactor, the duplication or coupling to remove and the behavior to preserve.
-- For Implement, the new rule or capability and an example of success or failure.
-- Constraints and relevant evidence.
-
-A request such as “Fix my modal” does not identify the logic or expected completion rule. The [order approval walkthrough](../examples/loading-and-modal.md) shows how to make that request actionable.
-
-Use the layer descriptions in the [request template](request-template.md).
-For several modules, identify each module's layer. Ask the assistant to
-check responsibilities rather than assuming that the declared layer is
-correct. In ODC, use Not applicable when the O11 classification does not fit.
-
-## Step 4: Inspect the module or supply evidence
-
-For O11, ask the connected agent to verify the open target module and use the available Service Studio MCP read tools. If those tools are unavailable, provide relevant evidence manually.
-
-For a screen issue, useful evidence may include block inputs, events and handlers, the action that starts processing, the completion path, and the values controlling loading and modal visibility.
-
-For an integration issue, provide a sanitized contract, response status, timing, and relevant logs. For architecture, provide responsibilities and dependency directions.
-
-Label each screenshot or snippet with its element name. Do not upload an entire client project when a small sanitized excerpt is enough. This library does not provide an OML/OAP reader; confirm the assistant's capabilities before attaching exports.
-
-## Step 5: Review the response
-
-A useful answer should:
-
-- Summarize the expected and observed behavior accurately.
-- Identify which evidence was actually inspected.
-- Separate VERIFIED facts, INFERRED explanations, and UNKNOWN information,
-  stating whether evidence came from your report, an inspected artifact, or tools.
-- Explain a targeted next check or a justified change.
-- Describe effects on existing components and contracts.
-- Provide validation steps.
-
-The assistant should inspect available evidence before asking you for more.
-Expect a focused question when an unresolved business rule or target identity
-would change the correction. A clear, authorized task should not require
-confirmation at every step. Unknown optional fields do not stop independent work.
-
-If the answer invents an action or assumes your platform, ask it to correct the assumption before proceeding.
-
-## Step 6: Apply and validate deliberately
-
-If you requested analysis only, review the recommendation before asking for implementation. Apply an accepted change in development and check the expected behavior, error paths, cancellation, and repeated execution as relevant.
-
-After tool-based edits, expect read-back evidence and a clear distinction
-between staged changes, changes merged into Service Studio, and runtime tests.
-See [Evaluation](evaluation.md) for review cases and limits.
-
-Do not treat a confident explanation as proof. For the order approval example, verify that approval completes, loading stops, the dialog closes, and the summary refreshes. On failure, confirm that the dialog remains open with an actionable error.
-
-## Useful follow-up requests
+Comece pelo resultado que você quer e pelo elemento afetado, se souber:
 
 ```text
-Which statements are confirmed by the evidence I provided?
-What is the smallest additional screenshot or action flow you need?
-Explain the proposed change in Service Studio terms for a beginner.
-How can I verify this without changing an existing contract?
-List the regression checks before I apply the change.
+Módulo: PurchaseOrders_UI
+Tela e ação: OrderDetails / SubmitApproval
+O que fazer: depois de aprovar, o modal não fecha e o loading continua.
 ```
 
-## Data and language
+O agente escolhe o fluxo sozinho. Uma falha vai para **Investigar**, uma melhoria
+estrutural sem mudar o comportamento vai para **Refatorar**, e uma regra nova ou
+alterada vai para **Implementar**. Por exemplo, “implementa a correção do
+spinner” começa pelo diagnóstico.
 
-Remove passwords, tokens, session cookies, personal data, and confidential client details. Use synthetic identifiers where appropriate.
+Para tarefas maiores, o [modelo de pedido](request-template.md) tem campos
+opcionais. Ajuda incluir:
 
-The repository is written in English. You may describe your task in another language and ask the assistant to respond in that language.
+- a plataforma e o tipo de aplicação, se souber;
+- o módulo-alvo e os elementos afetados;
+- para um bug, o resultado observado e o esperado e os passos para reproduzir;
+- para uma refatoração, a duplicação a remover e o comportamento a preservar;
+- para algo novo, a regra e um exemplo de sucesso ou de falha;
+- restrições e evidências relevantes.
+
+Um pedido como “arruma meu modal” não diz qual lógica nem qual a regra de
+conclusão esperada. O [exemplo do modal de aprovação](../examples/loading-and-modal.md)
+mostra como deixar esse pedido claro.
+
+## Passo 3: deixar o agente ler o módulo
+
+No O11, o agente lê o módulo aberto pelas ferramentas MCP do Service Studio. Ele
+nunca deve usar PowerShell ou terminal para isso. Se o MCP falhar, ele vai pedir
+para você conferir se o servidor está ligado e se o endereço está certo; veja o
+[guia do MCP](service-studio-mcp.md).
+
+Sem MCP, mande as evidências à mão. Em problemas de tela, ajudam: entradas do
+Block, eventos e handlers, a ação que inicia o processamento, o caminho de
+conclusão e os valores que controlam o loading e a visibilidade do modal. Em
+integrações, mande o contrato sanitizado, o status da resposta, o tempo e os
+logs relevantes. Em arquitetura, mande responsabilidades e direções de
+dependência.
+
+Identifique cada print ou trecho com o nome do elemento. Não envie um projeto
+inteiro de cliente quando um trecho pequeno e sanitizado resolve. Esta
+biblioteca não lê arquivos OML/OAP.
+
+## Passo 4: revisar a resposta
+
+Uma boa resposta:
+
+- resume corretamente o comportamento esperado e o observado;
+- diz quais evidências foram realmente inspecionadas;
+- separa fatos VERIFICADOS, explicações INFERIDAS e informações DESCONHECIDAS,
+  dizendo se a evidência veio do seu relato, de um artefato ou do MCP;
+- explica a próxima verificação ou uma mudança justificada;
+- descreve o efeito em componentes e contratos existentes;
+- traz passos de validação.
+
+O agente deve inspecionar o que estiver disponível antes de pedir mais coisas.
+Espere uma pergunta objetiva quando uma regra de negócio ou a identidade do
+alvo mudar a correção. Uma tarefa clara e autorizada não deve pedir confirmação
+a cada passo.
+
+Se a resposta inventar uma ação ou presumir a sua plataforma, peça para corrigir
+a suposição antes de seguir.
+
+## Passo 5: aplicar e validar com cuidado
+
+Se você pediu só análise, revise a recomendação antes de pedir a implementação.
+Aplique a mudança aceita em desenvolvimento e confira o comportamento esperado,
+os caminhos de erro, o cancelamento e a execução repetida, quando fizer sentido.
+
+Depois de edições pelo MCP, espere uma leitura de confirmação e a separação
+entre o que ficou preparado (staged), o que entrou no módulo (merge) e o que foi
+testado em execução. Veja a [avaliação](evaluation.md) para casos e limites.
+
+Uma explicação confiante não é prova. No exemplo do modal, confirme que a
+aprovação conclui, o loading para, o modal fecha e o resumo atualiza. Em caso de
+falha, confirme que o modal continua aberto com um erro acionável.
+
+## Perguntas úteis de acompanhamento
+
+```text
+Quais afirmações estão confirmadas pela evidência que eu mandei?
+Qual é o menor print ou fluxo de ação adicional de que você precisa?
+Explica a mudança proposta em termos do Service Studio para um iniciante.
+Como verifico isso sem mudar um contrato existente?
+Lista as verificações de regressão antes de eu aplicar a mudança.
+```
+
+## Dados e idioma
+
+Remova senhas, tokens, cookies de sessão, dados pessoais e detalhes
+confidenciais de clientes. Use identificadores fictícios quando fizer sentido.
+
+O repositório está em português do Brasil. Os nomes técnicos do OutSystems
+ficam em inglês. Você pode escrever em outro idioma e pedir a resposta nele.

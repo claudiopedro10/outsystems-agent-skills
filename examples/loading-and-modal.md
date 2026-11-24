@@ -1,142 +1,142 @@
-# Troubleshooting walkthrough: order approval dialog
+# Passo a passo de investigação: modal de aprovação de pedido
 
-This fictional OutSystems 11 / Reactive Web example shows how to prepare a
-useful request, supply evidence, and assess a recommendation. It is not a
-diagnosis of an inspected application.
+Este exemplo fictício em OutSystems 11 / Reactive Web mostra como preparar um
+bom pedido, fornecer evidências e avaliar uma recomendação. Não é o diagnóstico
+de uma aplicação inspecionada.
 
-## 1. Load the skill
+## 1. Carregue a skill
 
-Use [outsystems-troubleshooting](../skills/outsystems-troubleshooting/SKILL.md)
-through your agent's supported setup, or paste the skill instructions into
-your conversation. Then send the scenario below.
+Com as skills instaladas (veja [Como começar](../README.md#como-começar)), basta
+mandar a demanda: a [outsystems-developer](../skills/outsystems-developer/SKILL.md)
+escolhe o fluxo Investigar. Para uma investigação aprofundada com logs, você
+pode pedir diretamente a
+[outsystems-troubleshooting](../skills/outsystems-troubleshooting/SKILL.md).
 
-Before using the example against a real module, configure the
-[Service Studio MCP server](../docs/service-studio-mcp.md), install the
-official OutSystems O11 MCP skill, and verify the open module. This example
-is fictional and is not a claim that a module was inspected.
+Antes de usar o exemplo num módulo real, ligue o
+[MCP do Service Studio](../docs/service-studio-mcp.md) e confirme o módulo
+aberto. Este exemplo é fictício e não afirma que algum módulo foi inspecionado.
 
-## 2. Describe the problem
+## 2. Descreva o problema
 
-### Example: order approval dialog does not close
+### Exemplo: o modal de aprovação de pedido não fecha
 
-*Fictional scenario for OutSystems 11 / Reactive Web.*
+*Cenário fictício em OutSystems 11 / Reactive Web.*
 
-**Context**
+**Contexto**
 
-- **Architecture layer:** End User
-- **Target module:** `PurchaseOrders_UI`
-- **Application:** `Procurement` (fictional)
-- **Open modules:** Unknown; verify through MCP if available.
-- **Related modules:** Unknown; establish relevant providers and consumers.
+- **Camada da arquitetura:** End User
+- **Módulo-alvo:** `PurchaseOrders_UI`
+- **Aplicação:** `Procurement` (fictícia)
+- **Módulos abertos:** Desconhecido; verificar pelo MCP.
+- **Módulos relacionados:** Desconhecido; estabelecer provedores e consumidores relevantes.
 - **Screen:** `OrderDetails`
 - **Block:** `OrderApprovalDialog`
-- **Client action:** `SubmitApproval`
-- **Completion event:** `ApprovalCompleted`
+- **Client Action:** `SubmitApproval`
+- **Evento de conclusão:** `ApprovalCompleted`
 
-**Observed behavior**
+**Comportamento observado**
 
-The order is approved successfully, but the dialog remains open and the
-loading indicator stays visible. Refreshing the screen shows the updated
-order status.
+O pedido é aprovado, mas o modal continua aberto e o indicador de carregamento
+continua visível. Ao atualizar a tela, o status novo do pedido aparece.
 
-**Expected behavior**
+**Comportamento esperado**
 
-After successful approval, stop the loading indicator, close the dialog,
-and refresh the order summary. If approval fails, stop the loading indicator,
-keep the dialog open, and display an actionable error.
+Depois de uma aprovação bem-sucedida, parar o carregamento, fechar o modal e
+atualizar o resumo do pedido. Se a aprovação falhar, parar o carregamento,
+manter o modal aberto e mostrar um erro acionável.
 
-**Constraints**
+**Restrições**
 
-Preserve existing business rules, public inputs, events, and service
-contracts. Limit the correction to the affected interface flow.
+Preservar regras de negócio, entradas públicas, eventos e contratos de serviço
+existentes. Limitar a correção ao fluxo de interface afetado.
 
-**Request to the assistant**
+**Pedido ao assistente**
 
-Verify the configured Service Studio MCP and that the intended module is
-open. Use available read tools with the official O11 MCP skill. If the
-connection is unavailable, ask for sanitized action flows and explain the
-inspection limit.
+Confirme a conexão MCP com o Service Studio e que o módulo pretendido está
+aberto. Use só as ferramentas de leitura do MCP, nunca PowerShell ou terminal.
+Se a conexão não estiver disponível, peça fluxos de ação sanitizados e explique
+o limite da inspeção.
 
-Use `outsystems-troubleshooting` to trace the submission action, completion
-event, parent handler, and interface state updates. Separate evidence from
-hypotheses. Inspect available action flows first; ask only for evidence that
-remains missing before selecting a cause.
-Provide a focused correction plan and regression checks; do not edit or
-deploy the application.
+Rastreie a ação de envio, o evento de conclusão, o handler na Screen pai e as
+atualizações de estado da interface. Separe evidências de hipóteses. Inspecione
+primeiro os fluxos disponíveis; peça só a evidência que ainda faltar antes de
+escolher uma causa. Entregue um plano de correção focado e verificações de
+regressão; não edite nem publique a aplicação.
 
-## 3. Make the issue reproducible
+## 3. Torne o problema reproduzível
 
-1. Open an order with status **Pending approval** on `OrderDetails`.
-2. Open `OrderApprovalDialog`.
-3. Select **Approve** and wait for the approval request to return.
-4. Observe that the loading indicator and dialog remain visible.
-5. Refresh the screen and confirm that the order status is **Approved**.
+1. Abra um pedido com status **Pending approval** em `OrderDetails`.
+2. Abra o `OrderApprovalDialog`.
+3. Clique em **Approve** e espere a aprovação retornar.
+4. Observe que o indicador de carregamento e o modal continuam visíveis.
+5. Atualize a tela e confirme que o status do pedido é **Approved**.
 
-In a real request, record whether this happens on every attempt, when it
-started, and whether failure or cancellation behaves differently.
+Num pedido real, registre se isso acontece toda vez, quando começou e se a
+falha ou o cancelamento se comportam de forma diferente.
 
-## 4. Supply focused evidence
+## 4. Forneça evidências focadas
 
-Use available MCP read tools to inspect the open module when connected. Otherwise provide labeled screenshots or logic excerpts for:
+Com o MCP conectado, o agente lê o módulo aberto. Sem MCP, mande prints ou
+trechos de lógica identificados de:
 
-- `SubmitApproval`, including success and exception paths.
-- Where `ApprovalCompleted` is raised and its existing event contract.
-- The parent handler assigned to `ApprovalCompleted`.
-- The state or expressions controlling loading and dialog visibility.
-- The action that refreshes the order summary.
-- Relevant logs and reproduction observations, with sensitive data removed.
+- `SubmitApproval`, incluindo os caminhos de sucesso e de exceção;
+- onde `ApprovalCompleted` é disparado e o contrato do evento;
+- o handler na Screen pai associado a `ApprovalCompleted`;
+- o estado ou as expressões que controlam o carregamento e a visibilidade do modal;
+- a ação que atualiza o resumo do pedido;
+- logs e observações de reprodução relevantes, sem dados sensíveis.
 
-Start with the submission flow and parent handler. Provide additional
-artifacts when the assistant explains which uncertainty they will resolve.
-A fictional name in this guide is not a requirement to add or rename an
-element in your application.
+Comece pelo fluxo de envio e pelo handler na Screen pai. Mande mais artefatos
+quando o assistente explicar qual dúvida eles resolvem. Um nome fictício deste
+guia não é um pedido para criar ou renomear elementos na sua aplicação.
 
-## 5. Evaluate the analysis
+## 5. Avalie a análise
 
-A useful response should acknowledge that approval appears to persist while
-interface completion remains unresolved. It should identify the evidence
-needed to establish whether the success path, event, parent handler, and
-state assignments execute as expected.
+Uma boa resposta reconhece que a aprovação parece ser gravada, mas a conclusão
+da interface continua em aberto. Ela identifica a evidência necessária para
+saber se o caminho de sucesso, o evento, o handler na Screen pai e as
+atribuições de estado executam como esperado.
 
-| Investigation question | Evidence to inspect |
+| Pergunta da investigação | Evidência a inspecionar |
 | --- | --- |
-| Does execution reach the success path? | Action flow and observed response |
-| Is the completion event raised and handled? | Event wiring and parent handler |
-| Which element owns each interface state? | State declarations and assignments |
-| Do error paths clear the loading state? | Exception handling |
-| Does a second approval attempt behave correctly? | Repeated-use reproduction |
+| A execução chega ao caminho de sucesso? | Fluxo da ação e resposta observada |
+| O evento de conclusão é disparado e tratado? | Ligação do evento e handler na Screen pai |
+| Qual elemento é dono de cada estado da interface? | Declarações e atribuições de estado |
+| Os caminhos de erro limpam o carregamento? | Tratamento de exceção |
+| Uma segunda aprovação se comporta corretamente? | Reprodução com uso repetido |
 
-These are investigation questions, not established causes. Successful data
-persistence alone does not prove that a particular interface handler ran.
+São perguntas de investigação, não causas estabelecidas. O dado ser gravado não
+prova que um handler específico da interface executou.
 
-Ask for clarification if the assistant assumes a missing event, invents
-existing actions, or proposes changing a public contract without evidence.
+Peça esclarecimento se o assistente presumir um evento faltando, inventar ações
+existentes ou propor mudar um contrato público sem evidência.
 
-## 6. Review the correction plan
+## 6. Revise o plano de correção
 
-Before implementation, expect:
+Antes de implementar, espere:
 
-- The specific existing element and path to change.
-- Evidence supporting the proposed correction.
-- How the plan preserves the stated contracts and business rules.
-- Any remaining uncertainty or conflict with a constraint.
-- Validation steps and a practical rollback approach.
+- o elemento existente e o caminho específico a mudar;
+- a evidência que apoia a correção proposta;
+- como o plano preserva os contratos e as regras de negócio informados;
+- qualquer incerteza restante ou conflito com uma restrição;
+- passos de validação e um jeito prático de desfazer.
 
-Keep the change scoped to the demonstrated issue. A broader redesign needs
-a separate justification.
+Mantenha a mudança limitada ao problema demonstrado. Um redesenho maior precisa
+de justificativa própria.
 
-## 7. Validate the outcome in development
+## 7. Valide o resultado em desenvolvimento
 
-| Scenario | Acceptance criteria |
+| Cenário | Critério de aceitação |
 | --- | --- |
-| Successful approval | Loading stops, dialog closes, and summary shows Approved |
-| Approval rejected by a business rule | Loading stops, dialog stays open, and an actionable message appears |
-| Request failure | Loading stops; no false success or unintended closure |
-| Repeated use | Opening and submitting another pending order uses fresh state |
-| Existing consumers | Public inputs, events, and service contracts remain compatible |
+| Aprovação bem-sucedida | O carregamento para, o modal fecha e o resumo mostra Approved |
+| Aprovação negada por regra de negócio | O carregamento para, o modal continua aberto e aparece uma mensagem acionável |
+| Falha na requisição | O carregamento para; sem falso sucesso nem fechamento indevido |
+| Uso repetido | Abrir e enviar outro pedido pendente usa estado novo |
+| Consumidores existentes | Entradas públicas, eventos e contratos de serviço continuam compatíveis |
 
-Check cancellation and duplicate submission according to existing functional
-rules. Do not infer that closing a dialog cancels an in-flight request.
+Confira cancelamento e envio duplicado conforme as regras funcionais existentes.
+Não deduza que fechar o modal cancela uma requisição em andamento.
 
-Record observed results before declaring the issue resolved. This guide
-provides a request and validation structure; it does not claim a verified fix.
+Registre os resultados observados antes de dar o problema como resolvido. Este
+guia traz uma estrutura de pedido e de validação; não afirma uma correção
+verificada.

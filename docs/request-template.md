@@ -1,204 +1,203 @@
-# Write a clear request
+# Como escrever um bom pedido
 
-Give the assistant enough context to understand the task, locate the affected
-logic, and recognize a successful outcome. Describe observations without
-assuming a root cause.
+Dê ao assistente contexto suficiente para entender a tarefa, encontrar a lógica
+afetada e reconhecer um bom resultado. Descreva o que observou sem presumir a
+causa.
 
-## Start with one sentence
+## Comece com uma frase
 
-Load [OutSystems Developer](../skills/outsystems-developer/SKILL.md) and describe
-the task in your own language. You can name a mode or let the agent infer it.
+Na maioria dos casos, basta o módulo, a ação ou tela e o que precisa ser feito.
+A skill [outsystems-developer](../skills/outsystems-developer/SKILL.md) escolhe
+o fluxo sozinha, mas você pode dizer qual quer.
 
-| Mode | Fictional request |
+| Fluxo | Pedido fictício |
 | --- | --- |
-| Troubleshoot | “After Save, the record exists but the spinner stays on. Trace the flow and give me a correction plan.” |
-| Refactor | “Both actions check the same credit limit. Extract the rule and preserve both public contracts.” |
-| Implement | “Add a filter for pending orders. Clearing it should show all orders I am allowed to see.” |
+| Investigar | “Depois de Salvar, o registro existe, mas o spinner não para. Rastreia o fluxo e me dá um plano de correção.” |
+| Refatorar | “As duas ações verificam o mesmo limite de crédito. Extrai a regra e preserva os dois contratos públicos.” |
+| Implementar | “Adiciona um filtro de pedidos pendentes. Limpar o filtro deve mostrar todos os pedidos que eu posso ver.” |
 
-## Copy and adapt
+## Copie e adapte
 
-For a more involved request, keep the fields below that affect the next decision.
+Para um pedido mais complexo, mantenha só os campos abaixo que afetam a próxima
+decisão.
 
 ```text
-Mode (optional): [Troubleshoot / Refactor / Implement]
+Fluxo (opcional): [Investigar / Refatorar / Implementar]
 
-Context
-- Platform: [OutSystems 11 or ODC]
-- Application type: [O11: Reactive Web, Traditional Web, or Mobile; ODC: actual type]
-- Architecture layer: [Foundation, Core, End User, Not sure, or Not applicable]
-- Service Studio MCP: [reported configured / verified by a tool read / unavailable / unknown / not applicable]
-- Open modules: [names verified open and accessible by MCP; Unknown until checked]
-- Target module: [main module to investigate or change; Not applicable if needed]
-- Application: [owning application, if known; optional]
-- Related modules: [potentially relevant modules; Unknown or None identified]
-- Related elements: [name and role of each relevant element]
+Contexto
+- Plataforma: [OutSystems 11 ou ODC]
+- Tipo de aplicação: [O11: Reactive Web, Traditional Web ou Mobile; ODC: tipo real]
+- Camada da arquitetura: [Foundation, Core, End User, Não sei ou Não se aplica]
+- MCP do Service Studio: [configurado / verificado por leitura / indisponível / desconhecido / não se aplica]
+- Módulos abertos: [nomes confirmados como abertos e acessíveis pelo MCP; Desconhecido até verificar]
+- Módulo-alvo: [módulo principal a investigar ou alterar; Não se aplica se for o caso]
+- Aplicação: [aplicação dona, se souber; opcional]
+- Módulos relacionados: [módulos possivelmente relevantes; Desconhecido ou Nenhum identificado]
+- Elementos relacionados: [nome e papel de cada elemento relevante]
 
-Objective
-[Describe the failure, the structure to improve, or the behavior to add.]
+Objetivo
+[Descreva a falha, a estrutura a melhorar ou o comportamento a adicionar.]
 
-Current behavior (for a bug or refactor)
-[Describe the symptom or the baseline behavior to preserve.]
+Comportamento atual (para bug ou refatoração)
+[Descreva o sintoma ou o comportamento que deve ser preservado.]
 
-Acceptance checks
-[Describe the intended outcome or before/after equivalence for a refactor.]
+Critérios de aceitação
+[Descreva o resultado pretendido ou a equivalência de antes e depois numa refatoração.]
 
-Reproduction steps (for a bug, if known)
-1. [Starting state]
-2. [User action]
-3. [Observed result]
+Passos para reproduzir (para bug, se souber)
+1. [Estado inicial]
+2. [Ação do usuário]
+3. [Resultado observado]
 
-Available evidence
-[List available MCP access, screenshots, action flows, logs, or contracts.]
+Evidências disponíveis
+[Liste acesso pelo MCP, prints, fluxos de ação, logs ou contratos.]
 
-Constraints
-[State which components, interfaces, and rules must be preserved.]
+Restrições
+[Diga quais componentes, interfaces e regras devem ser preservados.]
 
-Requested deliverable
-[Ask for analysis, a correction plan, or explicitly authorized edits.]
-[Include how you want the result to be validated.]
-For O11, discover available modules and verify access to the target module.
-Use read tools for analysis; report missing access or evidence.
+Entrega pedida
+[Peça análise, plano de correção ou alterações autorizadas.]
+[Diga como quer que o resultado seja validado.]
+No O11, descubra os módulos disponíveis pelo MCP e confirme o acesso ao módulo-alvo.
+Use só ferramentas MCP, nunca PowerShell ou terminal. Informe falta de acesso ou de evidência.
 ```
 
-If a field is unknown, state that rather than guessing. In ODC, describe the
-actual application or library. For a new feature, explain the existing flow
-or state that no implementation exists yet.
+Se um campo for desconhecido, diga isso em vez de chutar. No ODC, descreva a
+aplicação ou library real. Para uma funcionalidade nova, explique o fluxo
+existente ou diga que ainda não existe implementação.
 
-## Identify the scope without assuming access
+## Identifique o escopo sem presumir acesso
 
-These fields separate task scope from tool access. They are optional when
-irrelevant; do not invent values to complete the template.
+Estes campos separam o escopo da tarefa do acesso pelas ferramentas. São
+opcionais quando não importam; não invente valores para completar o modelo.
 
-| Field | Meaning | Does not imply |
+| Campo | Significado | Não significa |
 | --- | --- | --- |
-| Open modules | Modules confirmed open and accessible by an MCP read; cite the result | That every reference or application module is open |
-| Target module | Main module the task concerns, even if currently inaccessible | Permission or ability to edit it |
-| Application | Owning application or business context, if known | Access to its modules |
-| Related modules | Potentially relevant providers/consumers | Verified dependencies or tool access |
+| Módulos abertos | Módulos confirmados como abertos e acessíveis por uma leitura MCP; cite o resultado | Que toda referência ou módulo da aplicação esteja aberto |
+| Módulo-alvo | Módulo principal da tarefa, mesmo que ainda inacessível | Permissão ou capacidade de editá-lo |
+| Aplicação | Aplicação dona ou contexto de negócio, se souber | Acesso aos seus módulos |
+| Módulos relacionados | Provedores ou consumidores possivelmente relevantes | Dependências verificadas ou acesso pelas ferramentas |
 
-Before a tool read, write `Open modules: Unknown`. If you know which tabs you
-opened, record that as **Developer-reported open modules** under Available
-evidence; the agent must still verify access. Configuration alone is not a
-successful connection. Preserve the distinction in the response.
+Antes de uma leitura pelo MCP, escreva `Módulos abertos: Desconhecido`. Se você
+sabe quais abas abriu, registre isso como **Módulos abertos segundo o
+desenvolvedor** em Evidências disponíveis; o agente ainda precisa verificar o
+acesso. Configuração, sozinha, não é conexão bem-sucedida.
 
-Use `Unknown` for information not established, `None identified` for an
-investigation that found no relevant modules, and `Not applicable` when a
-field does not fit. For ODC, Target module and Service Studio Open modules
-may be inapplicable; identify the actual application/library under Application
-and Related elements.
+Use `Desconhecido` para o que não foi estabelecido, `Nenhum identificado` quando
+uma investigação não achou módulos relevantes e `Não se aplica` quando o campo
+não faz sentido. No ODC, Módulo-alvo e Módulos abertos do Service Studio podem
+não se aplicar; identifique a aplicação ou library real em Aplicação e
+Elementos relacionados.
 
-Older requests still work: treat `Open module` as a reported candidate and
-interpret `Module or application` from context. Ask which it is only if an
-unresolved ambiguity affects the next operation. Do not require a rewritten
-request or all four fields for a simple task.
+Pedidos antigos continuam funcionando: `Open module` ou `Módulo aberto` vale
+como candidato informado, e `Module or application` é interpretado pelo
+contexto. O agente só pergunta se a ambiguidade afetar a próxima operação. Não
+é preciso reescrever o pedido nem preencher todos os campos numa tarefa simples.
 
-## Working with Service Studio MCP
+## Trabalhando com o MCP do Service Studio
 
-For OutSystems 11, specify whether your agent is connected to the local
-Service Studio MCP server and which module is the target. List only verified
-open modules; keep developer-reported tabs in Available evidence. The configured endpoint
-comes from your Service Studio window; no port is fixed by this template.
-See [setup and connection test](service-studio-mcp.md). For ODC, identify the
-actual supported tools separately.
+No OutSystems 11, diga se o agente está conectado ao MCP local do Service Studio
+e qual é o módulo-alvo. Liste só módulos abertos verificados; deixe as abas que
+você abriu em Evidências disponíveis. O endereço vem da janela do seu Service
+Studio; este modelo não fixa porta. Veja a [configuração e o teste de conexão](service-studio-mcp.md).
+No ODC, identifique à parte as ferramentas realmente suportadas.
 
-## Select the architecture layer
+## Escolha a camada da arquitetura
 
-Use **Architecture layer** to identify the responsibility of the affected
-module in OutSystems 11:
+Use **Camada da arquitetura** para indicar a responsabilidade do módulo afetado
+no OutSystems 11:
 
-| Option | Typical responsibility |
+| Opção | Responsabilidade típica |
 | --- | --- |
-| Foundation | Integrations, adapters, and reusable technical capabilities |
-| Core | Business entities, rules, and domain services |
-| End User | Screens, blocks, and user journey orchestration |
-| Not sure | Ask the assistant to assess the supplied responsibilities |
+| Foundation | Integrações, adaptadores e capacidades técnicas reutilizáveis |
+| Core | Entidades, regras de negócio e serviços de domínio |
+| End User | Screens, Blocks e orquestração da jornada do usuário |
+| Não sei | Peça ao assistente para avaliar as responsabilidades informadas |
 
-For a task involving several modules, state the layer for each module.
-Do not infer the layer from a name or suffix alone. The assistant should
-check the declared layer against the supplied responsibilities and explain
-any mismatch.
+Numa tarefa com vários módulos, indique a camada de cada um. Não deduza a camada
+só pelo nome ou sufixo. O assistente deve conferir a camada informada com as
+responsabilidades e explicar qualquer divergência.
 
-For ODC, use **Not applicable** when this O11 classification does not fit.
-Describe the actual application/library responsibilities instead.
+No ODC, use **Não se aplica** quando essa classificação do O11 não servir e
+descreva as responsabilidades reais da aplicação ou library.
 
-## What each section contributes
+## O que cada seção traz
 
-| Section | What to include | Purpose |
+| Seção | O que incluir | Para quê |
 | --- | --- | --- |
-| Context | Platform, application type, architecture layer, and element roles | Identifies the technical scope |
-| Objective | A concise symptom or goal | States the task |
-| Current behavior | A symptom or baseline | Grounds a diagnosis or refactor |
-| Acceptance checks | Success, failure, or equivalence examples | Defines correctness |
-| Reproduction steps | Starting conditions and actions | Makes the problem repeatable |
-| Available evidence | Labeled excerpts or screenshots | Supports a traceable analysis |
-| Constraints | Contracts, components, and rules to preserve | Controls the scope of change |
-| Requested deliverable | Analysis, plan, or authorized implementation | Defines what the assistant should do |
+| Contexto | Plataforma, tipo de aplicação, camada e papel dos elementos | Define o escopo técnico |
+| Objetivo | Sintoma ou meta, em poucas palavras | Diz qual é a tarefa |
+| Comportamento atual | Sintoma ou base atual | Fundamenta o diagnóstico ou a refatoração |
+| Critérios de aceitação | Exemplos de sucesso, falha ou equivalência | Define o que é correto |
+| Passos para reproduzir | Condições iniciais e ações | Torna o problema repetível |
+| Evidências disponíveis | Trechos ou prints identificados | Permite uma análise rastreável |
+| Restrições | Contratos, componentes e regras a preservar | Limita o escopo da mudança |
+| Entrega pedida | Análise, plano ou implementação autorizada | Define o que o assistente deve fazer |
 
-An identifier alone does not describe implementation. Specify whether an
-element is a screen, block, action, or event when known.
+Um identificador sozinho não descreve a implementação. Diga se o elemento é uma
+Screen, um Block, uma ação ou um evento, quando souber.
 
-## Worked example
+## Exemplo completo
 
-### Example: order approval dialog does not close
+### Exemplo: o modal de aprovação de pedido não fecha
 
-*Fictional scenario for OutSystems 11 / Reactive Web.*
+*Cenário fictício em OutSystems 11 / Reactive Web.*
 
-**Context**
+**Contexto**
 
-- **Architecture layer:** End User
-- **Target module:** `PurchaseOrders_UI`
-- **Application:** `Procurement` (fictional)
-- **Open modules:** Unknown; verify through MCP if available.
-- **Related modules:** Unknown; establish relevant providers and consumers.
+- **Camada da arquitetura:** End User
+- **Módulo-alvo:** `PurchaseOrders_UI`
+- **Aplicação:** `Procurement` (fictícia)
+- **Módulos abertos:** Desconhecido; verificar pelo MCP.
+- **Módulos relacionados:** Desconhecido; estabelecer provedores e consumidores relevantes.
 - **Screen:** `OrderDetails`
 - **Block:** `OrderApprovalDialog`
-- **Client action:** `SubmitApproval`
-- **Completion event:** `ApprovalCompleted`
+- **Client Action:** `SubmitApproval`
+- **Evento de conclusão:** `ApprovalCompleted`
 
-**Observed behavior**
+**Comportamento observado**
 
-The order is approved successfully, but the dialog remains open and the
-loading indicator stays visible. Refreshing the screen shows the updated
-order status.
+O pedido é aprovado, mas o modal continua aberto e o indicador de carregamento
+continua visível. Ao atualizar a tela, o status novo do pedido aparece.
 
-**Expected behavior**
+**Comportamento esperado**
 
-After successful approval, stop the loading indicator, close the dialog,
-and refresh the order summary. If approval fails, stop the loading indicator,
-keep the dialog open, and display an actionable error.
+Depois de uma aprovação bem-sucedida, parar o carregamento, fechar o modal e
+atualizar o resumo do pedido. Se a aprovação falhar, parar o carregamento,
+manter o modal aberto e mostrar um erro acionável.
 
-**Constraints**
+**Restrições**
 
-Preserve existing business rules, public inputs, events, and service
-contracts. Limit the correction to the affected interface flow.
+Preservar regras de negócio, entradas públicas, eventos e contratos de serviço
+existentes. Limitar a correção ao fluxo de interface afetado.
 
-**Request to the assistant**
+**Pedido ao assistente**
 
-For O11, verify the configured Service Studio MCP and open module; use
-available read tools. If access is unavailable, request sanitized evidence
-and state that no module was inspected.
+No O11, confirme a conexão MCP com o Service Studio e o módulo aberto; use as
+ferramentas de leitura disponíveis. Se não houver acesso, peça evidências
+sanitizadas e diga que nenhum módulo foi inspecionado.
 
-Use Troubleshoot to trace the submission action, completion
-event, parent handler, and interface state updates. Separate evidence from
-hypotheses. Inspect available action flows first; ask only for evidence that
-remains missing before selecting a cause.
-Provide a focused correction plan and regression checks; do not edit or
-deploy the application.
+Investigue a ação de envio, o evento de conclusão, o handler na Screen pai e as
+atualizações de estado da interface. Separe evidências de hipóteses. Inspecione
+primeiro os fluxos disponíveis; peça só a evidência que ainda faltar antes de
+escolher uma causa. Entregue um plano de correção focado e verificações de
+regressão; não edite nem publique a aplicação.
 
-### Reproduction steps
+### Passos para reproduzir
 
-1. Open a pending order on the `OrderDetails` screen.
-2. Open `OrderApprovalDialog`.
-3. Select **Approve** and wait for the approval request to return.
-4. Observe that the loading indicator and dialog remain visible.
-5. Refresh the screen and confirm that the order status is **Approved**.
+1. Abra um pedido pendente na Screen `OrderDetails`.
+2. Abra o `OrderApprovalDialog`.
+3. Clique em **Approve** e espere a aprovação retornar.
+4. Observe que o indicador de carregamento e o modal continuam visíveis.
+5. Atualize a tela e confirme que o status do pedido é **Approved**.
 
-### Evidence to provide
+### Evidências a fornecer
 
-Start with the `SubmitApproval` action flow, the `ApprovalCompleted` event
-definition, its parent handler, and the expressions controlling loading and
-dialog visibility. Add relevant error handling and sanitized logs.
+Comece pelo fluxo da ação `SubmitApproval`, pela definição do evento
+`ApprovalCompleted`, pelo handler na Screen pai e pelas expressões que controlam
+o carregamento e a visibilidade do modal. Acrescente o tratamento de erro e logs
+sanitizados relevantes.
 
-The scenario is fictional. The reported behavior does not establish a root
-cause. See the [full walkthrough](../examples/loading-and-modal.md) for how to
-evaluate the response and validate a proposed correction.
+O cenário é fictício. O comportamento relatado não estabelece a causa. Veja o
+[passo a passo completo](../examples/loading-and-modal.md) para avaliar a
+resposta e validar a correção proposta.

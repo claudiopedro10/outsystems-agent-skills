@@ -1,4 +1,4 @@
-"""Offline repository checks; these do not evaluate agent decisions or MCP behavior."""
+"""Verificações offline do repositório; não avaliam decisões do agente nem o comportamento do MCP."""
 
 import re
 import tempfile
@@ -17,7 +17,7 @@ SKILLS = {
 
 
 def read_metadata(text):
-    """Parse YAML, rejecting duplicate keys and invalid discovery metadata."""
+    """Lê o YAML, rejeitando chaves duplicadas e metadados de descoberta inválidos."""
     match = re.match(r'\A---\r?\n(.*?)\r?\n---(?:\r?\n|$)', text, re.S)
     if not match:
         raise ValueError('Missing or unclosed frontmatter')
@@ -53,7 +53,7 @@ def read_metadata(text):
 
 
 def prose(text):
-    """Exclude fenced code; this checker supports the Markdown forms used here."""
+    """Ignora blocos de código; suporta as formas de Markdown usadas aqui."""
     return re.sub(r'^(`{3,}|~{3,})[^\n]*\n.*?^\1\s*$', '', text, flags=re.M | re.S)
 
 
@@ -68,7 +68,7 @@ def anchors(text):
 
 
 def link_errors(root, source):
-    """Check inline/reference destinations locally; never request external URLs."""
+    """Verifica destinos de links localmente; nunca acessa URLs externas."""
     text = re.sub(r'(`+).*?\1', '', prose(source.read_text(encoding='utf-8')))
     destinations = re.findall(r'\]\(<?([^\s)>]+)>?(?:\s+"[^"]*")?\)', text)
     destinations += re.findall(r'^\s*\[[^\]]+\]:\s*<?([^\s>]+)>?', text, re.M)

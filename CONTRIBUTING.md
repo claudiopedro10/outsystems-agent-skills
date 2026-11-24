@@ -1,24 +1,38 @@
-# Repository maintenance policy
+# Política de manutenção do repositório
 
-This repository is published for people to read, download, and use the skills.
+Este repositório é público para que as pessoas leiam, baixem e usem as skills.
 
-External contributions are not accepted. Issues, pull requests, discussions, wiki editing, and repository projects are disabled. Only the owner and explicitly authorized maintainers may update the original repository or publish official changes.
+Contribuições externas não são aceitas. Issues, pull requests, discussões, wiki
+e projetos estão desativados. Só o dono e mantenedores autorizados podem
+atualizar o repositório original ou publicar mudanças oficiais.
 
-Public visibility does not grant write access to this repository. GitHub may allow visitors to create independent forks or local copies; those do not grant permission to modify the original repository.
+Ser público não dá acesso de escrita a este repositório. O GitHub pode permitir
+que visitantes criem forks ou cópias locais independentes; isso não dá
+permissão para alterar o repositório original.
 
-## Maintainer guidance
+## Orientações para mantenedores
 
-Maintain all documentation, skill instructions, templates, and examples in English. Explain necessary terms, provide realistic requests, and show how to evaluate an AI response. Keep changes focused on selecting, using, evaluating, or improving the skills.
+Mantenha toda a documentação, as instruções das skills, os modelos e os
+exemplos em português do Brasil, com os nomes técnicos do OutSystems em inglês.
+Explique os termos necessários, traga pedidos realistas e mostre como avaliar
+uma resposta de IA. Mantenha as mudanças focadas em escolher, usar, avaliar ou
+melhorar as skills.
 
-Preserve platform accuracy, explicit assumptions, working links, and verifiable instructions. Do not include credentials, personal data, or unauthorized client artifacts.
+Preserve a precisão sobre a plataforma, suposições explícitas, links funcionando
+e instruções verificáveis. Não inclua credenciais, dados pessoais nem artefatos
+de clientes sem autorização.
 
-## License and access
+## Licença e acesso
 
-The MIT license governs reuse of the published material. It does not grant access to write to this GitHub repository. Independent copies are separate from the official project.
+A licença MIT rege o reuso do material publicado. Ela não dá acesso de escrita a
+este repositório no GitHub. Cópias independentes são separadas do projeto
+oficial.
 
-## Validation before an update
+## Validação antes de uma atualização
 
-Run the [structural checks](docs/evaluation.md) and review affected templates,
-examples, and official setup sources together. Record behavioral evaluations
-separately; do not report an unexecuted case as passing. Use a maintainer
-branch for review without changing the repository's contribution settings.
+Rode as [verificações estruturais](docs/evaluation.md) e revise juntos os
+modelos, exemplos e fontes oficiais de configuração afetados. Ao mudar uma
+descrição de skill, revise os [casos de roteamento](docs/evaluation.md#casos-de-roteamento).
+Registre avaliações de comportamento à parte; não informe um caso não executado
+como aprovado. Use uma branch de mantenedor para revisão sem mudar as
+configurações de contribuição do repositório.

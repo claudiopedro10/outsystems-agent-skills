@@ -1,125 +1,124 @@
-# Connect the Service Studio MCP server (OutSystems 11)
+# Conectar o MCP do Service Studio (OutSystems 11)
 
-This guide describes the **local OutSystems 11 Service Studio MCP server**.
-It connects a supported AI agent to the module open in Service Studio. The
-skills in this repository add task-specific guidance; they do not install
-the server, register a connection, or replace OutSystems' official O11 MCP
-skill. ODC uses different capabilities; consult its own documentation.
+Este guia descreve o **servidor MCP local do Service Studio (OutSystems 11)**.
+Ele conecta um agente de IA compatível ao módulo aberto no Service Studio. As
+skills deste repositório orientam a tarefa; elas não ligam o servidor nem
+registram a conexão. O ODC usa outros recursos; consulte a documentação dele.
 
-## Before you start
+## Antes de começar
 
-- Service Studio 11.55.91 or later, running with the target module open.
-- An AI agent or host that supports MCP, with any required account access.
-- The [official OutSystems O11 MCP skill](https://github.com/OutSystems/outsystems11-mcp),
-  installed for your agent using the official setup instructions.
-- The relevant skill from this repository installed or loaded in your agent.
+- Service Studio 11.55.91 ou mais recente, aberto com o módulo-alvo.
+- Um agente ou host com suporte a MCP, com o acesso de conta necessário.
+- As skills deste repositório instaladas no agente. O jeito mais simples é
+  colar o prompt da seção [Como começar](../README.md#como-começar) do README.
 
-The version requirement and setup are documented in
+Os requisitos de versão e a configuração estão em
 [Get started with OutSystems MCP](https://success.outsystems.com/documentation/11/outsystems_mcp/get_started_with_outsystems_mcp/).
-The official skill supplies the Model API contract and tool instructions.
 
-### Recommended order
+## Regra principal: só MCP, nunca terminal
 
-1. Follow the [official OutSystems O11 MCP setup](https://success.outsystems.com/documentation/11/outsystems_mcp/get_started_with_outsystems_mcp/) and install its official skill for your agent.
-2. Start the Service Studio MCP Server and open the target module.
-3. Register the address shown in Service Studio in your agent.
-4. Approve the connection when prompted and verify a read of the open module.
-5. Load one of this repository's complementary skills for your task.
+O agente acessa o Service Studio **somente** pelas ferramentas MCP registradas
+nele. Ele nunca deve usar PowerShell, cmd, bash, curl, `Invoke-WebRequest`,
+`netstat`, scripts ou varredura de portas para testar, descobrir ou se conectar
+ao MCP. Se as ferramentas MCP não funcionarem, ele para e pede para você
+conferir o Service Studio. Essa regra já está em todas as skills.
 
-These repository skills do not replace the official skill or configure the
-connection. Manual analysis with supplied evidence remains available without
-MCP. For ODC, follow the applicable ODC documentation and tools.
+## 1. Ligar o servidor
 
-## 1. Start the server
-
-1. Open the target module in Service Studio.
-2. Choose **Edit > MCP Server**. Menu wording may vary by version.
-3. Start the server and confirm the status is **Running**.
-4. Copy the URL shown in that window. It has the form:
+1. Abra o módulo-alvo no Service Studio.
+2. Escolha **Edit > MCP Server**. O nome do menu pode variar conforme a versão.
+3. Inicie o servidor e confirme que o status está **Running**.
+4. Copie o endereço exibido nessa janela. Ele tem este formato:
 
 ```text
-http://127.0.0.1:<PORT>/mcp
+http://127.0.0.1:<PORTA>/mcp
 ```
 
-Replace `<PORT>` with the port shown in your own Service Studio window.
-For example, `41820` may be shown, but it is not a required fixed port.
-If you change the port, update the agent's configuration to match.
+Troque `<PORTA>` pela porta que aparece no seu Service Studio. Por exemplo,
+pode aparecer `41820`, mas a porta não é fixa. Se você mudar a porta, atualize
+também a configuração do agente.
 
-## 2. Register the endpoint in your agent
+## 2. Registrar o endereço no agente
 
-An MCP host is the application that runs the agent and connects it to tools.
-Register the URL copied from Service Studio in the MCP settings of that
-host. Follow the current [official O11 setup instructions](https://github.com/OutSystems/outsystems11-mcp)
-for your particular host; each host uses its own configuration.
+O host MCP é o aplicativo que roda o agente e o conecta às ferramentas.
+Registre o endereço copiado do Service Studio nas configurações de MCP desse
+host. Cada host tem a sua configuração:
 
-- **Codex:** follow the [official Codex setup](https://github.com/OutSystems/outsystems11-mcp/blob/main/setup-docs/codex.md).
-- **Claude Code and other supported hosts:** use the host-specific directions
-  linked from the official repository.
-- **DeepSeek, Gemini, Kimi, ChatGPT, or another interface:** support depends on
-  the actual client, version, and account, not merely the model name. Check
-  that the client can connect to an MCP server and follow its setup.
-- **Chat without MCP:** paste the repository skill instructions and supply
-  sanitized evidence. The chat cannot inspect the open module through MCP
-  unless its client is separately configured with access to it.
+- **Claude Code, Codex, GitHub Copilot e outros hosts com MCP:** use a tela ou
+  o arquivo de configuração de servidores MCP do host. Se precisar de um passo
+  a passo por host, o [repositório oficial da OutSystems](https://github.com/OutSystems/outsystems11-mcp)
+  tem guias de configuração. Instalar a skill oficial de lá é opcional.
+- **DeepSeek, Gemini, Kimi, ChatGPT ou outra interface:** o suporte depende do
+  cliente, da versão e da conta, não só do nome do modelo. Confira se o cliente
+  consegue se conectar a um servidor MCP.
+- **Chat sem MCP:** cole as instruções da skill e envie evidências sanitizadas.
+  O chat não consegue inspecionar o módulo aberto.
 
-`127.0.0.1` refers to the machine where the MCP client runs. A cloud or
-remote agent cannot assume that address reaches Service Studio on the
-developer's computer. Use a supported connection arrangement appropriate to
-the host; this guide does not prescribe exposing the local server.
+`127.0.0.1` é a máquina onde o cliente MCP roda. Um agente na nuvem ou remoto
+não alcança o Service Studio do seu computador por esse endereço. Este guia não
+recomenda expor o servidor local.
 
-## 3. Approve and verify
+## 3. Aprovar e verificar
 
-1. Start or restart the agent session as required by your host.
-2. If Service Studio asks whether to allow the agent to connect, approve the
-   session if you intend to use it.
-3. Ask the agent:
+1. Inicie ou reinicie a sessão do agente, se o host pedir.
+2. Se o Service Studio perguntar se o agente pode se conectar, aprove.
+3. Peça ao agente:
 
 ```text
-Use the configured Service Studio MCP read tools to identify accessible
-open modules. Target module: [name]. Verify the target and summarize it.
-Report the module name, inspected evidence, and any access or identity gap.
-Do not change, merge, or publish anything.
+Use somente as ferramentas MCP do Service Studio que estão configuradas para
+você. Não use PowerShell nem terminal. Liste os módulos abertos e acessíveis.
+Módulo-alvo: [nome]. Leia esse módulo e resuma o que encontrou. Informe o nome
+do módulo, a evidência inspecionada e qualquer falha de acesso ou de
+identificação. Não altere, não faça merge e não publique nada.
 ```
 
-4. Confirm the reported module name and content against Service Studio. A
-   generic response or a claim that tools exist is not proof of a successful
-   module read.
-5. Load [OutSystems Developer](../skills/outsystems-developer/SKILL.md) and describe your task. Use the optional [request template](request-template.md) for additional context.
+4. Confira o nome e o conteúdo informados com o que aparece no Service Studio.
+   Uma resposta genérica ou a simples afirmação de que as ferramentas existem
+   não prova que o módulo foi lido.
+5. Mande a sua demanda. A skill [outsystems-developer](../skills/outsystems-developer/SKILL.md)
+   escolhe o fluxo. Use o [modelo de pedido](request-template.md) se quiser dar
+   mais contexto.
 
-## Module identity and access
+Para testar a leitura de uma Server Action específica, use o
+[exemplo de leitura pelo MCP](../examples/mcp-read-server-action.md).
 
-Keep the [request template's](request-template.md) Target module separate
-from verified Open modules, the Application, and Related modules. An inventory
-can include loaded references; that does not establish that every provider
-is open or independently readable. Confirm each module needed for the task.
+## Identidade do módulo e acesso
 
-The [official skill's known gaps](https://github.com/OutSystems/outsystems11-mcp/blob/main/servicestudio-mcp-oml/SKILL.md#8-known-gaps)
-describe limits in distinguishing environments when tools address modules by
-name. If identity is ambiguous, resolve the target with the developer before
-a dependent operation. Do not infer an environment from a name or suffix.
+No [modelo de pedido](request-template.md), separe o módulo-alvo dos módulos
+abertos verificados, da aplicação e dos módulos relacionados. Um inventário
+pode incluir referências carregadas; isso não prova que cada provedor esteja
+aberto ou legível. Confirme cada módulo necessário para a tarefa.
 
-## Permissions and troubleshooting
+Quando as ferramentas identificam módulos só pelo nome, pode não ser possível
+distinguir ambientes. Se a identidade estiver ambígua, o agente deve confirmar
+o alvo com você antes de uma operação dependente. Não deduza o ambiente por um
+nome ou sufixo.
 
-For analysis, ask the agent to use read operations only. For intended edits,
-review Service Studio's **Write permissions** and the proposed changes;
-manual Compare and Merge lets the developer review changes. Do not change
-those settings to bypass review. Read capabilities are GA and model writes
-are Beta in the [official MCP documentation](https://github.com/OutSystems/outsystems11-mcp).
-Check the installed version's capabilities before relying on them.
+## Permissões e problemas
 
-An edit may initially exist only in a staged model. For authorized edits,
-follow the official skill's merge workflow unless the user limits it. Check
-the merge result, then read back the affected live elements and available
-validation messages. Report staged, merged, published, and runtime-tested
-states separately. Merge does not publish; model validation does not prove
-runtime behavior. Publish only when explicitly authorized. If runtime
-validation needs publication, explain that dependency and leave it pending.
+Para análise, peça ao agente que use só operações de leitura. Para edições,
+revise as **Write permissions** do Service Studio e as mudanças propostas; o
+Compare and Merge manual deixa você revisar as mudanças. Não mude essas
+configurações para pular a revisão. Na documentação oficial, a leitura é GA e a
+escrita no modelo é Beta. Confira as capacidades da versão instalada.
 
-If the connection fails, check that the server is running, the registered
-URL matches the displayed port, the agent has MCP support, and any session
-approval has been granted. If the agent cannot find a module, open the
-correct module and retry. If unavailable, ask for a manual analysis based on
-sanitized screenshots or excerpts; do not represent it as an MCP inspection.
+Uma edição pode existir primeiro só num modelo preparado (staged). Em edições
+autorizadas, o agente deve conferir o resultado do merge, ler de novo os
+elementos afetados e as mensagens de validação e informar separadamente o que
+ficou preparado, o que entrou no módulo, o que foi publicado e o que foi testado
+em execução. Merge não publica, e validação do modelo não prova comportamento
+em execução. Publique só com autorização explícita.
 
-Official documentation: [Get started with OutSystems MCP](https://success.outsystems.com/documentation/11/outsystems_mcp/get_started_with_outsystems_mcp/)
-and [OutSystems O11 MCP skill and host setup](https://github.com/OutSystems/outsystems11-mcp).
+Se a conexão falhar, confira:
+
+1. se o servidor está **Running** no Service Studio;
+2. se o endereço registrado no agente usa a mesma porta exibida;
+3. se o agente tem suporte a MCP;
+4. se a conexão foi aprovada no Service Studio;
+5. se o módulo certo está aberto.
+
+O agente não deve tentar diagnosticar a conexão pelo terminal. Se o MCP
+continuar indisponível, peça uma análise manual com prints ou trechos
+sanitizados; ela não deve ser apresentada como inspeção pelo MCP.
+
+Documentação oficial: [Get started with OutSystems MCP](https://success.outsystems.com/documentation/11/outsystems_mcp/get_started_with_outsystems_mcp/).

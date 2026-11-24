@@ -1,36 +1,52 @@
-# Example: a dependency cycle between integration and interface
+# Exemplo: ciclo de dependência entre integração e interface
 
-Synthetic scenario; illustrative analysis, not an execution test against a real application.
+Cenário sintético; análise ilustrativa, não um teste numa aplicação real.
 
-## Input
+## Entrada
 
 OutSystems 11 / Reactive Web.
 
-- Target module: Orders_UI (starting point for the cross-module review).
-- Application: Unknown.
-- Open modules: Unknown; no MCP read has been performed.
-- Related modules: Orders_CS, ERP_IS, Shared_UI (reported inventory).
+- Módulo-alvo: Orders_UI (ponto de partida da revisão entre módulos).
+- Aplicação: Desconhecida.
+- Módulos abertos: Desconhecido; nenhuma leitura MCP foi feita.
+- Módulos relacionados: Orders_CS, ERP_IS, Shared_UI (inventário informado).
 
-- Orders_UI: screens. Architecture layer: End User.
-- Orders_CS: order rules and entities. Architecture layer: Core.
-- ERP_IS: REST integration with an ERP. Architecture layer: Foundation.
-- Shared_UI: visual components. Architecture layer: Not sure; assess responsibilities.
-- Reported dependencies: Orders_UI -> Orders_CS -> ERP_IS -> Orders_UI.
+- Orders_UI: telas. Camada: End User.
+- Orders_CS: regras e entidades de pedido. Camada: Core.
+- ERP_IS: integração REST com um ERP. Camada: Foundation.
+- Shared_UI: componentes visuais. Camada: Não sei; avaliar as responsabilidades.
+- Dependências informadas: Orders_UI -> Orders_CS -> ERP_IS -> Orders_UI.
 
 Skill: `outsystems-architecture`.
 
-For a real O11 review, verify the [Service Studio MCP setup](../docs/service-studio-mcp.md) and inspect the available open module using read tools. Confirm other modules separately when available; do not infer their contents from one open module. This example supplies a synthetic inventory and is not an MCP result.
+Numa revisão real em O11, confira a [configuração do MCP do Service Studio](../docs/service-studio-mcp.md)
+e inspecione o módulo aberto com as ferramentas de leitura. Confirme os outros
+módulos separadamente; não deduza o conteúdo deles a partir de um módulo aberto.
+Este exemplo traz um inventário sintético e não é resultado do MCP.
 
-## Expected analysis
+## Análise esperada
 
-**Evidence:** the supplied dependency directions form a cycle. ERP_IS depends on an interface consumer.
+**Evidência:** as direções de dependência informadas formam um ciclo. ERP_IS
+depende de um consumidor de interface.
 
-**Interpretation:** Orders_UI belongs to End User; Orders_CS represents Core; ERP_IS represents Foundation. Shared_UI requires inspection to establish whether its components are technical or contain business behavior. Suffixes do not prove responsibility.
+**Interpretação:** Orders_UI pertence a End User; Orders_CS representa Core;
+ERP_IS representa Foundation. Shared_UI precisa ser inspecionado para saber se
+os componentes são técnicos ou contêm comportamento de negócio. Sufixos não
+provam responsabilidade.
 
-**Proposal:** identify the element ERP_IS consumes from Orders_UI. For a data contract, evaluate moving it to its appropriate owner and updating consumers. For a visual notification, return a technical result and let the interface decide presentation. Inspect semantics before moving a whole flow.
+**Proposta:** identifique o elemento que ERP_IS consome de Orders_UI. Se for um
+contrato de dados, avalie movê-lo para o dono adequado e atualizar os
+consumidores. Se for uma notificação visual, devolva um resultado técnico e
+deixe a interface decidir a apresentação. Entenda a semântica antes de mover um
+fluxo inteiro.
 
-**Sequence:** inventory the shared element; define a compatible contract; update ERP_IS and its consumers; remove the reverse dependency; validate the user flow and regressions.
+**Sequência:** levantar o elemento compartilhado; definir um contrato
+compatível; atualizar ERP_IS e os consumidores; remover a dependência reversa;
+validar o fluxo do usuário e as regressões.
 
-**Validation:** the updated graph no longer contains the cycle; valid orders and ERP failures remain handled; screens do not receive ERP implementation details.
+**Validação:** o grafo atualizado não tem mais o ciclo; pedidos válidos e falhas
+do ERP continuam tratados; as telas não recebem detalhes de implementação do ERP.
 
-**Missing information:** no actual actions, contracts, references, or metrics were supplied. Classification is preliminary. Performance impact and final compatibility cannot be established.
+**Informação faltante:** nenhuma ação, contrato, referência ou métrica real foi
+fornecida. A classificação é preliminar. O impacto em desempenho e a
+compatibilidade final não podem ser estabelecidos.

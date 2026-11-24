@@ -1,177 +1,219 @@
-# Agent setup
+# Instalação por agente
 
-You can use the skills manually without installing anything. Native skill discovery depends on the application, not just the model name.
+O jeito mais simples de instalar é colar o prompt da seção
+[Como começar](../README.md#como-começar) do README: o próprio agente copia as
+skills, confere o MCP e avisa quando estiver pronto. Este guia explica a
+instalação manual, caso você prefira ou o agente não consiga fazer sozinho.
 
-Documentation checked on **November 6, 2026**. Procedures are based on [official sources](sources.md); they have not been executed in every product.
+Documentação conferida em **6 de novembro de 2026**. Os procedimentos se baseiam
+em [fontes oficiais](sources.md); não foram executados em todos os produtos.
 
 > [!IMPORTANT]
-> For OutSystems 11 module access through Service Studio MCP, first follow the
-> [official OutSystems setup](https://success.outsystems.com/documentation/11/outsystems_mcp/get_started_with_outsystems_mcp/)
-> and install the [official O11 MCP skill](https://github.com/OutSystems/outsystems11-mcp)
-> for the selected agent. Start the server, register its displayed address,
-> and verify the open module before using this repository's complementary skills.
-> See the [MCP setup guide](service-studio-mcp.md). Manual analysis with
-> supplied evidence remains available without MCP; ODC uses separate guidance.
+> Para acessar um módulo OutSystems 11, ligue o MCP Server no Service Studio,
+> registre o endereço exibido no agente e confira a leitura do módulo aberto.
+> Veja o [guia do MCP](service-studio-mcp.md). O agente deve acessar o Service
+> Studio **somente pelas ferramentas MCP**, nunca por PowerShell ou terminal.
+> Sem MCP, a análise manual com evidências fornecidas continua possível; o ODC
+> tem orientação própria.
 
-## Choose your setup
+## Escolha a sua configuração
 
-| Application | Method described here | Check |
+| Aplicativo | Onde colocar as skills | Como conferir |
 | --- | --- | --- |
-| Codex | Skill folder in .agents/skills | Available in a new session |
-| GitHub Copilot in VS Code | Skill folder in .github/skills | Ask it to use the skill in agent mode |
-| Claude Code | Skill folder in .claude/skills | /outsystems-developer |
-| Gemini CLI | Skill folder in .gemini/skills | Skill list and activation |
-| Kimi Code | Skill folder in .agents/skills | /skill:outsystems-developer |
-| DeepSeek chat | Paste skill instructions | Confirm received context |
-| Other chats | Paste or attach instructions | Confirm received file or text |
+| Codex | Pasta `.agents/skills` | Disponível numa nova sessão |
+| GitHub Copilot no VS Code | Pasta `.github/skills` | Pedir para usar a skill no modo agente |
+| Claude Code | Pasta `.claude/skills` | `/outsystems-developer` |
+| Gemini CLI | Pasta `.gemini/skills` | Lista e ativação de skills |
+| Kimi Code | Pasta `.agents/skills` | `/skill:outsystems-developer` |
+| DeepSeek chat | Colar as instruções da skill | Confirmar que recebeu o contexto |
+| Outros chats | Colar ou anexar as instruções | Confirmar que recebeu o arquivo ou texto |
 
-For OutSystems 11 module access, complete the separate [Service Studio MCP setup](service-studio-mcp.md) and install the official OutSystems O11 MCP skill in a compatible host. The host uses the URL and port shown in your Service Studio; this library does not connect it automatically. Manual chat usage remains available without MCP.
+O host usa o endereço e a porta exibidos no seu Service Studio; esta biblioteca
+não conecta nada automaticamente.
 
-In each prompt, use **Target module** for the intended scope and **Open modules**
-only for MCP-verified access. Application and Related modules are optional
-context, not access claims. Add the optional [request template](request-template.md) when a task needs more context.
+Em cada pedido, use **Módulo-alvo** para o escopo pretendido e **Módulos
+abertos** só para o acesso verificado pelo MCP. Aplicação e Módulos relacionados
+são contexto opcional, não prova de acesso. Use o [modelo de pedido](request-template.md)
+quando a tarefa precisar de mais contexto.
 
-Install `outsystems-developer` for the three everyday workflows. Describe your task directly or invoke the skill alone to see the choices. Additional specialist folders are optional.
+Instale todas as pastas de `skills/`. A `outsystems-developer` é a porta de
+entrada e escolhe sozinha o fluxo; os especialistas são consultados quando
+necessário.
 
-## Download the library
+## Baixar a biblioteca
 
-Download the repository using GitHub's **Code > Download ZIP**, then extract it. Developers who use Git can run:
+Baixe o repositório em **Code > Download ZIP** no GitHub e extraia. Quem usa Git
+pode rodar:
 
 ```sh
 git clone https://github.com/claudiopedro10/outsystems-agent-skills.git
 ```
 
-The downloaded library is the source. Your working project is where you want the agent to use a skill. Copy a complete skill folder from the source into the destination described below. Do not overwrite an existing skill without reviewing it.
+A biblioteca baixada é a origem. O seu projeto de trabalho é onde o agente vai
+usar as skills. Copie as pastas completas de skills da origem para o destino
+descrito abaixo. Não sobrescreva uma skill existente sem revisá-la.
+
+Para que o agente use a skill certa em toda sessão, adicione ao arquivo de
+instruções do projeto (`AGENTS.md`, `CLAUDE.md` ou equivalente):
+
+```text
+Para qualquer tarefa OutSystems, use a skill outsystems-developer como ponto de
+entrada. Acesse o Service Studio somente pelas ferramentas MCP; nunca use
+PowerShell nem terminal para testar ou se conectar ao MCP.
+```
 
 ## Codex
 
-Copy `skills/outsystems-developer/` into `.agents/skills/` in your working project:
+Copie as pastas de `skills/` para `.agents/skills/` no seu projeto:
 
 ```text
-your-project/
+seu-projeto/
   .agents/
     skills/
       outsystems-developer/
         SKILL.md
+      outsystems-core/
+        SKILL.md
+      ...
 ```
 
-Open a new Codex session in that project and send:
+Abra uma nova sessão do Codex no projeto e mande:
 
 ```text
-Use $outsystems-developer. Refactor the duplicated check and preserve both public contracts. Give me the plan.
-Platform: OutSystems 11.
-Verify the configured Service Studio MCP connection and open module.
-Use available read tools; report any missing access. Do not edit or publish.
-[Add your context and evidence.]
+Use $outsystems-developer. Refatore a validação duplicada e preserve os dois
+contratos públicos. Me dê o plano.
+Plataforma: OutSystems 11.
+Confirme a conexão MCP com o Service Studio e o módulo aberto.
+Use as ferramentas de leitura; informe qualquer falta de acesso. Não edite nem publique.
+[Adicione o seu contexto e as evidências.]
 ```
 
-The documented personal location is `~/.agents/skills/`. Here, `~` means your user home directory. In a remote environment, the folder must exist where Codex runs.
+O local pessoal documentado é `~/.agents/skills/`. Aqui, `~` é a pasta do seu
+usuário. Num ambiente remoto, a pasta precisa existir onde o Codex roda.
 
-## GitHub Copilot in VS Code
+## GitHub Copilot no VS Code
 
-Copy the complete skill folder to `.github/skills/outsystems-developer/`
-in your working repository. In agent mode, ask Copilot to use
-`outsystems-developer` and describe the task.
-See [GitHub's skill guide](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills)
-for discovery and supported clients.
+Copie as pastas completas das skills para `.github/skills/` no seu repositório
+de trabalho. No modo agente, peça ao Copilot para usar `outsystems-developer` e
+descreva a tarefa. Veja o [guia de skills do GitHub](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills)
+para descoberta e clientes suportados.
 
-Configure the official OutSystems skill and MCP connection separately using
-the [OutSystems Copilot setup](https://github.com/OutSystems/outsystems11-mcp/blob/main/setup-docs/copilot-vscode.md).
-A skill available to Copilot on GitHub does not make your computer's local
-Service Studio endpoint reachable from a cloud agent.
+Registre o endereço do MCP do Service Studio nas configurações de MCP do VS
+Code. Uma skill disponível para o Copilot no GitHub não torna o Service Studio
+do seu computador acessível a um agente na nuvem.
 
 ## Claude Code
 
-Copy the skill folder into `.claude/skills/` in your working project:
+Copie as pastas das skills para `.claude/skills/` no seu projeto:
 
 ```text
 .claude/skills/outsystems-developer/SKILL.md
 ```
 
-Start a session in that project and send:
+Inicie uma sessão no projeto e mande:
 
 ```text
 /outsystems-developer
-The approval dialog stays open after success. Trace the cause. Platform: OutSystems 11.
-Verify the configured Service Studio MCP connection and open module.
-Use read tools only; report missing access.
-[Add your context and evidence.]
+O modal de aprovação continua aberto depois do sucesso. Encontre a causa.
+Plataforma: OutSystems 11.
+Confirme a conexão MCP com o Service Studio e o módulo aberto.
+Use só ferramentas de leitura; informe qualquer falta de acesso.
+[Adicione o seu contexto e as evidências.]
 ```
 
-Personal installations use `~/.claude/skills/`. A local Claude Code installation does not automatically make the skill available in a browser or cloud session.
+Instalações pessoais usam `~/.claude/skills/`. Uma instalação local do Claude
+Code não deixa a skill disponível automaticamente no navegador ou na nuvem.
 
-### Claude in the browser
+### Claude no navegador
 
-Use the manual method below. If custom skills are available for your account, follow Anthropic's official upload and packaging instructions linked in [Sources](sources.md).
+Use o método manual abaixo. Se a sua conta permitir skills personalizadas, siga
+as instruções oficiais de upload e empacotamento da Anthropic, citadas nas
+[fontes](sources.md).
 
 ## Gemini CLI
 
-Copy the skill folder into `.gemini/skills/` in your project:
+Copie as pastas das skills para `.gemini/skills/` no seu projeto:
 
 ```text
 .gemini/skills/outsystems-developer/SKILL.md
 ```
 
-Start a session and ask:
+Inicie uma sessão e peça:
 
 ```text
-Use the outsystems-developer skill to design a pending-order filter for this screen.
-Platform: OutSystems 11.
-Verify the Service Studio MCP connection and open module if available.
-[Add your context and evidence.]
+Use a skill outsystems-developer para desenhar um filtro de pedidos pendentes
+nesta tela.
+Plataforma: OutSystems 11.
+Confirme a conexão MCP com o Service Studio e o módulo aberto, se disponível.
+[Adicione o seu contexto e as evidências.]
 ```
 
-Use `gemini skills list --all` to check discovery. Review the activation request when prompted. Gemini in the browser does not load a local folder automatically; use the manual method there.
+Use `gemini skills list --all` para conferir a descoberta. Revise o pedido de
+ativação quando aparecer. O Gemini no navegador não carrega pastas locais; use o
+método manual.
 
 ## Kimi Code
 
-Copy the skill folder into `.agents/skills/` in your project, one of Kimi Code's documented discovery locations:
+Copie as pastas das skills para `.agents/skills/` no seu projeto, um dos locais
+de descoberta documentados do Kimi Code:
 
 ```text
 .agents/skills/outsystems-developer/SKILL.md
 ```
 
-Start a new session and send:
+Inicie uma nova sessão e mande:
 
 ```text
-/skill:outsystems-developer Propose a refactor of the duplicated rule below.
-Verify the Service Studio MCP connection and open module if available.
+/skill:outsystems-developer Proponha uma refatoração da regra duplicada abaixo.
+Confirme a conexão MCP com o Service Studio e o módulo aberto, se disponível.
 ```
 
-Add your platform, context, and evidence. Consult the official discovery documentation if your version differs. For Kimi chat, use the manual method.
+Adicione a plataforma, o contexto e as evidências. Se a sua versão for
+diferente, consulte a documentação oficial de descoberta. No Kimi chat, use o
+método manual.
 
 ## DeepSeek
 
-This project's documented method for DeepSeek chat is **manual use**. Paste the chosen `SKILL.md` into the conversation and then send your request.
+O método documentado aqui para o DeepSeek chat é o **uso manual**. Cole o
+`SKILL.md` escolhido na conversa e depois mande o pedido.
 
-No API key is needed for this method. If you use a DeepSeek model through another client or the API, file access and skill loading depend on that client. This library does not provide a DeepSeek API integration or installer.
+Esse método não precisa de chave de API. Se você usa um modelo DeepSeek por
+outro cliente ou pela API, o acesso a arquivos e o carregamento de skills
+dependem desse cliente. Esta biblioteca não oferece integração nem instalador
+para a API do DeepSeek.
 
-## Manual method: ChatGPT, Gemini web, Kimi chat, and other assistants
+## Método manual: ChatGPT, Gemini web, Kimi chat e outros assistentes
 
-1. Open the chosen `SKILL.md`.
-2. Copy its full text into a conversation, or attach it if supported.
-3. Ask: “Use these instructions for the following task.”
-4. Describe the task or use the [request template](request-template.md).
-5. Provide any additional evidence the assistant needs.
+1. Abra o `SKILL.md` escolhido (normalmente o da `outsystems-developer`).
+2. Copie o texto completo para a conversa, ou anexe o arquivo se for possível.
+3. Diga: “Use estas instruções para a tarefa a seguir.”
+4. Descreva a tarefa ou use o [modelo de pedido](request-template.md).
+5. Envie as evidências de que o assistente precisar.
 
-Example:
+Exemplo:
 
 ```text
-Use the attached OutSystems Developer skill.
-I will describe an order approval dialog that stays open after success.
-If my client has the O11 Service Studio MCP configured, verify the open
-module and use read tools. Otherwise, ask for sanitized evidence.
-Base your analysis on the evidence I provide.
-Use available reads first; ask only for evidence still missing before selecting a cause.
-[Paste the completed request template.]
+Use a skill OutSystems Developer anexada.
+Vou descrever um modal de aprovação que continua aberto depois do sucesso.
+Se o seu cliente tiver o MCP do Service Studio configurado, confirme o módulo
+aberto e use as ferramentas de leitura, nunca o terminal. Se não tiver, peça
+evidências sanitizadas.
+Use primeiro o que estiver disponível; peça só a evidência que faltar antes de
+escolher uma causa.
+[Cole o modelo de pedido preenchido.]
 ```
 
-This adds instructions to the conversation. It does not establish native installation or guarantee identical results across models.
+Isso adiciona instruções à conversa. Não é uma instalação nativa e não garante
+resultados iguais entre modelos.
 
-## If the assistant does not find the skill
+## Se o assistente não encontrar a skill
 
-Check that the folder contains `SKILL.md`, that it is in the correct project, and that you opened a new session. Ask which skill file was loaded. If the application cannot read local files, paste the instructions manually.
+Confira se a pasta tem o `SKILL.md`, se está no projeto certo e se você abriu
+uma nova sessão. Pergunte qual arquivo de skill foi carregado. Se o aplicativo
+não consegue ler arquivos locais, cole as instruções manualmente.
 
-## Update or remove
+## Atualizar ou remover
 
-Update your downloaded library, review differences, and copy only the skills you use. To remove a skill, remove its installed folder and start a new session. This does not modify your OutSystems applications.
+Atualize a biblioteca baixada, revise as diferenças e copie de novo as skills.
+Para remover uma skill, apague a pasta instalada e abra uma nova sessão. Isso não
+altera as suas aplicações OutSystems.

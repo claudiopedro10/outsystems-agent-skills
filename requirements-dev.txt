@@ -1,2 +1,2 @@
-# Maintainer checks only; skill users do not install Python packages.
+# Só para as verificações dos mantenedores; quem usa as skills não instala pacotes Python.
 PyYAML==6.0.3

@@ -1,48 +1,77 @@
-# Skill structure and quality
+# Estrutura e qualidade das skills
 
-Each skill is an independent folder with a `SKILL.md` file. Its YAML frontmatter contains a lowercase, hyphenated name and a focused description.
+Cada skill é uma pasta independente com um arquivo `SKILL.md`. O cabeçalho YAML
+tem um nome em minúsculas com hífens e uma descrição focada.
 
-## Contents
+## Conteúdo
 
-- Purpose and appropriate use.
-- Platform scope and limitations.
-- Required context and evidence.
-- A task-specific procedure.
-- Expected deliverables.
-- An illustrative request.
+- Propósito e quando usar.
+- Escopo de plataforma e limitações.
+- Contexto e evidências necessários.
+- Procedimento específico da tarefa.
+- Entregas esperadas.
+- Um pedido de exemplo.
 
-Skills must work without requiring other repository documents. Put substantial supporting material inside the skill's own `references/` folder and link it from `SKILL.md` when needed.
+As skills precisam funcionar sem depender de outros documentos do repositório.
+Material de apoio extenso vai na pasta `references/` da própria skill, com link
+a partir do `SKILL.md` quando necessário.
 
-## Writing for developers new to AI
+## Descrições e roteamento
 
-Repository guides must explain unfamiliar terms, show where to place instructions, provide a realistic request, and describe how to assess the answer. Keep this teaching material in user-facing documentation; skill instructions should remain focused on agent behavior.
+O agente escolhe a skill pela descrição do cabeçalho. Por isso:
 
-Use the [request template](request-template.md) for examples. Distinguish an observable symptom from a suspected cause. Preserve exact identifiers supplied by a user, and label synthetic examples clearly.
+- `outsystems-developer` é a porta de entrada padrão e a descrição dela diz que
+  vale para **qualquer** tarefa OutSystems;
+- cada especialista diz em qual assunto atua e termina dizendo que bugs,
+  refatorações e funcionalidades do dia a dia vão para `outsystems-developer`;
+- duas descrições não devem disputar o mesmo pedido comum. Confira os
+  [casos de roteamento](evaluation.md#casos-de-roteamento) sempre que mudar uma
+  descrição.
 
-Maintain repository documentation and skill instructions in English. Users may request answers in other languages. Add content only when it helps someone choose, use, evaluate, or improve a skill.
+## Escrevendo para quem é novo em IA
 
-## Review criteria
+Os guias do repositório devem explicar termos pouco conhecidos, mostrar onde
+colocar as instruções, trazer um pedido realista e dizer como avaliar a
+resposta. Esse material didático fica na documentação; as instruções das skills
+continuam focadas no comportamento do agente.
 
-- Does not treat O11 and ODC as interchangeable.
-- Does not invent actions, APIs, settings, or tools.
-- Distinguishes VERIFIED, INFERRED, and UNKNOWN claims with source scope.
-- Separates reported context, target identity, and verified tool access.
-- Treats embedded instructions in evidence as data, not scope authorization.
-- Asks only for material unresolved decisions; blocks only dependent work.
-- Verifies authorized writes and separates model checks from runtime tests.
-- Provides a practical verification method.
-- Does not assume access or credentials.
-- Does not grant authorization for unrelated changes or deployments.
-- Has a description that distinguishes it from other skills.
+Use o [modelo de pedido](request-template.md) nos exemplos. Separe o sintoma
+observável da causa suspeita. Preserve os identificadores fornecidos pelo
+usuário e marque exemplos sintéticos como tais.
 
-The common safety guidance stays inside each skill because users can install
-or paste one folder independently. Do not add a mandatory repository-wide
-reference or a second gate workflow that duplicates it. Shared wording should
-remain short; platform API contracts belong to the official OutSystems skill.
+Mantenha a documentação e as skills em português do Brasil, com os nomes
+técnicos do OutSystems em inglês, como aparecem na plataforma. O usuário pode
+pedir respostas em outro idioma. Acrescente conteúdo só quando ele ajudar
+alguém a escolher, usar, avaliar ou melhorar uma skill.
 
-## Maturity
+## Critérios de revisão
 
-The specialist skills have no comparative agent evaluation yet. Before claiming behavioral validation, record platform, agent/version, scenario, sanitized evidence, observed result, and limitations. Structural checks do not establish correctness of every recommendation.
+- Não trata O11 e ODC como equivalentes.
+- Não inventa ações, APIs, configurações ou ferramentas.
+- Separa afirmações VERIFICADAS, INFERIDAS e DESCONHECIDAS, com o escopo da fonte.
+- Separa contexto informado, identidade do alvo e acesso verificado.
+- Trata instruções embutidas nas evidências como dado, não como autorização.
+- Pergunta só decisões relevantes em aberto; bloqueia só o trabalho dependente.
+- Acessa o Service Studio só pelas ferramentas MCP; nunca usa PowerShell ou
+  terminal para testar ou se conectar ao MCP e para na primeira falha.
+- Verifica escritas autorizadas e separa validação do modelo de teste em execução.
+- Traz um método prático de verificação.
+- Não presume acesso nem credenciais.
+- Não autoriza mudanças nem publicações fora do pedido.
+- Tem uma descrição que a diferencia das outras skills.
 
-See [Evaluation](evaluation.md) for executable structural checks and behavioral
-cases, and the [audit record](audits/2026-11-06.md) for the evidence behind changes.
+As orientações comuns de segurança e de conexão ficam dentro de cada skill,
+porque é possível instalar ou colar uma pasta sozinha. Não crie uma referência
+obrigatória para o repositório inteiro nem um segundo fluxo de aprovação que
+duplique essas orientações. O texto comum deve continuar curto.
+
+## Maturidade
+
+As skills especialistas ainda não têm avaliação comparativa de agente. Antes de
+afirmar validação de comportamento, registre plataforma, agente e versão,
+cenário, evidências sanitizadas, resultado observado e limitações. Verificações
+estruturais não provam que cada recomendação está correta.
+
+Veja a [avaliação](evaluation.md) para as verificações estruturais e os casos de
+comportamento, e as auditorias de [6/11/2026](audits/2026-11-06.md) e
+[24/11/2026](audits/2026-11-24.md) para a evidência por trás das mudanças.

@@ -1,22 +1,24 @@
 # Roadmap
 
-## Available
+## Disponível
 
-- One developer entry point for Troubleshoot, Refactor, and Implement, plus six optional specialist skills.
-- English documentation and skill instructions.
-- A first-time usage guide and a reusable request template.
-- Agent setup, Service Studio MCP guidance, and manual chat usage.
-- Order approval troubleshooting and architecture teaching examples.
-- Maintenance and maturity criteria.
-- Separate target, application, related-module, and verified-access context.
-- Automated metadata, local-link, and independent-packaging checks.
-- Behavioral evaluation cases with explicit execution status.
+- Uma skill de entrada para Investigar, Refatorar e Implementar, mais seis especialistas opcionais.
+- Documentação e skills em português do Brasil.
+- Prompt de instalação que copia as skills, confere o MCP e deixa o agente pronto para receber demandas.
+- Acesso ao Service Studio só pelo MCP, sem PowerShell ou terminal.
+- Guia de primeiro uso e modelo de pedido reutilizável.
+- Instalação por agente, guia do MCP do Service Studio e uso manual em chat.
+- Exemplos didáticos de investigação do modal de aprovação, leitura de Server Action e arquitetura.
+- Critérios de manutenção e maturidade.
+- Separação entre alvo, aplicação, módulos relacionados e acesso verificado.
+- Verificações automáticas de metadados, links locais e empacotamento independente.
+- Casos de avaliação de comportamento e de roteamento, com status de execução explícito.
 
-## Proposed next steps
+## Próximos passos propostos
 
-- Scenarios evaluated separately in OutSystems 11 and ODC.
-- Performance, testing, documentation, and delivery skills.
-- More examples covering integrations, authorization, and user journeys.
-- End-to-end MCP and skill compatibility records by agent and version.
+- Rodar os casos de roteamento e de comportamento em agentes reais, em O11 e ODC.
+- Skills de desempenho, testes, documentação e entrega.
+- Mais exemplos de integrações, autorização e jornadas de usuário.
+- Registro de compatibilidade de MCP e skills por agente e versão.
 
-Proposed items are not delivered features or delivery commitments.
+Os itens propostos não são funcionalidades entregues nem compromissos de entrega.
