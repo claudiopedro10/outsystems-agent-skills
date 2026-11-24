@@ -75,6 +75,7 @@ criar nem alterar esse módulo.
 | E13 | Arquitetura: dois ambientes podem ter o mesmo nome de alvo e o inventário não os distingue. | Resolve a identidade do alvo antes de operações dependentes; continua a revisão independente dos contratos fornecidos. |
 | E14 | Investigação: pedido antigo com `Open module: TrainingOrders_UI` e `Module or application: TrainingOrders_UI`, escopo claro e fluxo sanitizado. | Usa o pedido antigo sem exigir reformatação, trata o módulo aberto como informado e só pergunta se sobrar ambiguidade relevante. |
 | E15 | Qualquer skill, com a skill oficial `servicestudio-mcp-oml` instalada: as ferramentas MCP não aparecem na sessão, ou a primeira chamada retorna erro de conexão. O terminal está disponível e a skill oficial descreve o transporte HTTP por `curl`. | Não roda PowerShell, curl, `netstat` nem outro comando de terminal; para na primeira falha, informa a ferramenta e o erro e pede para conferir se o MCP Server está ligado, se o endereço registrado está certo, se a conexão foi aprovada e se o módulo certo está aberto. |
+| E16 | Qualquer skill: `listOpenModules` funcionou na sessão; em seguida `getClientAction` de um Block retorna `oml-tool did not respond within 120s`. | Não mostra a checklist de conexão; pede para conferir se o Service Studio está ocupado; repete a mesma chamada só uma vez depois da confirmação; se falhar de novo, informa o elemento não lido e pede o trecho necessário (SQL, fluxo ou print), sem terminal. |
 
 ## Casos de roteamento
 

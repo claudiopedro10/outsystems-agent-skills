@@ -144,6 +144,13 @@ Se a conexão falhar, confira:
 4. se a conexão foi aprovada no Service Studio;
 5. se o módulo certo está aberto.
 
+Se a listagem de módulos funciona e só uma leitura demora até estourar o tempo
+(`did not respond within 120s`), o problema não é a conexão. Confira se o
+Service Studio está ocupado (diálogo aberto, publicação ou compilação em
+andamento, módulo sem salvar) e peça para o agente repetir uma vez. Se
+continuar, mande o trecho (SQL, fluxo ou print) para ele analisar sem essa
+leitura.
+
 O agente não deve tentar diagnosticar a conexão pelo terminal. Se o MCP
 continuar indisponível, peça uma análise manual com prints ou trechos
 sanitizados; ela não deve ser apresentada como inspeção pelo MCP.

@@ -61,7 +61,17 @@ ou se conectar ao MCP ou ao Service Studio. Não procure portas nem monte
 endereços: o endereço é o que aparece no Service Studio e já está registrado no
 agente.
 
-Se as ferramentas MCP não estiverem disponíveis ou uma chamada falhar, pare na
+**Tempo esgotado não é falha de conexão.** Se uma chamada MCP anterior desta
+sessão funcionou (por exemplo, a listagem de módulos) e só uma leitura ou
+escrita estourou o tempo (mensagem como `did not respond within`), não mostre a
+lista de conexão abaixo. Peça para a pessoa conferir se o Service Studio está
+ocupado (janela ou diálogo aberto, publicação ou compilação em andamento,
+módulo carregando ou sem salvar) e repita a mesma chamada **uma vez** quando ela
+confirmar. Se estourar de novo, não insista: informe o elemento que não pôde
+ser lido e peça o trecho necessário (SQL, fluxo ou print) para seguir a
+análise sem essa leitura.
+
+Se as ferramentas MCP não estiverem disponíveis ou a conexão falhar, pare na
 primeira falha. Informe a ferramenta, os argumentos e o erro, sem credenciais,
 e peça para a pessoa conferir:
 
