@@ -4,7 +4,7 @@
 
 - Uma skill de entrada para Investigar, Refatorar e Implementar, mais seis especialistas opcionais.
 - Documentação e skills em português do Brasil.
-- Prompt de instalação que copia as skills, confere o MCP e deixa o agente pronto para receber demandas.
+- Prompt de instalação que copia as skills e a skill oficial da OutSystems, confere o MCP e deixa o agente pronto para receber demandas.
 - Acesso ao Service Studio só pelo MCP, sem PowerShell ou terminal.
 - Guia de primeiro uso e modelo de pedido reutilizável.
 - Instalação por agente, guia do MCP do Service Studio e uso manual em chat.

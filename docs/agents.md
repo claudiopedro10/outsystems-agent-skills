@@ -2,7 +2,7 @@
 
 O jeito mais simples de instalar é colar o prompt da seção
 [Como começar](../README.md#como-começar) do README: o próprio agente copia as
-skills, confere o MCP e avisa quando estiver pronto. Este guia explica a
+skills deste repositório e a skill oficial da OutSystems, confere o MCP e avisa quando estiver pronto. Este guia explica a
 instalação manual, caso você prefira ou o agente não consiga fazer sozinho.
 
 Documentação conferida em **6 de novembro de 2026**. Os procedimentos se baseiam
@@ -36,9 +36,11 @@ abertos** só para o acesso verificado pelo MCP. Aplicação e Módulos relacion
 são contexto opcional, não prova de acesso. Use o [modelo de pedido](request-template.md)
 quando a tarefa precisar de mais contexto.
 
-Instale todas as pastas de `skills/`. A `outsystems-developer` é a porta de
-entrada e escolhe sozinha o fluxo; os especialistas são consultados quando
-necessário.
+Instale todas as pastas de `skills/` e também a pasta `servicestudio-mcp-oml`
+do [repositório oficial da OutSystems](https://github.com/OutSystems/outsystems11-mcp).
+A `outsystems-developer` é a porta de entrada e escolhe sozinha o fluxo; os
+especialistas são consultados quando necessário; a skill oficial é a referência
+das ferramentas MCP e da Model API.
 
 ## Baixar a biblioteca
 
@@ -47,6 +49,7 @@ pode rodar:
 
 ```sh
 git clone https://github.com/claudiopedro10/outsystems-agent-skills.git
+git clone https://github.com/OutSystems/outsystems11-mcp.git
 ```
 
 A biblioteca baixada é a origem. O seu projeto de trabalho é onde o agente vai
@@ -58,8 +61,12 @@ instruções do projeto (`AGENTS.md`, `CLAUDE.md` ou equivalente):
 
 ```text
 Para qualquer tarefa OutSystems, use a skill outsystems-developer como ponto de
-entrada. Acesse o Service Studio somente pelas ferramentas MCP; nunca use
-PowerShell nem terminal para testar ou se conectar ao MCP.
+entrada. A skill oficial servicestudio-mcp-oml serve só como referência de como
+usar as ferramentas MCP e a Model API; não a use para escolher o fluxo da
+tarefa. Acesse o Service Studio somente pelas ferramentas MCP; nunca use
+PowerShell nem terminal para testar ou se conectar ao MCP. Se a skill oficial e
+as skills outsystems-* entrarem em conflito, vale a regra de não usar terminal e
+o fluxo da outsystems-developer.
 ```
 
 ## Codex
@@ -75,6 +82,8 @@ seu-projeto/
       outsystems-core/
         SKILL.md
       ...
+      servicestudio-mcp-oml/
+        SKILL.md
 ```
 
 Abra uma nova sessão do Codex no projeto e mande:

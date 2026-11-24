@@ -9,7 +9,7 @@ fornecedores nem execução de todos os exemplos.
 - [Architecture Canvas — OutSystems 11](https://success.outsystems.com/documentation/11/app_architecture/designing_the_architecture_of_your_outsystems_applications/the_architecture_canvas/): referência para Foundation, Core e End User.
 - [Documentação oficial](https://success.outsystems.com/documentation/): confirme as capacidades da plataforma e da versão aplicáveis.
 - [Get started with OutSystems MCP (O11)](https://success.outsystems.com/documentation/11/outsystems_mcp/get_started_with_outsystems_mcp/): pré-requisitos, servidor local, configuração do agente e verificação.
-- [Repositório oficial OutSystems O11 MCP](https://github.com/OutSystems/outsystems11-mcp): guias de configuração por host e uma skill oficial. **Opcional**: as skills deste repositório não exigem a skill oficial; elas usam as ferramentas que o servidor MCP anuncia.
+- [Repositório oficial OutSystems O11 MCP](https://github.com/OutSystems/outsystems11-mcp): guias de configuração por host e a skill oficial `servicestudio-mcp-oml`, instalada junto com as skills deste repositório como referência das ferramentas MCP e da Model API. As partes que chamam o servidor por shell ou `curl` não devem ser seguidas pelo agente.
 - [ODC: Use MCP servers](https://success.outsystems.com/documentation/outsystems_developer_cloud/building_apps/build_ai_powered_apps/agentic_apps_in_odc/tools_and_connectors/use_mcp_servers/): consumo de ferramentas MCP externas por apps agênticos do ODC; não é um guia para um agente de código editar aplicações ODC ou O11.
 
 A referência do Architecture Canvas é do O11. Esta biblioteca não presume a
@@ -38,6 +38,6 @@ A comparação com o MCP O11 na auditoria de 6/11/2026 usou o repositório ofici
 no commit [`8f36d5a`](https://github.com/OutSystems/outsystems11-mcp/tree/8f36d5ad38bb57e34e3078f882f0909ee5650cda).
 O fluxo de merge e publicação, a verificação posterior e os limites de
 identificação de módulos daquela skill inspiraram as orientações daqui. Desde
-24/11/2026, as skills não dependem mais da skill oficial; confira a versão
-instalada das ferramentas MCP antes de executar. Veja as auditorias de
+24/11/2026, a skill oficial é instalada junto, como referência, e a regra de não
+usar terminal prevalece sobre ela; a versão conferida foi o commit `91c9e09`. Veja as auditorias de
 [6/11](audits/2026-11-06.md) e [24/11](audits/2026-11-24.md).

@@ -48,6 +48,13 @@ que já estão configuradas no agente. Antes de usar, descubra quais ferramentas
 o servidor anuncia e use os parâmetros que elas declaram. Se precisar da key de
 um módulo, consulte-a pelo próprio MCP.
 
+Se a skill oficial da OutSystems `servicestudio-mcp-oml` estiver instalada,
+use-a como referência das ferramentas MCP e da Model API, principalmente para
+escrever no modelo (preparar a edição, fazer o merge e validar). Ela não
+escolhe o fluxo da tarefa. Se ela sugerir chamar o servidor MCP por shell,
+`curl` ou script (por exemplo, na parte de transporte HTTP), não siga: use só
+as ferramentas MCP do host. Em caso de conflito, vale esta skill.
+
 **Nunca use PowerShell, cmd, bash, curl, `Invoke-WebRequest`, `netstat`,
 scripts ou qualquer outro comando de terminal** para testar, descobrir, chamar
 ou se conectar ao MCP ou ao Service Studio. Não procure portas nem monte

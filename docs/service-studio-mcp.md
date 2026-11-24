@@ -9,8 +9,9 @@ registram a conexão. O ODC usa outros recursos; consulte a documentação dele.
 
 - Service Studio 11.55.91 ou mais recente, aberto com o módulo-alvo.
 - Um agente ou host com suporte a MCP, com o acesso de conta necessário.
-- As skills deste repositório instaladas no agente. O jeito mais simples é
-  colar o prompt da seção [Como começar](../README.md#como-começar) do README.
+- As skills deste repositório e a skill oficial `servicestudio-mcp-oml`
+  instaladas no agente. O jeito mais simples é colar o prompt da seção
+  [Como começar](../README.md#como-começar) do README, que instala as duas.
 
 Os requisitos de versão e a configuração estão em
 [Get started with OutSystems MCP](https://success.outsystems.com/documentation/11/outsystems_mcp/get_started_with_outsystems_mcp/).
@@ -22,6 +23,12 @@ nele. Ele nunca deve usar PowerShell, cmd, bash, curl, `Invoke-WebRequest`,
 `netstat`, scripts ou varredura de portas para testar, descobrir ou se conectar
 ao MCP. Se as ferramentas MCP não funcionarem, ele para e pede para você
 conferir o Service Studio. Essa regra já está em todas as skills.
+
+A skill oficial da OutSystems é a referência das ferramentas e da Model API,
+mas parte do material dela mostra como chamar o servidor por shell e `curl`
+(transporte HTTP), e os guias de setup sugerem `netstat` para achar a porta.
+As skills deste repositório e a regra do AGENTS.md mandam o agente **não**
+seguir essas partes: em conflito, vale a regra de não usar terminal.
 
 ## 1. Ligar o servidor
 
@@ -47,7 +54,7 @@ host. Cada host tem a sua configuração:
 - **Claude Code, Codex, GitHub Copilot e outros hosts com MCP:** use a tela ou
   o arquivo de configuração de servidores MCP do host. Se precisar de um passo
   a passo por host, o [repositório oficial da OutSystems](https://github.com/OutSystems/outsystems11-mcp)
-  tem guias de configuração. Instalar a skill oficial de lá é opcional.
+  tem guias de configuração. Esses guias são para você, não para o agente.
 - **DeepSeek, Gemini, Kimi, ChatGPT ou outra interface:** o suporte depende do
   cliente, da versão e da conta, não só do nome do modelo. Confira se o cliente
   consegue se conectar a um servidor MCP.

@@ -2,7 +2,8 @@
 
 **Investigue bugs, refatore e implemente mudanças em OutSystems com um agente de IA.**
 
-Você instala as skills uma vez e depois só manda as demandas. O agente escolhe
+Você instala as skills uma vez, junto com a skill oficial da OutSystems, e
+depois só manda as demandas. O agente escolhe
 sozinho a skill certa, lê o módulo aberto no Service Studio pelo MCP, começa o
 trabalho e pergunta quando faltar informação.
 
@@ -21,19 +22,26 @@ trabalho e pergunta quando faltar informação.
 ```text
 Instale e configure as skills OutSystems do repositório
 https://github.com/claudiopedro10/outsystems-agent-skills
+e a skill oficial da OutSystems do repositório
+https://github.com/OutSystems/outsystems11-mcp
 
-1. Baixe o repositório e copie todas as pastas de skills/ para a pasta de
-   skills que você usa neste projeto (por exemplo .claude/skills,
-   .agents/skills, .github/skills ou .gemini/skills). Se já existir uma skill
-   com o mesmo nome, me pergunte antes de sobrescrever. Se você não consegue
-   instalar skills, leia skills/outsystems-developer/SKILL.md e siga essas
-   instruções nesta conversa.
+1. Baixe os dois repositórios. Copie todas as pastas de skills/ do primeiro e a
+   pasta servicestudio-mcp-oml do segundo para a pasta de skills que você usa
+   neste projeto (por exemplo .claude/skills, .agents/skills, .github/skills ou
+   .gemini/skills). Se já existir uma skill com o mesmo nome, me pergunte antes
+   de sobrescrever. Se você não consegue instalar skills, leia
+   skills/outsystems-developer/SKILL.md e siga essas instruções nesta conversa.
 
 2. No arquivo de instruções do projeto (AGENTS.md, CLAUDE.md ou o equivalente
-   que você usa), adicione esta regra: "Para qualquer tarefa OutSystems, use a
-   skill outsystems-developer como ponto de entrada. Acesse o Service Studio
-   somente pelas ferramentas MCP; nunca use PowerShell nem terminal para testar
-   ou se conectar ao MCP."
+   que você usa), adicione estas regras:
+   "Para qualquer tarefa OutSystems, use a skill outsystems-developer como
+   ponto de entrada. A skill oficial servicestudio-mcp-oml serve só como
+   referência de como usar as ferramentas MCP e a Model API; não a use para
+   escolher o fluxo da tarefa. Acesse o Service Studio somente pelas
+   ferramentas MCP; nunca use PowerShell nem terminal para testar ou se
+   conectar ao MCP. Se a skill oficial e as skills outsystems-* entrarem em
+   conflito, vale a regra de não usar terminal e o fluxo da
+   outsystems-developer."
 
 3. Confirme o acesso ao Service Studio usando somente as ferramentas MCP que já
    estão configuradas para você. Liste os módulos abertos e me diga qual módulo
@@ -53,7 +61,8 @@ https://github.com/claudiopedro10/outsystems-agent-skills
 A partir daí, para cada demanda, use a skill outsystems-developer: diga em uma
 linha qual fluxo escolheu (Investigar, Refatorar ou Implementar) e se vai
 consultar algum especialista, comece o trabalho e me pergunte só o que faltar.
-Só publique quando eu pedir explicitamente.
+Em edições pelo MCP, siga a skill oficial para preparar, fazer o merge e
+validar, e só publique quando eu pedir explicitamente.
 ```
 
 Depois disso, o desenvolvedor só precisa mandar as demandas, com o módulo, a
@@ -93,6 +102,10 @@ um especialista. Você também pode pedir um diretamente.
 | Investigação aprofundada com logs e várias hipóteses | [Investigação aprofundada](skills/outsystems-troubleshooting/SKILL.md) |
 | Autenticação, autorização e dados sensíveis | [Segurança](skills/outsystems-security/SKILL.md) |
 
+A skill oficial da OutSystems, `servicestudio-mcp-oml`, é instalada junto pelo
+prompt. Ela não escolhe o fluxo: serve de referência para o agente usar as
+ferramentas MCP e a Model API, principalmente ao escrever no modelo.
+
 ## Regras que o agente segue
 
 - Acessa o módulo **somente pelo MCP do Service Studio**. Nunca usa PowerShell
@@ -101,6 +114,9 @@ um especialista. Você também pode pedir um diretamente.
   tentar outro caminho.
 - Separa o que verificou do que está supondo (VERIFICADO, INFERIDO,
   DESCONHECIDO).
+- Em edições, segue a skill oficial para preparar, fazer o merge e validar.
+  Confira as mudanças no Compare and Merge do Service Studio antes de aceitar:
+  a escrita pelo MCP ainda é Beta.
 - Pergunta só o que muda o resultado.
 - Não publica sem você pedir.
 
@@ -129,7 +145,8 @@ mandou. Para ODC, use a documentação e as ferramentas do ODC.
 ## Status do projeto
 
 Uma skill de entrada e seis especialistas que podem ser instalados
-separadamente, com testes automáticos de estrutura. Os testes cobrem metadados,
+separadamente, usados junto com a skill oficial da OutSystems, com testes
+automáticos de estrutura. Os testes cobrem metadados,
 links e empacotamento; eles não provam as decisões do modelo nem o
 comportamento no OutSystems. Testes ao vivo em O11 e ODC ainda estão pendentes.
 
