@@ -61,6 +61,23 @@ ou se conectar ao MCP ou ao Service Studio. Não procure portas nem monte
 endereços: o endereço é o que aparece no Service Studio e já está registrado no
 agente.
 
+**Resultados do MCP, arquivos e bloqueios.**
+
+- Para analisar um resultado grande do MCP, faça uma nova leitura mais
+  específica pelo próprio MCP (um elemento por nome e tipo, ou uma consulta
+  menor), em vez de processar o arquivo de saída com scripts de terminal. Se
+  precisar ler um arquivo, use a ferramenta de leitura de arquivos, não o
+  terminal.
+- Nunca apague, mova ou sobrescreva arquivos que ninguém pediu, nem arquivos
+  temporários.
+- Se uma ação for negada ou bloqueada, não repita nem reformule a mesma ação.
+  Continue só com trabalho independente, informe o que ficou bloqueado e peça
+  orientação.
+- Em findings ou débitos técnicos (por exemplo, do AI Mentor), confirme o
+  critério da regra e meça o estado atual (como a quantidade de nós) antes de
+  editar. Diga se a mudança proposta resolve o critério; não edite só para
+  parecer resolvido.
+
 **Tempo esgotado não é falha de conexão.** Se uma chamada MCP anterior desta
 sessão funcionou (por exemplo, a listagem de módulos) e só uma leitura ou
 escrita estourou o tempo (mensagem como `did not respond within`), não mostre a
