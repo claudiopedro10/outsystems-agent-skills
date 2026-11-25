@@ -59,7 +59,7 @@ colar o JSON. Colar trechos do chat é a causa mais comum de arquivo quebrado
 
 | Agente | Arquivo pronto neste repositório | Onde colocar no projeto |
 | --- | --- | --- |
-| Claude Code | [`config/claude-code.mcp.json`](../config/claude-code.mcp.json) | `.mcp.json` na raiz |
+| Claude Code | [`.mcp.json`](../.mcp.json) (cópia do arquivo oficial da OutSystems) | `.mcp.json` na raiz |
 | GitHub Copilot no VS Code | [`config/vscode-copilot.mcp.json`](../config/vscode-copilot.mcp.json) | `.vscode/mcp.json` |
 
 O Claude Code dentro do VS Code continua sendo Claude Code: ele usa `.mcp.json`
@@ -67,8 +67,13 @@ na raiz, não `.vscode/mcp.json`. Salve o arquivo antes de recarregar.
 
 Se a porta no Service Studio não for `41820`, troque só o número no `url`.
 Depois recarregue o agente (no VS Code: **Developer: Reload Window**) e aprove o
-servidor `outsystems`. No Claude Code, `/mcp` deve mostrar `outsystems` como
-**Connected**.
+servidor `servicestudio`. No Claude Code, `/mcp` deve mostrar `servicestudio`
+como **Connected**.
+
+O nome `servicestudio` é o mesmo do repositório oficial e das mensagens de erro
+da skill oficial. Não registre um segundo servidor com outro nome (por exemplo
+`outsystems`) para o mesmo endereço: o agente passa a ver ferramentas
+duplicadas.
 
 - **Outros hosts com MCP (Codex, Gemini CLI, Kimi etc.):** use a configuração de
   servidores MCP do host. O [repositório oficial da OutSystems](https://github.com/OutSystems/outsystems11-mcp)

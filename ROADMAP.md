@@ -6,7 +6,7 @@
 - Documentação e skills em português do Brasil.
 - Prompt de instalação que copia as skills e a skill oficial da OutSystems, confere o MCP e deixa o agente pronto para receber demandas.
 - Acesso ao Service Studio só pelo MCP, sem PowerShell ou terminal.
-- Registro do MCP feito pelo próprio agente no prompt de instalação, com arquivos prontos em `config/` para Claude Code e Copilot.
+- Registro do MCP feito pelo próprio agente no prompt de instalação, com `.mcp.json` na raiz (cópia do arquivo oficial da OutSystems, servidor `servicestudio`) e arquivo pronto em `config/` para o Copilot.
 - Guia de primeiro uso e modelo de pedido reutilizável.
 - Instalação por agente, guia do MCP do Service Studio e uso manual em chat.
 - Exemplos didáticos de investigação do modal de aprovação, leitura de Server Action e arquitetura.

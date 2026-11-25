@@ -52,20 +52,25 @@ https://github.com/OutSystems/outsystems11-mcp
    linha. Crie ou atualize o arquivo de configuração MCP do projeto com a sua
    ferramenta de edição de arquivos, sem testar a conexão. O formato depende
    de qual agente VOCÊ é, não do editor em que está rodando:
-   - Se você é o Claude Code (inclusive a extensão dentro do VS Code): crie
-     .mcp.json na RAIZ do projeto, com
-     {"mcpServers": {"outsystems": {"type": "http", "url": "<ENDEREÇO>"}}}
+   - Se você é o Claude Code (inclusive a extensão dentro do VS Code): copie o
+     arquivo .mcp.json da raiz do repositório outsystems-agent-skills baixado
+     no passo 1 para a RAIZ do projeto, sem redigitar o JSON. Ele é cópia do
+     .mcp.json do repositório oficial da OutSystems. Se o endereço da primeira
+     linha for diferente de http://127.0.0.1:41820/mcp, troque só o "url".
      Não use .vscode/mcp.json: o Claude Code não lê esse arquivo.
-   - Se você é o GitHub Copilot no VS Code: crie .vscode/mcp.json, com
-     {"servers": {"outsystems": {"type": "http", "url": "<ENDEREÇO>"}}}
-   - Outro agente: o arquivo de configuração MCP que a documentação dele indica.
-   Se o arquivo já existir, acrescente o servidor "outsystems" sem apagar os
-   outros. Salve o arquivo no disco (não deixe só aberto no editor), leia de
+   - Se você é o GitHub Copilot no VS Code: copie
+     config/vscode-copilot.mcp.json do mesmo repositório para .vscode/mcp.json.
+   - Outro agente: o arquivo de configuração MCP que a documentação dele indica,
+     com o servidor "servicestudio".
+   Se o arquivo já existir, acrescente só o servidor "servicestudio" sem apagar
+   os outros. Se já houver outro servidor apontando para o mesmo endereço (por
+   exemplo "outsystems", de uma instalação anterior), me pergunte antes de
+   trocar: dois servidores para o mesmo Service Studio confundem o agente. Salve o arquivo no disco (não deixe só aberto no editor), leia de
    novo e confira se é um JSON válido e completo. Diga em uma linha qual agente
    você é e qual arquivo criou. Se você já tinha ferramentas MCP do Service Studio antes deste
    passo, pule direto para o passo 4. Se não tinha, pare aqui e me peça para
    reiniciar a sessão (ou recarregar o VS Code), aprovar o servidor
-   "outsystems" quando aparecer e depois responder "continue".
+   "servicestudio" quando aparecer e depois responder "continue".
 
 4. Confirme o acesso ao Service Studio usando somente as ferramentas MCP.
    Liste os módulos abertos e me diga qual módulo você conseguiu ler. Nunca use
@@ -76,7 +81,7 @@ https://github.com/OutSystems/outsystems11-mcp
 5. Se as ferramentas MCP não aparecerem ou a leitura falhar, pare e me peça
    para conferir se o MCP Server está ligado (Running) no Service Studio, se o
    endereço mostrado lá é o mesmo da primeira linha deste prompt, se aprovei o
-   servidor "outsystems" no agente e a conexão no Service Studio e se o módulo
+   servidor "servicestudio" no agente e a conexão no Service Studio e se o módulo
    certo está aberto.
 
 6. Quando tudo estiver pronto, responda: "Pronto, pode mandar a demanda:
@@ -90,14 +95,18 @@ validar, e só publique quando eu pedir explicitamente.
 ```
 
 Na primeira vez, o agente para no passo 3 e pede para você reiniciar a sessão
-e aprovar o servidor `outsystems`. É normal: as ferramentas MCP só aparecem
+e aprovar o servidor `servicestudio`. É normal: as ferramentas MCP só aparecem
 depois disso. Responda "continue" e ele termina a instalação.
 
 Confira o arquivo que ele criou: no **Claude Code** é `.mcp.json` na raiz do
 projeto (com `mcpServers`); no **Copilot** é `.vscode/mcp.json` (com `servers`).
-Se o Claude Code criou `.vscode/mcp.json`, copie
-[`config/claude-code.mcp.json`](config/claude-code.mcp.json) para a raiz com o
-nome `.mcp.json`.
+Se o Claude Code criou `.vscode/mcp.json`, copie o [`.mcp.json`](.mcp.json) da
+raiz deste repositório para a raiz do projeto.
+
+O `.mcp.json` da raiz é cópia do arquivo do
+[repositório oficial](https://github.com/OutSystems/outsystems11-mcp) e usa o
+mesmo nome de servidor, `servicestudio`. Se você já registrou o servidor oficial
+com `claude mcp add servicestudio`, não registre outro com nome diferente.
 
 Depois disso, o desenvolvedor só precisa mandar as demandas, com o módulo, a
 ação ou tela e o que precisa ser feito. Por exemplo:
