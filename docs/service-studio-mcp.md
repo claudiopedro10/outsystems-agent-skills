@@ -7,7 +7,8 @@ registram a conexão. O ODC usa outros recursos; consulte a documentação dele.
 
 ## Antes de começar
 
-- Service Studio 11.55.91 ou mais recente, aberto com o módulo-alvo.
+- Service Studio 11.55.91 ou mais recente, aberto com o módulo-alvo. Recomendado:
+  11.55.99 ou mais recente (contrato MCP 2, veja abaixo).
 - Um agente ou host com suporte a MCP, com o acesso de conta necessário.
 - As skills deste repositório e a skill oficial `servicestudio-mcp-oml`
   instaladas no agente. O jeito mais simples é colar o prompt da seção
@@ -15,6 +16,48 @@ registram a conexão. O ODC usa outros recursos; consulte a documentação dele.
 
 Os requisitos de versão e a configuração estão em
 [Get started with OutSystems MCP](https://success.outsystems.com/documentation/11/outsystems_mcp/get_started_with_outsystems_mcp/).
+
+## Versão do servidor: o contrato MCP
+
+O servidor MCP do Service Studio tem um **número de contrato**, que sobe quando
+ferramentas mudam. A primeira linha das instruções do servidor diz
+`Service Studio <versão>, MCP contract <N>.`; sem essa linha, é o contrato 1.
+
+| Contrato | Service Studio | O que muda para o agente |
+| --- | --- | --- |
+| 1 | 11.55.91 a 11.55.98 | Ferramentas variam por build. As mais antigas listam módulos com `listApps` e não abrem módulos: você abre no Service Studio. |
+| 2 | 11.55.99 ou mais recente | `listOpenModules`, `searchApps`, `openModule` e `closeModule`; escritas dentro de uma sessão de edição (`startOmlEditSession` / `endOmlEditSession`). |
+
+As skills deste repositório foram revisadas com o contrato 2. Quando o servidor
+fala um contrato mais novo que o da skill oficial instalada, o agente avisa e
+oferece atualizar; ele só atualiza se você concordar. Detalhes: `reference/contracts.md`
+na skill oficial.
+
+Três situações parecem erro de conexão, mas não são:
+
+- **Pedido de aprovação esperando.** A primeira chamada fica parada até você
+  aprovar o pedido na janela do Service Studio, que pode estar atrás de outras
+  janelas.
+- **Leituras em paralelo.** Logo depois de abrir o módulo, leituras simultâneas
+  falham com `OML not found` ou `Could not find file '…-in.oml'`. Repetir a
+  leitura sozinha resolve; as skills mandam o agente ler uma coisa por vez fora
+  da sessão de edição.
+- **Tempo esgotado.** `did not respond within` com o Service Studio ocupado
+  (diálogo aberto, compilação, módulo carregando).
+
+## Atualizar a skill oficial
+
+A skill oficial muda com frequência. Para atualizar, rode de novo o passo 1 do
+prompt de instalação ou, se você mantém um clone do repositório oficial:
+
+```powershell
+cd <pasta>\outsystems11-mcp
+git pull
+powershell -ExecutionPolicy Bypass -File scripts\install.ps1 -Source .
+```
+
+O script troca só a pasta `servicestudio-mcp-oml` e não mexe nas skills deste
+repositório. Abra uma sessão nova do agente depois.
 
 ## Regra principal: só MCP, nunca terminal
 

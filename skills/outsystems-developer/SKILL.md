@@ -37,6 +37,20 @@ que já estão configuradas no agente. Descubra quais ferramentas o servidor
 anuncia e use os parâmetros que elas declaram. Se precisar da key de um módulo,
 consulte-a pelo próprio MCP.
 
+**Versão do servidor (contrato MCP).** A primeira linha das instruções do
+servidor (ou a descrição de `createSessionToken`) diz
+`Service Studio <versão>, MCP contract <N>.`. Estas skills foram revisadas com o
+contrato 2 (Service Studio 11.55.99 ou mais recente); sem essa linha, o
+servidor é do contrato 1 e pode não ter todas as ferramentas. Se o contrato do
+servidor for mais novo que o da skill oficial instalada, avise a pessoa e
+ofereça atualizar a skill oficial; não atualize sem ela concordar. Quando a
+descrição ao vivo de uma ferramenta divergir de uma skill, siga a descrição.
+
+**Aprovação no Service Studio.** Antes da primeira chamada que pede aprovação
+(como `createSessionToken`), avise a pessoa para aprovar o pedido na janela do
+Service Studio, que pode estar atrás de outras janelas. Enquanto ela não
+aprovar, a chamada fica esperando: isso não é falha de conexão.
+
 Se a skill oficial da OutSystems `servicestudio-mcp-oml` estiver instalada,
 use-a como referência das ferramentas MCP e da Model API, principalmente para
 escrever no modelo (preparar a edição, fazer o merge e validar). Ela não
@@ -57,6 +71,10 @@ agente.
   menor), em vez de processar o arquivo de saída com scripts de terminal. Se
   precisar ler um arquivo, use a ferramenta de leitura de arquivos, não o
   terminal.
+- Fora de uma sessão de edição, faça uma leitura MCP por vez no mesmo
+  módulo. Leituras em paralelo logo depois de abrir o módulo ou de ele mudar
+  falham com `OML not found` ou `Could not find file '…-in.oml'`. Isso não é
+  falha de conexão: repita sozinha a leitura que falhou.
 - Nunca apague, mova ou sobrescreva arquivos que ninguém pediu, nem arquivos
   temporários.
 - Se uma ação for negada ou bloqueada, não repita nem reformule a mesma ação.
@@ -90,6 +108,17 @@ Não tente contornar a falha por outro caminho. Enquanto o MCP não voltar,
 trabalhe apenas com as evidências que a pessoa fornecer e deixe claro que
 nenhum módulo foi inspecionado. No ODC, use a aplicação ou library real e as
 ferramentas suportadas.
+
+Se o módulo do pedido não estiver aberto e o servidor anunciar `searchApps` e
+`openModule`, abra-o pelo MCP só quando o pedido nomear o módulo; se houver
+mais de um candidato ou nenhum, pergunte e não abra nada. Diga qual módulo
+abriu e feche com `closeModule` o que você abriu ao terminar. Sem essas
+ferramentas, peça para a pessoa abrir o módulo no Service Studio.
+
+Escritas pelo MCP acontecem dentro de uma sessão de edição
+(`startOmlEditSession` e `endOmlEditSession`), como a skill oficial descreve. Se
+já houver uma sessão aberta que você não iniciou, não escreva nela nem a
+encerre: avise a pessoa.
 
 ## Prints em pedidos do dia a dia
 

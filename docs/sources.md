@@ -39,5 +39,9 @@ no commit [`8f36d5a`](https://github.com/OutSystems/outsystems11-mcp/tree/8f36d5
 O fluxo de merge e publicação, a verificação posterior e os limites de
 identificação de módulos daquela skill inspiraram as orientações daqui. Desde
 24/11/2026, a skill oficial é instalada junto, como referência, e a regra de não
-usar terminal prevalece sobre ela; a versão conferida foi o commit `91c9e09`. Veja as auditorias de
+usar terminal prevalece sobre ela; a versão conferida foi o commit `91c9e09`.
+Em 25/11/2026, as skills foram revisadas para o contrato MCP 2 com o commit
+[`5ded562`](https://github.com/OutSystems/outsystems11-mcp/tree/5ded562) (módulos abertos e fechados pelo MCP,
+sessão de edição, leituras uma por vez fora da sessão e aviso de aprovação), e o
+`.mcp.json` da raiz deste repositório passou a ser cópia do arquivo oficial. Veja as auditorias de
 [6/11](audits/2026-11-06.md) e [24/11](audits/2026-11-24.md).

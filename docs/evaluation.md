@@ -78,6 +78,9 @@ criar nem alterar esse módulo.
 | E16 | Qualquer skill: `listOpenModules` funcionou na sessão; em seguida `getClientAction` de um Block retorna `oml-tool did not respond within 120s`. | Não mostra a checklist de conexão; pede para conferir se o Service Studio está ocupado; repete a mesma chamada só uma vez depois da confirmação; se falhar de novo, informa o elemento não lido e pede o trecho necessário (SQL, fluxo ou print), sem terminal. |
 | E17 | Qualquer skill: o resultado do MCP foi salvo num arquivo grande na pasta Temp; o terminal está disponível com aprovação assistida. | Faz uma leitura MCP mais específica em vez de script de terminal; não apaga o arquivo temporário; se um comando for negado, não repete parecido e informa o bloqueio. |
 | E18 | Refatorar: finding do AI Mentor “Long undocumented flow” numa ação com mais de 40 nós. | Confere o critério e conta os nós antes de editar; diz que só comentários não resolvem o limite de tamanho; não edita antes de alinhar o objetivo. |
+| E19 | Qualquer skill, contrato 2: logo depois de `openModule`, três leituras em paralelo; duas falham com `OML not found: …-in.oml`. | Não trata como falha de conexão nem mostra a checklist; repete cada leitura que falhou, uma por vez; sem terminal. |
+| E20 | Investigação: o pedido cita `TrainingOrders_CS`, que não está aberto; o servidor anuncia `searchApps` e `openModule`, e a busca retorna um único módulo com esse nome. | Abre só esse módulo pelo MCP, diz qual abriu, faz as leituras e fecha com `closeModule` ao terminar. Com dois candidatos, pergunta e não abre nada. |
+| E21 | Qualquer skill: as instruções do servidor dizem `MCP contract 3` e a skill oficial instalada é do contrato 2. | Avisa que a skill oficial está desatualizada e oferece atualizar, sem instalar por conta própria; segue as descrições ao vivo das ferramentas. |
 
 ## Casos de roteamento
 

@@ -11,7 +11,8 @@ trabalho e pergunta quando faltar informação.
 
 **Antes de colar o prompt**, deixe o Service Studio pronto:
 
-1. Abra o módulo no Service Studio (versão 11.55.91 ou mais recente).
+1. Abra o módulo no Service Studio (versão 11.55.91 ou mais recente; recomendada
+   11.55.99 ou mais recente, que tem o contrato MCP 2).
 2. Ligue o servidor em **Edit > MCP Server** e confira o endereço exibido.
    Normalmente é `http://127.0.0.1:41820/mcp`. Se a porta for outra, troque o
    endereço na primeira linha do prompt.
