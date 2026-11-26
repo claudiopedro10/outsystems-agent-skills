@@ -6,7 +6,7 @@ skills deste repositório e a skill oficial da OutSystems, confere o MCP e avisa
 instalação manual, caso você prefira ou o agente não consiga fazer sozinho.
 
 Documentação conferida em **6 de novembro de 2026**. Os procedimentos se baseiam
-em [fontes oficiais](sources.md); não foram executados em todos os produtos.
+em [fontes oficiais](manutencao/sources.md); não foram executados em todos os produtos.
 
 > [!IMPORTANT]
 > Para acessar um módulo OutSystems 11, ligue o MCP Server no Service Studio,
@@ -137,7 +137,7 @@ Code não deixa a skill disponível automaticamente no navegador ou na nuvem.
 
 Use o método manual abaixo. Se a sua conta permitir skills personalizadas, siga
 as instruções oficiais de upload e empacotamento da Anthropic, citadas nas
-[fontes](sources.md).
+[fontes](manutencao/sources.md).
 
 ## Gemini CLI
 
@@ -223,6 +223,10 @@ não consegue ler arquivos locais, cole as instruções manualmente.
 
 ## Atualizar ou remover
 
-Atualize a biblioteca baixada, revise as diferenças e copie de novo as skills.
+Atualize a biblioteca baixada, revise as diferenças e copie de novo as skills,
+substituindo as pastas antigas. Atualize também a skill oficial: no clone do
+`outsystems11-mcp`, rode `git pull` e depois
+`scripts/install.ps1 -Source .` (ou `scripts/install.sh`). O passo a passo
+completo está no [README](../README.md#já-usa-este-repositório-atualize-assim).
 Para remover uma skill, apague a pasta instalada e abra uma nova sessão. Isso não
 altera as suas aplicações OutSystems.

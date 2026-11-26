@@ -171,7 +171,26 @@ As skills também funcionam num chat comum. Cole o conteúdo de
 envie prints ou trechos sanitizados. Nesse caso, o agente analisa só o que você
 mandou. Para ODC, use a documentação e as ferramentas do ODC.
 
+## Já usa este repositório? Atualize assim
+
+1. Atualize o Service Studio para a **11.55.99 ou mais recente** (Help > About
+   mostra a versão).
+2. Baixe de novo os dois repositórios (`git pull` em cada clone, ou baixe o ZIP
+   de novo).
+3. Copie de novo as pastas `skills/outsystems-*` para a pasta de skills do seu
+   agente (no Claude Code: `.claude/skills/`), substituindo as antigas.
+4. Atualize a skill oficial: no clone do `outsystems11-mcp`, rode
+   `powershell -ExecutionPolicy Bypass -File scripts\install.ps1 -Source .`
+5. **O servidor MCP agora se chama `servicestudio`.** No `.mcp.json` do seu
+   projeto, troque `"outsystems"` por `"servicestudio"` (ou copie o
+   [`.mcp.json`](.mcp.json) deste repositório). Não deixe os dois nomes: o
+   agente veria ferramentas duplicadas.
+6. Abra uma sessão nova do agente, aprove o servidor `servicestudio` e aprove o
+   pedido na janela do Service Studio.
+
 ## Documentação
+
+Para usar:
 
 - [Primeiro uso](docs/usage.md)
 - [Conectar o MCP do Service Studio](docs/service-studio-mcp.md)
@@ -180,10 +199,13 @@ mandou. Para ODC, use a documentação e as ferramentas do ODC.
 - [Exemplo: modal de aprovação que não fecha](examples/loading-and-modal.md)
 - [Exemplo: ler uma Server Action pelo MCP](examples/mcp-read-server-action.md)
 - [Exemplo: revisão de arquitetura](examples/architecture-review.md)
-- [Estrutura e qualidade das skills](docs/skill-design.md)
-- [Avaliação e casos de teste](docs/evaluation.md)
-- [Auditorias](docs/audits/2026-11-24.md)
-- [Fontes oficiais](docs/sources.md)
+
+Para manter o repositório:
+
+- [Estrutura e qualidade das skills](docs/manutencao/skill-design.md)
+- [Avaliação e casos de teste](docs/manutencao/evaluation.md)
+- [Auditorias](docs/manutencao/audits/2026-11-24.md)
+- [Fontes oficiais](docs/manutencao/sources.md)
 - [Roadmap](ROADMAP.md) · [Manutenção](CONTRIBUTING.md) · [Segurança](SECURITY.md)
 
 ## Status do projeto

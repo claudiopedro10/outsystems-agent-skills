@@ -30,9 +30,9 @@ oficial.
 
 ## Validação antes de uma atualização
 
-Rode as [verificações estruturais](docs/evaluation.md) e revise juntos os
+Rode as [verificações estruturais](docs/manutencao/evaluation.md) e revise juntos os
 modelos, exemplos e fontes oficiais de configuração afetados. Ao mudar uma
-descrição de skill, revise os [casos de roteamento](docs/evaluation.md#casos-de-roteamento).
+descrição de skill, revise os [casos de roteamento](docs/manutencao/evaluation.md#casos-de-roteamento).
 Registre avaliações de comportamento à parte; não informe um caso não executado
 como aprovado. Use uma branch de mantenedor para revisão sem mudar as
 configurações de contribuição do repositório.

@@ -97,7 +97,7 @@ os caminhos de erro, o cancelamento e a execução repetida, quando fizer sentid
 
 Depois de edições pelo MCP, espere uma leitura de confirmação e a separação
 entre o que ficou preparado (staged), o que entrou no módulo (merge) e o que foi
-testado em execução. Veja a [avaliação](evaluation.md) para casos e limites.
+testado em execução. Veja a [avaliação](manutencao/evaluation.md) para casos e limites.
 
 Uma explicação confiante não é prova. No exemplo do modal, confirme que a
 aprovação conclui, o loading para, o modal fecha e o resumo atualiza. Em caso de

@@ -35,7 +35,7 @@ colocar as instruções, trazer um pedido realista e dizer como avaliar a
 resposta. Esse material didático fica na documentação; as instruções das skills
 continuam focadas no comportamento do agente.
 
-Use o [modelo de pedido](request-template.md) nos exemplos. Separe o sintoma
+Use o [modelo de pedido](../request-template.md) nos exemplos. Separe o sintoma
 observável da causa suspeita. Preserve os identificadores fornecidos pelo
 usuário e marque exemplos sintéticos como tais.
 
