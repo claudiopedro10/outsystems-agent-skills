@@ -103,7 +103,7 @@ colar o JSON. Colar trechos do chat é a causa mais comum de arquivo quebrado
 | Agente | Arquivo pronto neste repositório | Onde colocar no projeto |
 | --- | --- | --- |
 | Claude Code | [`.mcp.json`](../.mcp.json) (cópia do arquivo oficial da OutSystems) | `.mcp.json` na raiz |
-| GitHub Copilot no VS Code | [`config/vscode-copilot.mcp.json`](../config/vscode-copilot.mcp.json) | `.vscode/mcp.json` |
+| GitHub Copilot no VS Code | [`.vscode/mcp.json`](../.vscode/mcp.json) (cópia do arquivo oficial) | `.vscode/mcp.json` |
 
 O Claude Code dentro do VS Code continua sendo Claude Code: ele usa `.mcp.json`
 na raiz, não `.vscode/mcp.json`. Salve o arquivo antes de recarregar.

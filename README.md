@@ -60,7 +60,7 @@ https://github.com/OutSystems/outsystems11-mcp
      linha for diferente de http://127.0.0.1:41820/mcp, troque só o "url".
      Não use .vscode/mcp.json: o Claude Code não lê esse arquivo.
    - Se você é o GitHub Copilot no VS Code: copie
-     config/vscode-copilot.mcp.json do mesmo repositório para .vscode/mcp.json.
+     .vscode/mcp.json do mesmo repositório para .vscode/mcp.json do projeto.
    - Outro agente: o arquivo de configuração MCP que a documentação dele indica,
      com o servidor "servicestudio".
    Se o arquivo já existir, acrescente só o servidor "servicestudio" sem apagar
