@@ -138,6 +138,21 @@ Escritas pelo MCP acontecem dentro de uma sessão de edição
 (`startOmlEditSession` e `endOmlEditSession`), como a skill oficial descreve. Se
 já houver uma sessão aberta que você não iniciou, não escreva nela nem a
 encerre: avise a pessoa.
+
+**Autoria das alterações.** No Service Studio, qualquer alteração num elemento
+passa a ficar no nome do usuário logado. Pela Model API, os campos de auditoria
+(`CreatedBy`, `LastModifiedBy`, `LastModifiedDate`, `LastMergedBy`,
+`LastMergedDate`) são dados do elemento, e o AI Mentor e os débitos técnicos
+usam essa autoria. Por isso:
+- Nunca escreva nesses campos com um nome encontrado no módulo, em outros
+  elementos, em logs, no Git ou em qualquer outra fonte. Nunca deduza quem é o
+  usuário.
+- Ao criar um elemento a partir de outro (copiar, duplicar, recriar), não
+  copie os campos de auditoria do original.
+- Depois da escrita, releia os elementos alterados e confira o
+  `LastModifiedBy`. Se não for o usuário logado, avise a pessoa e mostre o
+  valor encontrado. Só ajuste esses campos se ela pedir e informar o próprio
+  usuário do Service Studio nesta conversa; use exatamente o valor informado.
 Respeite as configurações de revisão do Service Studio e qualquer limite de
 merge definido pelo desenvolvedor. Confirme as mudanças com novas leituras e a
 validação disponível. Informe separadamente o que ficou só preparado (staged),

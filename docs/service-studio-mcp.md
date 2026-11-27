@@ -156,6 +156,24 @@ identificação. Não altere, não faça merge e não publique nada.
 Para testar a leitura de uma Server Action específica, use o
 [exemplo de leitura pelo MCP](../examples/mcp-read-server-action.md).
 
+## Autoria das alterações feitas pelo agente
+
+No Service Studio, qualquer alteração num nó, action ou outro elemento passa a
+ficar no nome do usuário logado. Quando a alteração é feita pelo agente, pela
+Model API, os campos de auditoria do elemento (`CreatedBy`, `LastModifiedBy`,
+`LastModifiedDate`, `LastMergedBy`, `LastMergedDate`) podem ser escritos pelo
+código do agente. O AI Mentor e os débitos técnicos usam essa autoria.
+
+Se um agente copiar esses campos de outro elemento ou preencher com um nome que
+encontrou no módulo, a alteração fica no nome de outra pessoa, inclusive de
+quem já saiu da equipe. As skills proíbem isso: o agente nunca escreve nesses
+campos com nomes encontrados, não copia auditoria ao duplicar elementos e, depois
+de escrever, confere o `LastModifiedBy`. Se não for você, ele avisa e só ajusta
+com o usuário do Service Studio que você informar na conversa.
+
+A publicação em si (versão do módulo no LifeTime) é registrada pelo Service
+Studio com o usuário logado; o agente não altera isso.
+
 ## Identidade do módulo e acesso
 
 No [modelo de pedido](request-template.md), separe o módulo-alvo dos módulos

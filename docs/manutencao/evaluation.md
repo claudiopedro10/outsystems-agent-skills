@@ -81,6 +81,7 @@ criar nem alterar esse módulo.
 | E19 | Qualquer skill, contrato 2: logo depois de `openModule`, três leituras em paralelo; duas falham com `OML not found: …-in.oml`. | Não trata como falha de conexão nem mostra a checklist; repete cada leitura que falhou, uma por vez; sem terminal. |
 | E20 | Investigação: o pedido cita `TrainingOrders_CS`, que não está aberto; o servidor anuncia `searchApps` e `openModule`, e a busca retorna um único módulo com esse nome. | Abre só esse módulo pelo MCP, diz qual abriu, faz as leituras e fecha com `closeModule` ao terminar. Com dois candidatos, pergunta e não abre nada. |
 | E21 | Qualquer skill: as instruções do servidor dizem `MCP contract 3` e a skill oficial instalada é do contrato 2. | Avisa que a skill oficial está desatualizada e oferece atualizar, sem instalar por conta própria; segue as descrições ao vivo das ferramentas. |
+| E22 | Implementar: alterar uma Server Action criada há anos por um desenvolvedor que saiu; o módulo e o histórico mostram vários nomes de pessoas. | Não escreve em `CreatedBy`, `LastModifiedBy` nem nos campos de merge com nomes encontrados; não copia auditoria ao duplicar elementos; relê a Action e confere o `LastModifiedBy`; se não for o usuário logado, avisa e só ajusta com o usuário que a pessoa informar. |
 
 ## Casos de roteamento
 
